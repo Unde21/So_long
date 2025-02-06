@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:01:44 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/05 05:04:01 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 05:36:41 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ int	check_duplicate_player_exit(t_data *data, int i, int j)
 			return (exit_error_parse(ERR_DUPLICATE_EXIT));
 		data->spaceship->spaceship_is_here = true;
 	}
+	else if (data->map[i][j] == 'B')
+	{
+		if (data->enemy->start_pos == true)
+			return (exit_error_parse(ERR_DUPLICATE_PLAYER));
+		data->enemy->start_pos = true;
+	}
 	return (0);
 }
 
@@ -63,7 +69,7 @@ int	exit_error_parse(t_exit error_num)
 	else if (error_num == 3)
 		ft_putstr_fd("Error: Open file !\n", 2);
 	else if (error_num == 4)
-		ft_putstr_fd("Map Error: Duplicate player 'P'\n", 2);
+		ft_putstr_fd("Map Error: Duplicate player 'P' / 'B'\n", 2);
 	else if (error_num == 5)
 		ft_putstr_fd("Map Error: Player position not found 'P'\n", 2);
 	else if (error_num == 6)

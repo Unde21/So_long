@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 03:13:57 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 05:46:50 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,22 @@ typedef struct s_data
 	t_player	*player;
 	t_spaceship	*spaceship;
 	t_img		*img;
+	t_enemy		*enemy;
 }	t_data;
+
+typedef struct s_enemy
+{
+	void	*img_top;
+	void	*img_down;
+	void	*img_left;
+	void	*img_right;
+	int		pos_x;
+	int		pos_y;
+	bool	start_pos;
+	char	img[5];
+	int		height;
+	int		width;
+}	t_enemy;
 
 /* ************************************************************************** */
 /*								Parsing							  	  		  */
@@ -179,5 +194,15 @@ int		load_img_move_snd(t_data *data, t_img *img);
 void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
+
+
+/* ************************************************************************** */
+/*								Enemy					  			  		  */
+/* ************************************************************************** */
+
+void	init_struct_enemy(t_enemy *enemy);
+int		load_img_enemy(t_data *data, t_enemy *enemy);
+void	init_enemy_img(t_data *data);
+int		display_enemy(t_data *data);
 
 #endif

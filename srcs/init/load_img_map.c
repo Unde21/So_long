@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 00:44:07 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/06 05:44:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,31 @@ int	load_img_map(t_data *data, t_img *img)
 		return (-1);
 	if (load_img_player(data, img) != 0)
 		return (-1);
+	if (data->enemy->start_pos == true)
+	{
+		if (load_img_enemy(data, data->enemy) != 0)
+			return (-1);
+	}
+	return (0);
+}
+
+int	load_img_enemy(t_data *data, t_enemy *enemy)
+{
+	enemy->img_right = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[2],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_right)
+		return (ERR_IMG);
+	enemy->img_left = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[11],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_left)
+		return (ERR_IMG);
+	enemy->img_top = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[8],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_top)
+		return (ERR_IMG);
+	enemy->img_down = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[12],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_down)
+		return (ERR_IMG);
 	return (0);
 }

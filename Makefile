@@ -15,6 +15,8 @@ SRCS := srcs/main.c \
 	srcs/init/init_struct.c \
 	srcs/init/init_img.c \
 	srcs/init/load_img_map.c \
+	srcs/game/enemy/display_enemy.c \
+	srcs/game/enemy/init_enemy.c \
 
 HEADER := libft/libft.h \
 		includes/so_long.h \
