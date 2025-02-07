@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 10:03:00 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 13:09:36 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ void	ft_destroy_mlx(t_data *data);
 void	ft_destroy_img(t_data *data, t_img *img);
 void	ft_destroy_img_background(t_data *data, t_img *img);
 void	ft_destroy_img_score(t_data *data, t_img *img);
+void	ft_destroy_img_death(t_data *data);
 void	ft_destroy_img_score_snd(t_data *data, t_img *img);
 void	ft_destroy_img_exit(t_data *data, t_img *img);
 int		keypress(int keysym, t_data *data);
