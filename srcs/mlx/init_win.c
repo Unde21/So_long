@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 02:11:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 06:21:36 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	init_mlx(t_data *data)
 {
 	init_img(data);
+	init_enemy_img(data);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (-1);

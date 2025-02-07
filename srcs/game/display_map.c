@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:19:50 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 00:42:05 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 06:37:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	display_map(t_data *data)
 		}
 		y++;
 	}
+	display_enemy(data);
 	init_move_count(data);
 	if (load_img_move(data, data->img) != 0)
 	{
@@ -73,5 +74,10 @@ void	put_image_to_win(t_data *data, size_t x, size_t y)
 			data->img->spaceship_close, x * 64, y * 64);
 		data->spaceship->pos_x = x;
 		data->spaceship->pos_y = y;
+	}
+	if (data->map[y][x] == 'B')
+	{
+		data->enemy->pos_x = x;
+		data->enemy->pos_y = y;
 	}
 }

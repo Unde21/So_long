@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 05:11:40 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 09:54:42 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	init_struct_player(t_player *player)
 	player->start_pos = false;
 	player->pos_x = 0;
 	player->pos_y = 0;
+	player->pl_dead_r = NULL;
+	player->pl_dead_l = NULL;
 }
 
 void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
@@ -45,6 +47,10 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->map = NULL;
 }
 
+void	add_enemy_data(t_data *data, t_enemy	*enemy)
+{
+	data->enemy = enemy;
+}
 void	init_struct_img(t_img *img)
 {
 	img->nb_zero = NULL;

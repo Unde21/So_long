@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:01:44 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 05:36:41 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 05:56:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_inside_map(t_data *data, size_t i, size_t j)
 {
 	if ((data->map[i][j] != 'E' && data->map[i][j] != '1'
 			&& data->map[i][j] != 'P' && data->map[i][j] != 'C'
-			&& data->map[i][j] != '0'))
+			&& data->map[i][j] != '0' && data->map[i][j] != 'B'))
 	{
 		if (data->map[i][j] != '\n')
 			return (exit_error_parse(ERR_MAP));

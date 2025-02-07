@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 00:37:19 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 10:04:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_img(t_data *data)
 	data->img->img[10] = "img_file/player_d_exit.xpm";
 	data->img->img[11] = "img_file/player_top.xpm";
 	data->img->img[12] = "img_file/player_top_exit.xpm";
+	init_img_player(data);
 }
 
 void	init_move_count(t_data *data)
@@ -41,4 +42,10 @@ void	init_move_count(t_data *data)
 	data->img->move[7] = "img_file/nb_seven.xpm";
 	data->img->move[8] = "img_file/nb_eight.xpm";
 	data->img->move[9] = "img_file/nb_nine.xpm";
+}
+
+void	init_img_player(t_data *data)
+{
+	data->player->img[0] = "img_file/player_death_left.xpm";
+	data->player->img[1] = "img_file/player_death_right.xpm";
 }

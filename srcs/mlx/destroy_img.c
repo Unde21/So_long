@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 03:12:46 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 03:52:03 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_destroy_img(t_data *data, t_img *img)
 	ft_destroy_img_exit(data, img);
 	ft_destroy_img_score(data, img);
 	ft_destroy_img_score_snd(data, img);
+	ft_destroy_img_enemy(data, data->enemy);
 	if (img->player != NULL)
 	{
 		mlx_destroy_image(data->mlx_ptr, img->player);

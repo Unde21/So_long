@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 05:44:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/07 09:54:53 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int	load_img_player(t_data *data, t_img *img)
 	img->ptop_exit = mlx_xpm_file_to_image(data->mlx_ptr, img->img[12],
 			&img->width, &img->height);
 	if (!img->ptop_exit)
+		return (ERR_IMG);
+	data->player->pl_dead_r = mlx_xpm_file_to_image(data->mlx_ptr, data->player->img[0],
+			&img->width, &img->height);
+	if (!data->player->pl_dead_r)
+		return (ERR_IMG);
+	data->player->pl_dead_l = mlx_xpm_file_to_image(data->mlx_ptr, data->player->img[1],
+			&img->width, &img->height);
+	if (!data->player->pl_dead_l)
 		return (ERR_IMG);
 	return (0);
 }
@@ -86,19 +94,19 @@ int	load_img_map(t_data *data, t_img *img)
 
 int	load_img_enemy(t_data *data, t_enemy *enemy)
 {
-	enemy->img_right = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[2],
+	enemy->img_right = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[3],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_right)
 		return (ERR_IMG);
-	enemy->img_left = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[11],
+	enemy->img_left = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[0],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_left)
 		return (ERR_IMG);
-	enemy->img_top = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[8],
+	enemy->img_top = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[2],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_top)
 		return (ERR_IMG);
-	enemy->img_down = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[12],
+	enemy->img_down = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[1],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_down)
 		return (ERR_IMG);

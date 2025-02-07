@@ -7,6 +7,7 @@ SRCS := srcs/main.c \
 	srcs/mlx/init_win.c \
 	srcs/mlx/mlx_utils.c \
 	srcs/mlx/destroy_img.c \
+	srcs/mlx/destroy_img_bonus.c \
 	srcs/game/display_map.c \
 	srcs/game/player_move.c \
 	srcs/game/player_move_utils.c \
