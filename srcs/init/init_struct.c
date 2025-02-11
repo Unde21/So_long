@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 11:54:14 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 16:14:45 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map = NULL;
+	gettimeofday(&data->last_time, NULL);
 }
 
 void	add_enemy_data(t_data *data, t_enemy	*enemy)

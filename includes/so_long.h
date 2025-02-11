@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 14:32:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 18:16:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdbool.h>
 # include "mlx.h"
+#include <sys/time.h> 
 
 # define KEY_CLOSE 65307
 # define KEY_UP 119
@@ -101,9 +102,17 @@ typedef struct s_enemy
 	int		pos_x;
 	int		pos_y;
 	bool	start_pos;
-	char	*img[5];
+	char	*img[12];
 	int		height;
 	int		width;
+	void	*img_t_exit;
+	void	*img_d_exit;
+	void	*img_r_exit;
+	void	*img_l_exit;
+	void	*img_t_opexit;
+	void	*img_d_opexit;
+	void	*img_r_opexit;
+	void	*img_l_opexit;
 }	t_enemy;
 
 typedef struct s_data
@@ -124,6 +133,7 @@ typedef struct s_data
 	t_spaceship	*spaceship;
 	t_img		*img;
 	t_enemy		*enemy;
+	struct timeval last_time;
 }	t_data;
 
 /* ************************************************************************** */
@@ -209,14 +219,24 @@ int		touch_enemy(t_data *data, int next_x, int next_y, int dir);
 
 void	init_struct_enemy(t_enemy *enemy);
 int		load_img_enemy(t_data *data, t_enemy *enemy);
+int		load_img_enemy_exit(t_data *data, t_enemy *enemy);
 void	init_enemy_img(t_data *data);
 void	display_enemy(t_data *data);
 void	ft_destroy_img_enemy(t_data *data, t_enemy *enemy);
-int		move_enemy(t_data *data, t_enemy *enemy);
+void	ft_destroy_img_enemy_exit(t_data *data, t_enemy *enemy);
+void	ft_destroy_img_enemy_opexit(t_data *data, t_enemy *enemy);
+int		move_enemy(t_data *data);
 void	add_enemy_data(t_data *data, t_enemy *enemy);
 void	move_enemy_top(t_data *data, t_enemy *enemy);
 void	move_enemy_down(t_data *data, t_enemy *enemy);
 void	move_enemy_right(t_data *data, t_enemy *enemy);
 void	move_enemy_left(t_data *data, t_enemy *enemy);
+int		touch_player(t_data *data, int next_x, int next_y);
+void	handle_old_position_enemy(t_data *data, t_enemy *enemy);
+void	handle_new_position_t_enemy(t_data *data, t_enemy *enemy);
+void	handle_new_position_r_enemy(t_data *data, t_enemy *enemy);
+void	handle_new_position_l_enemy(t_data *data, t_enemy *enemy);
+void	handle_new_position_d_enemy(t_data *data, t_enemy *enemy);
+
 
 #endif

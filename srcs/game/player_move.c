@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 12:14:08 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 16:40:32 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,5 @@ int	keypress(int keysym, t_data *data)
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
 		open_spaceship(data, data->img);
 	check_end(data, data->player);
-	move_enemy(data, data->enemy);
 	return (0);
 }

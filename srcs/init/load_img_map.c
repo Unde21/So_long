@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 09:54:53 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 18:11:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,45 @@ int	load_img_enemy(t_data *data, t_enemy *enemy)
 	enemy->img_down = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[1],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_down)
+		return (ERR_IMG);
+	if (load_img_enemy_exit(data, enemy) != 0)
+		return (-1);
+	enemy->img_d_opexit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[9],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_d_opexit)
+		return (ERR_IMG);
+	enemy->img_t_opexit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[10],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_t_opexit)
+		return (ERR_IMG);
+	return (0);
+}
+
+int	load_img_enemy_exit(t_data *data, t_enemy *enemy)
+{
+	enemy->img_r_exit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[7],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_r_exit)
+		return (ERR_IMG);
+	enemy->img_l_exit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[4],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_l_exit)
+		return (ERR_IMG);
+	enemy->img_t_exit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[6],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_t_exit)
+		return (ERR_IMG);
+	enemy->img_d_exit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[5],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_down)
+		return (ERR_IMG);
+	enemy->img_r_opexit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[11],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_r_opexit)
+		return (ERR_IMG);
+	enemy->img_l_opexit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[8],
+			&enemy->width, &enemy->height);
+	if (!enemy->img_l_opexit)
 		return (ERR_IMG);
 	return (0);
 }
