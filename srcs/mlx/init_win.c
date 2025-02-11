@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 13:16:05 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 12:13:58 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	game_loop(t_data *data)
 		ft_destroy_mlx(data);
 		return (-1);
 	}
+
 	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, keypress, data);
+	mlx_loop_hook(data->win_ptr, move_enemy, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
 	if (mlx_loop(data->mlx_ptr) != 0)
 		return (-1);

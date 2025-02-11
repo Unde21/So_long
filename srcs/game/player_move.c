@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 10:05:51 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 12:14:08 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	move_right(t_data *data, t_player *player, t_img *img)
 	if (data->map[player->pos_y][player->pos_x] == 'C')
 		--data->nb_obj;
 	handle_new_position_r(data, player, img);
+	player->dir_left = false;
 	++data->count_key;
 	display_count_move(data);
 }
@@ -48,6 +49,7 @@ void	move_left(t_data *data, t_player *player, t_img *img)
 	if (data->map[player->pos_y][player->pos_x] == 'C')
 		--data->nb_obj;
 	handle_new_position_l(data, player, img);
+	player->dir_left = true;
 	++data->count_key;
 	display_count_move(data);
 }
@@ -86,5 +88,6 @@ int	keypress(int keysym, t_data *data)
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
 		open_spaceship(data, data->img);
 	check_end(data, data->player);
+	move_enemy(data, data->enemy);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 09:54:42 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 11:54:14 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_struct_player(t_player *player)
 	player->pos_y = 0;
 	player->pl_dead_r = NULL;
 	player->pl_dead_l = NULL;
+	player->dir_left = false;
 }
 
 void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,

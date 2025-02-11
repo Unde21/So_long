@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 13:09:36 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 12:07:22 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_player
 	void	*pl_dead_r;
 	void	*pl_dead_l;
 	char	*img[3];
+	bool	dir_left;
 }	t_player;
 
 typedef struct s_spaceship
@@ -211,6 +212,11 @@ int		load_img_enemy(t_data *data, t_enemy *enemy);
 void	init_enemy_img(t_data *data);
 void	display_enemy(t_data *data);
 void	ft_destroy_img_enemy(t_data *data, t_enemy *enemy);
+int		move_enemy(t_data *data, t_enemy *enemy);
 void	add_enemy_data(t_data *data, t_enemy *enemy);
+void	move_enemy_top(t_data *data, t_enemy *enemy);
+void	move_enemy_down(t_data *data, t_enemy *enemy);
+void	move_enemy_right(t_data *data, t_enemy *enemy);
+void	move_enemy_left(t_data *data, t_enemy *enemy);
 
 #endif
