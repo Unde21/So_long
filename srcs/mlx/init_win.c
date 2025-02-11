@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:21:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:49:00 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	game_loop(t_data *data)
 
 	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, keypress, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
-	mlx_loop_hook(data->mlx_ptr, move_enemy, data);
+	mlx_loop_hook(data->mlx_ptr, game_update, data);
 	if (mlx_loop(data->mlx_ptr) != 0)
 		return (-1);
 	return (0);
@@ -61,14 +61,39 @@ int	game_loop(t_data *data)
 void	check_end(t_data *data, t_player *player)
 {
 	if (data->map[player->pos_y][player->pos_x] == 'E' && data->nb_obj == 0)
-		close_window(data);
+	{
+		data->end = true;
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->spaceship_close,
+			player->pos_x * 64, (player->pos_y) * 64);
+	}
 }
 
 int	close_window(t_data *data)
 {
-
 	ft_printf("Game quit\n");
 	ft_destroy_mlx(data);
 	exit(0);
+	return (0);
+}
+
+
+int	game_update(t_data *data)
+{
+	if (data->player->death == true)
+	{
+		++data->player->death_frame;
+		if (data->player->death_frame >= 100000)
+			close_window(data);
+		return (0);
+	}
+	if (data->end == true)
+	{
+		++data->spaceship->frame;
+		if (data->spaceship->frame >= 100000)
+			close_window(data);
+		return (0);
+	}
+	else
+		return (move_enemy(data));
 	return (0);
 }

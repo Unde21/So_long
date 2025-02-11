@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 16:40:32 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:45:25 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	move_up(t_data *data, t_player *player, t_img *img)
 {
 	if (touch_enemy(data, player->pos_x, player->pos_y - 1, 1) != 0)
-		close_window(data);
+		return ;
 	handle_old_position(data, player, img);
 	--player->pos_y;
 	if (data->map[player->pos_y][player->pos_x] == 'C')
@@ -29,7 +29,7 @@ void	move_up(t_data *data, t_player *player, t_img *img)
 void	move_right(t_data *data, t_player *player, t_img *img)
 {
 	if (touch_enemy(data, player->pos_x + 1, player->pos_y, 0) != 0)
-		close_window(data);
+		return ;
 	handle_old_position(data, player, img);
 	++player->pos_x;
 	if (data->map[player->pos_y][player->pos_x] == 'C')
@@ -43,7 +43,7 @@ void	move_right(t_data *data, t_player *player, t_img *img)
 void	move_left(t_data *data, t_player *player, t_img *img)
 {
 	if (touch_enemy(data, player->pos_x - 1, player->pos_y, 1) != 0)
-		close_window(data);
+		return ;
 	handle_old_position(data, player, img);
 	--player->pos_x;
 	if (data->map[player->pos_y][player->pos_x] == 'C')
@@ -57,7 +57,7 @@ void	move_left(t_data *data, t_player *player, t_img *img)
 void	move_down(t_data *data, t_player *player, t_img *img)
 {
 	if (touch_enemy(data, player->pos_x, player->pos_y + 1, 0) != 0)
-		close_window(data);
+		return ;
 	handle_old_position(data, player, img);
 	++player->pos_y;
 	if (data->map[player->pos_y][player->pos_x] == 'C')
@@ -69,6 +69,8 @@ void	move_down(t_data *data, t_player *player, t_img *img)
 
 int	keypress(int keysym, t_data *data)
 {
+	if (data->player->death == true || data->end == true)
+		return (0);
 	if (keysym == KEY_CLOSE)
 	{
 		close_window(data);

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 16:14:45 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:44:54 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_struct_spaceship(t_spaceship *spaceship)
 	spaceship->spaceship_is_here = false;
 	spaceship->pos_y = 0;
 	spaceship->pos_x = 0;
+	spaceship->frame = 0;
 }
 
 void	init_struct_player(t_player *player)
@@ -27,7 +28,9 @@ void	init_struct_player(t_player *player)
 	player->pos_y = 0;
 	player->pl_dead_r = NULL;
 	player->pl_dead_l = NULL;
-	player->dir_left = false;
+	player->dir_left = true;
+	player->death_frame = 0;
+	player->death = false;
 }
 
 void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
@@ -46,6 +49,7 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map = NULL;
+	data->end = false;
 	gettimeofday(&data->last_time, NULL);
 }
 
@@ -81,3 +85,19 @@ void	init_struct_img(t_img *img)
 	img->height = 0;
 	img->width = 0;
 }
+
+
+// int	close_window(t_data *data)
+// {
+// 	if (data->player->death == true)
+// 	{
+// 		++data->player->death_frame;
+// 		if (data->player->death_frame >= 60)
+// 		{
+// 			ft_printf("Game quit\n");
+// 			ft_destroy_mlx(data);
+// 			exit(0);
+// 		}
+// 	}
+// 	return (0);
+// }

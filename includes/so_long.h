@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:16:04 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:45:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_player
 	void	*pl_dead_l;
 	char	*img[3];
 	bool	dir_left;
+	bool	death;
+	int		death_frame;
 }	t_player;
 
 typedef struct s_spaceship
@@ -59,6 +61,7 @@ typedef struct s_spaceship
 	int		pos_y;
 	bool	spaceship_close;
 	bool	spaceship_is_here;
+	int		frame;
 }	t_spaceship;
 
 typedef struct s_img
@@ -127,6 +130,7 @@ typedef struct s_data
 	int			nb_obj;
 	int			ac;
 	char		**av;
+	bool		end;
 	size_t		nb_line;
 	size_t		nb_row;
 	t_player	*player;
@@ -186,6 +190,7 @@ void	ft_destroy_img_score_snd(t_data *data, t_img *img);
 void	ft_destroy_img_exit(t_data *data, t_img *img);
 int		keypress(int keysym, t_data *data);
 void	put_floor_score_board(t_data *data);
+int		game_update(t_data *data);
 int		close_window(t_data *data);
 
 /* ************************************************************************** */
@@ -212,6 +217,7 @@ int		display_right_img(t_data *data, t_img *img);
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
 void	init_img_player(t_data *data);
 int		touch_enemy(t_data *data, int next_x, int next_y, int dir);
+int		handle_death(t_data *data);
 
 /* ************************************************************************** */
 /*								Enemy					  			  		  */

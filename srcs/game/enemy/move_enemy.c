@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:24:02 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:43:28 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	move_enemy(t_data *data)
 	struct timeval current_time;
 	long	elapsed_time;
 	
+	if (data->end == true || data->player->death == true)
+		return (0);
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - data->last_time.tv_sec) * 1000
 		+ (current_time.tv_usec - data->last_time.tv_usec) / 1000;
@@ -39,7 +41,7 @@ int	move_enemy(t_data *data)
 void	move_enemy_top(t_data *data, t_enemy *enemy)
 {
 	if (touch_player(data, enemy->pos_x, enemy->pos_y - 1) != 0)
-		close_window(data);
+		return ;
 	handle_old_position_enemy(data, enemy);
 	--enemy->pos_y;
 	handle_new_position_t_enemy(data, enemy);
@@ -48,7 +50,7 @@ void	move_enemy_top(t_data *data, t_enemy *enemy)
 void	move_enemy_down(t_data *data, t_enemy *enemy)
 {
 	if (touch_player(data, enemy->pos_x, enemy->pos_y + 1) != 0)
-		close_window(data);
+		return ;
 	handle_old_position_enemy(data, enemy);
 	++enemy->pos_y;
 	handle_new_position_d_enemy(data, enemy);
@@ -57,7 +59,7 @@ void	move_enemy_down(t_data *data, t_enemy *enemy)
 void	move_enemy_right(t_data *data, t_enemy *enemy)
 {
 	if (touch_player(data, enemy->pos_x + 1, enemy->pos_y) != 0)
-		close_window(data);
+		return ;
 	handle_old_position_enemy(data, enemy);
 	++enemy->pos_x;
 	handle_new_position_r_enemy(data, enemy);
@@ -66,7 +68,7 @@ void	move_enemy_right(t_data *data, t_enemy *enemy)
 void	move_enemy_left(t_data *data, t_enemy *enemy)
 {
 	if (touch_player(data, enemy->pos_x - 1, enemy->pos_y) != 0)
-		close_window(data);
+		return ;
 	handle_old_position_enemy(data, enemy);
 	--enemy->pos_x;
 	handle_new_position_l_enemy(data, enemy);

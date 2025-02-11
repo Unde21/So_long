@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:54:55 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 17:40:32 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/11 19:35:29 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	touch_enemy(t_data *data, int next_x, int next_y, int dir)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->player->pl_dead_r, data->player->pos_x * 64,
 			data->player->pos_y * 64);
+		data->player->death = true;
 		return (1);
 	}
 	else if (data->map[next_y][next_x] == 'B' && dir == 0)
@@ -51,6 +52,7 @@ int	touch_enemy(t_data *data, int next_x, int next_y, int dir)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->player->pl_dead_l, data->player->pos_x * 64,
 			data->player->pos_y * 64);
+		data->player->death = true;
 		return (1);
 	}
 	return (0);
@@ -61,15 +63,17 @@ int	touch_player(t_data *data, int next_x, int next_y)
 	if (data->map[next_y][next_x] == 'P' && data->player->dir_left == false)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->player->pl_dead_r, data->player->pos_x * 64,
+			data->player->pl_dead_l, data->player->pos_x * 64,
 			data->player->pos_y * 64);
+		data->player->death = true;
 		return (1);
 	}
 	else if (data->map[next_y][next_x] == 'P' && data->player->dir_left == true)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->player->pl_dead_l, data->player->pos_x * 64,
+			data->player->pl_dead_r, data->player->pos_x * 64,
 			data->player->pos_y * 64);
+		data->player->death = true;
 		return (1);
 	}
 	return (0);
