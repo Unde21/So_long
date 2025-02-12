@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:24:49 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:49:54 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	move_enemy_top(t_data *data, t_enemy *enemy)
 	if (touch_player(data, enemy->pos_x, enemy->pos_y - 1) != 0)
 		return ;
 	handle_old_position_enemy(data, enemy);
-	--enemy->pos_y;
+	if (data->defeat == false)
+		--enemy->pos_y;
 	handle_new_position_t_enemy(data, enemy);
 }
 
@@ -52,7 +53,8 @@ void	move_enemy_down(t_data *data, t_enemy *enemy)
 	if (touch_player(data, enemy->pos_x, enemy->pos_y + 1) != 0)
 		return ;
 	handle_old_position_enemy(data, enemy);
-	++enemy->pos_y;
+	if (data->defeat == false)
+		++enemy->pos_y;
 	handle_new_position_d_enemy(data, enemy);
 }
 
@@ -61,7 +63,8 @@ void	move_enemy_right(t_data *data, t_enemy *enemy)
 	if (touch_player(data, enemy->pos_x + 1, enemy->pos_y) != 0)
 		return ;
 	handle_old_position_enemy(data, enemy);
-	++enemy->pos_x;
+	if (data->defeat == false)
+		++enemy->pos_x;
 	handle_new_position_r_enemy(data, enemy);
 }
 
@@ -70,6 +73,7 @@ void	move_enemy_left(t_data *data, t_enemy *enemy)
 	if (touch_player(data, enemy->pos_x - 1, enemy->pos_y) != 0)
 		return ;
 	handle_old_position_enemy(data, enemy);
-	--enemy->pos_x;
+	if (data->end == false)
+		--enemy->pos_x;
 	handle_new_position_l_enemy(data, enemy);
 }

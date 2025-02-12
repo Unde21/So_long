@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:54:55 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:28:29 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:57:42 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 				next_y * 64);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->floor, data->player->pos_x * 64,
-				data->player->pos_y * 64);	
+				data->player->pos_y * 64);
+				data->defeat = true;
 		}
 		else
 		{
@@ -68,7 +69,8 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 				next_y * 64);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->floor, data->player->pos_x * 64,
-				data->player->pos_y * 64);	
+				data->player->pos_y * 64);
+				data->defeat = true;
 		}
 		else
 		{
@@ -91,6 +93,7 @@ int	touch_player(t_data *data, int next_x, int next_y)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_r_exit, data->player->pos_x * 64,
 				data->player->pos_y * 64);
+			data->defeat = true;
 		}
 		else
 		{
@@ -108,6 +111,7 @@ int	touch_player(t_data *data, int next_x, int next_y)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_l_exit, data->player->pos_x * 64,
 				data->player->pos_y * 64);
+			data->defeat = true;
 		}
 		else
 		{

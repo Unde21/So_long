@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:26:06 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:50:49 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_data
 	int			ac;
 	char		**av;
 	bool		end;
+	bool		defeat;
 	size_t		nb_line;
 	size_t		nb_row;
 	t_player	*player;
