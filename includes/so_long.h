@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:23:24 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:26:06 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_img
 	void	*nb_seven;
 	void	*nb_eight;
 	void	*nb_nine;
-	void	*img[13];
+	void	*img[15];
 	void	*floor;
 	void	*player;
 	void	*player_l;
@@ -97,6 +97,8 @@ typedef struct s_img
 	void	*pleft_exit;
 	void	*pdown_exit;
 	void	*ptop_exit;
+	void	*exit_fire;
+	void	*trail_fire;
 	int		height;
 	int		width;
 }	t_img;

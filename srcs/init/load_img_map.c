@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:52:00 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:22:58 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ int	load_img_exit(t_data *data, t_img *img)
 	img->pleft_exit = mlx_xpm_file_to_image(data->mlx_ptr, img->img[7],
 			&img->width, &img->height);
 	if (!img->pleft_exit)
+		return (ERR_IMG);
+	img->exit_fire = mlx_xpm_file_to_image(data->mlx_ptr, img->img[13],
+			&img->width, &img->height);
+	if (!img->exit_fire)
+		return (ERR_IMG);
+	img->trail_fire = mlx_xpm_file_to_image(data->mlx_ptr, img->img[14],
+			&img->width, &img->height);
+	if (!img->trail_fire)
 		return (ERR_IMG);
 	return (0);
 }

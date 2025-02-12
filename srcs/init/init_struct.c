@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:13:30 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:19:31 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	init_struct_img(t_img *img)
 	img->pleft_exit = NULL;
 	img->pdown_exit = NULL;
 	img->ptop_exit = NULL;
+	img->exit_fire = NULL;
+	img->trail_fire = NULL;
 	img->height = 0;
 	img->width = 0;
 }

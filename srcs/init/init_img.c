@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:16:31 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:39:46 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	init_img(t_data *data)
 	data->img->img[10] = "img_file/player_d_exit.xpm";
 	data->img->img[11] = "img_file/player_top.xpm";
 	data->img->img[12] = "img_file/player_top_exit.xpm";
+	data->img->img[13] = "img_file/exit_fire.xpm";
+	data->img->img[14] = "img_file/trail_fire.xpm";
 	init_img_player(data);
 }
 

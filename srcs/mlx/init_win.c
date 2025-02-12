@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:21:50 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:34:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ int	game_update(t_data *data)
 	if (data->end == true)
 	{
 		++data->spaceship->frame;
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->img->trail_fire, data->player->pos_x * 64,
+				data->player->pos_y * 64 - data->spaceship->frame / 100);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->img->exit_fire, data->player->pos_x * 64,
+				data->player->pos_y * 64 - data->spaceship->frame / 50);
 		if (data->spaceship->frame >= END_FRAME)
 			close_window(data);
 		return (0);

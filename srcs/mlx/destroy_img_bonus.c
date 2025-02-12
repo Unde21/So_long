@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 03:51:24 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:43:30 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 14:23:55 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ void	ft_destroy_img_enemy_opexit(t_data *data, t_enemy *enemy)
 		mlx_destroy_image(data->mlx_ptr, enemy->img_r_opexit);
 		enemy->img_r_opexit = NULL;
 	}
+	if (data->img->exit_fire != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->exit_fire);
+		data->img->exit_fire = NULL;
+	}
 }
 
 void	ft_destroy_img_death(t_data *data)
@@ -108,5 +113,10 @@ void	ft_destroy_img_death(t_data *data)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->player->pl_dead_r_exit);
 		data->player->pl_dead_r_exit = NULL;
+	}
+	if (data->img->trail_fire != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->trail_fire);
+		data->img->trail_fire = NULL;
 	}
 }
