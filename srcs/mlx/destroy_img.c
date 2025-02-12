@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:41:34 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 15:59:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ void	ft_destroy_img_exit(t_data *data, t_img *img)
 	{
 		mlx_destroy_image(data->mlx_ptr, img->plright_exit);
 		img->plright_exit = NULL;
+	}
+	if (img->landing_spaceship != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, img->landing_spaceship);
+		img->landing_spaceship = NULL;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:22:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 19:59:51 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ int	load_img_exit(t_data *data, t_img *img)
 			&img->width, &img->height);
 	if (!img->trail_fire)
 		return (ERR_IMG);
+	img->landing_spaceship = mlx_xpm_file_to_image(data->mlx_ptr, img->img[15],
+		&img->width, &img->height);
+	if (!img->landing_spaceship)
+		return (ERR_IMG);
 	return (0);
 }
 
@@ -135,6 +139,28 @@ int	load_img_enemy(t_data *data, t_enemy *enemy)
 	enemy->img_t_opexit = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[10],
 			&enemy->width, &enemy->height);
 	if (!enemy->img_t_opexit)
+		return (ERR_IMG);
+	
+
+
+
+
+
+	enemy->attack_d = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[13],
+			&enemy->width, &enemy->height);
+	if (!enemy->attack_d)
+		return (ERR_IMG);
+	enemy->attack_l = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[12],
+			&enemy->width, &enemy->height);
+	if (!enemy->attack_l)
+		return (ERR_IMG);
+	enemy->attack_r = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[15],
+		&enemy->width, &enemy->height);
+	if (!enemy->attack_r)
+		return (ERR_IMG);
+	enemy->attack_t = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[14],
+			&enemy->width, &enemy->height);
+	if (!enemy->attack_t)
 		return (ERR_IMG);
 	return (0);
 }

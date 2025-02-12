@@ -12,6 +12,7 @@ SRCS := srcs/main.c \
 	srcs/game/player_move.c \
 	srcs/game/player_move_utils.c \
 	srcs/game/display_move.c \
+	srcs/game/game_update.c \
 	srcs/game/open_exit.c \
 	srcs/init/init_struct.c \
 	srcs/init/init_img.c \

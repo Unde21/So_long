@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:19:21 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 19:55:53 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->is_start_pos = false;
 	enemy->height = 0;
 	enemy->width = 0;
+	enemy->moved = false;
 }
 
 void	init_enemy_img(t_data *data)
@@ -47,4 +48,8 @@ void	init_enemy_img(t_data *data)
 	data->enemy->img[9] = "img_file/enemy_d_opexit.xpm";
 	data->enemy->img[10] = "img_file/enemy_t_opexit.xpm";
 	data->enemy->img[11] = "img_file/enemy_r_opexit.xpm";
+	data->enemy->img[12] = "img_file/enemy_l_attack.xpm";
+	data->enemy->img[13] = "img_file/enemy_d_attack.xpm";
+	data->enemy->img[14] = "img_file/enemy_t_attack.xpm";
+	data->enemy->img[15] = "img_file/enemy_r_attack.xpm";
 }

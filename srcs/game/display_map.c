@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:19:50 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 06:37:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 16:14:56 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	put_image_to_win(t_data *data, size_t x, size_t y)
 	if (data->map[y][x] == 'E')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->spaceship_close, x * 64, y * 64);
+			data->img->floor, x * 64, y * 64);
 		data->spaceship->pos_x = x;
 		data->spaceship->pos_y = y;
 	}

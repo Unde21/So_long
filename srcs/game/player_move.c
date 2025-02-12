@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 13:23:12 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 16:16:43 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	move_down(t_data *data, t_player *player, t_img *img)
 
 int	keypress(int keysym, t_data *data)
 {
-	if (data->player->death == true || data->end == true)
+	if (data->player->death == true || data->end == true || data->landing == true)
 		return (0);
 	if (keysym == KEY_CLOSE)
 	{

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:50:49 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 20:09:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define KEY_RIGHT 100
 # define KEY_LEFT 97
 # define KEY_DOWN 115
-# define END_FRAME 100000
+# define END_FRAME 50000
+# define LANDING_FRAME 15000
 
 
 typedef enum e_exit
@@ -56,7 +57,7 @@ typedef struct s_player
 	char	*img[4];
 	bool	dir_left;
 	bool	death;
-	int		death_frame;
+	int		frames;
 	int		last_move;
 }	t_player;
 
@@ -64,6 +65,7 @@ typedef struct s_spaceship
 {
 	int		pos_x;
 	int		pos_y;
+	int		final_y;
 	bool	spaceship_close;
 	bool	spaceship_is_here;
 	int		frame;
@@ -82,7 +84,7 @@ typedef struct s_img
 	void	*nb_seven;
 	void	*nb_eight;
 	void	*nb_nine;
-	void	*img[15];
+	void	*img[16];
 	void	*floor;
 	void	*player;
 	void	*player_l;
@@ -99,6 +101,7 @@ typedef struct s_img
 	void	*ptop_exit;
 	void	*exit_fire;
 	void	*trail_fire;
+	void	*landing_spaceship;
 	int		height;
 	int		width;
 }	t_img;
@@ -112,7 +115,8 @@ typedef struct s_enemy
 	int		pos_x;
 	int		pos_y;
 	bool	is_start_pos;
-	char	*img[12];
+	int		moved;
+	char	*img[16];
 	int		height;
 	int		width;
 	void	*img_t_exit;
@@ -123,6 +127,10 @@ typedef struct s_enemy
 	void	*img_d_opexit;
 	void	*img_r_opexit;
 	void	*img_l_opexit;
+	void	*attack_t;
+	void	*attack_r;
+	void	*attack_l;
+	void	*attack_d;
 }	t_enemy;
 
 typedef struct s_data
@@ -139,6 +147,7 @@ typedef struct s_data
 	char		**av;
 	bool		end;
 	bool		defeat;
+	bool		landing;
 	size_t		nb_line;
 	size_t		nb_row;
 	t_player	*player;
@@ -200,6 +209,7 @@ int		keypress(int keysym, t_data *data);
 void	put_floor_score_board(t_data *data);
 int		game_update(t_data *data);
 int		close_window(t_data *data);
+void	landing_spaceship(t_data *data);
 
 /* ************************************************************************** */
 /*								player move						  	  		  */
@@ -239,12 +249,14 @@ void	display_enemy(t_data *data);
 void	ft_destroy_img_enemy(t_data *data, t_enemy *enemy);
 void	ft_destroy_img_enemy_exit(t_data *data, t_enemy *enemy);
 void	ft_destroy_img_enemy_opexit(t_data *data, t_enemy *enemy);
+void	ft_destroy_img_attack_enemy(t_data *data, t_enemy *enemy);
 int		move_enemy(t_data *data);
 void	add_enemy_data(t_data *data, t_enemy *enemy);
 void	move_enemy_top(t_data *data, t_enemy *enemy);
 void	move_enemy_down(t_data *data, t_enemy *enemy);
 void	move_enemy_right(t_data *data, t_enemy *enemy);
 void	move_enemy_left(t_data *data, t_enemy *enemy);
+void	enemy_destroy_wall(t_data *data, t_enemy *enemy);
 int		touch_player(t_data *data, int next_x, int next_y);
 void	handle_old_position_enemy(t_data *data, t_enemy *enemy);
 void	handle_new_position_t_enemy(t_data *data, t_enemy *enemy);

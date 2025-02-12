@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 03:51:24 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:23:55 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 20:01:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_destroy_img_enemy(t_data *data, t_enemy *enemy)
 	ft_destroy_img_death(data);
 	ft_destroy_img_enemy_exit(data, enemy);
 	ft_destroy_img_enemy_opexit(data, enemy);
+	ft_destroy_img_attack_enemy(data, enemy);
 }
 
 void	ft_destroy_img_enemy_exit(t_data *data, t_enemy *enemy)
@@ -118,5 +119,29 @@ void	ft_destroy_img_death(t_data *data)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->img->trail_fire);
 		data->img->trail_fire = NULL;
+	}
+}
+
+void	ft_destroy_img_attack_enemy(t_data *data, t_enemy *enemy)
+{
+	if (enemy->attack_t != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->attack_t);
+		enemy->attack_t = NULL;
+	}
+	if (enemy->attack_d != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->attack_d);
+		enemy->attack_d = NULL;
+	}
+	if (enemy->attack_l != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->attack_l);
+		enemy->attack_l = NULL;
+	}
+	if (enemy->attack_r != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->attack_r);
+		enemy->attack_r = NULL;
 	}
 }

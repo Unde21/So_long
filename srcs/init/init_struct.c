@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:50:35 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 16:20:32 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_struct_spaceship(t_spaceship *spaceship)
 	spaceship->pos_y = 0;
 	spaceship->pos_x = 0;
 	spaceship->frame = 0;
+	spaceship->final_y = 0;
 }
 
 void	init_struct_player(t_player *player)
@@ -31,7 +32,7 @@ void	init_struct_player(t_player *player)
 	player->pl_dead_l_exit = NULL;
 	player->pl_dead_r_exit = NULL;
 	player->dir_left = false;
-	player->death_frame = 0;
+	player->frames = 0;
 	player->death = false;
 	player->last_move = 0;
 }
@@ -54,6 +55,7 @@ int	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->map = NULL;
 	data->end = false;
 	data->defeat = false;
+	data->landing = true;
 	if (gettimeofday(&data->last_time, NULL) == -1)
 		return (-1);
 	return (0);
@@ -90,6 +92,7 @@ void	init_struct_img(t_img *img)
 	img->ptop_exit = NULL;
 	img->exit_fire = NULL;
 	img->trail_fire = NULL;
+	img->landing_spaceship = NULL;
 	img->height = 0;
 	img->width = 0;
 }

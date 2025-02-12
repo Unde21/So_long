@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 15:00:53 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 15:49:40 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,55 +102,3 @@ int	close_window(t_data *data)
 	return (0);
 }
 
-
-int	game_update(t_data *data)
-{
-	if (data->player->death == true && data->end == false && data->defeat == false)
-	{
-		++data->player->death_frame;
-		if (data->player->death_frame >= END_FRAME)
-			close_window(data);
-		return (0);
-	}
-	if (data->end == true && data->defeat == false)
-	{
-		++data->spaceship->frame;
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->img->trail_fire, data->player->pos_x * 64,
-				data->player->pos_y * 64 - data->spaceship->frame / 100);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->img->exit_fire, data->player->pos_x * 64,
-				data->player->pos_y * 64 - data->spaceship->frame / 50);
-		if (data->spaceship->frame >= END_FRAME)
-			close_window(data);
-		return (0);
-	}
-	else if (data->end == false && data->defeat == true)
-	{
-		++data->spaceship->frame;
-		if (data->player->dir_left == false)
-		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->player->pl_dead_r, data->enemy->pos_x * 64,
-				data->enemy->pos_y * 64);	
-		}
-		else
-		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->player->pl_dead_l, data->enemy->pos_x * 64,
-				data->enemy->pos_y * 64);
-		}
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->img->trail_fire, data->enemy->pos_x * 64,
-				data->enemy->pos_y * 64 - data->spaceship->frame / 100);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->img->exit_fire, data->enemy->pos_x * 64,
-				data->enemy->pos_y * 64 - data->spaceship->frame / 50);
-		if (data->spaceship->frame >= END_FRAME)
-			close_window(data);
-		return (0);
-	}
-	else if (data->enemy->is_start_pos == true)
-		return (move_enemy(data));
-	return (0);
-}

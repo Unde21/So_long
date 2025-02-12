@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 14:39:46 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 19:53:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_img(t_data *data)
 	data->img->img[12] = "img_file/player_top_exit.xpm";
 	data->img->img[13] = "img_file/exit_fire.xpm";
 	data->img->img[14] = "img_file/trail_fire.xpm";
+	data->img->img[15] = "img_file/landing_spaceship.xpm";
+	// data->img->img[15] = "img_file/cell_kick.xpm";
 	init_img_player(data);
 }
 
