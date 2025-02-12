@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:49:00 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:08:03 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,34 @@ void	check_end(t_data *data, t_player *player)
 	if (data->map[player->pos_y][player->pos_x] == 'E' && data->nb_obj == 0)
 	{
 		data->end = true;
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->spaceship_close,
-			player->pos_x * 64, (player->pos_y) * 64);
+		if (player->pos_x == data->enemy->pos_x && player->pos_y == data->enemy->pos_y)
+		{
+			if (player->last_move == KEY_LEFT)
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pleft_exit,
+					player->pos_x * 64, (player->pos_y) * 64);
+			}
+			else if (player->last_move == KEY_RIGHT)
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->plright_exit,
+					player->pos_x * 64, (player->pos_y) * 64);
+			}
+			else if (player->last_move == KEY_UP)
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->ptop_exit,
+					player->pos_x * 64, (player->pos_y) * 64);
+			}
+			else if (player->last_move == KEY_DOWN)
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pdown_exit,
+					player->pos_x * 64, (player->pos_y) * 64);
+			}	
+		}
+		else
+		{
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->spaceship_close,
+				player->pos_x * 64, (player->pos_y) * 64);	
+		}	
 	}
 }
 
@@ -93,7 +119,7 @@ int	game_update(t_data *data)
 			close_window(data);
 		return (0);
 	}
-	else
+	else if (data->enemy->start_pos == true)
 		return (move_enemy(data));
 	return (0);
 }

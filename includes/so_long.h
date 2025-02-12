@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:45:15 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:02:16 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_player
 	bool	dir_left;
 	bool	death;
 	int		death_frame;
+	int		last_move;
 }	t_player;
 
 typedef struct s_spaceship
@@ -147,7 +148,7 @@ typedef struct s_data
 void	init_struct_spaceship(t_spaceship *spaceship);
 void	init_struct_player(t_player *player);
 void	init_struct_img(t_img *img);
-void	init_struct_data(t_data *data, t_spaceship *spaceship,
+int		init_struct_data(t_data *data, t_spaceship *spaceship,
 			t_player *player, t_img *img);
 int		parsing(t_data *data, t_spaceship *spaceship,
 			t_player *player, t_img *img);

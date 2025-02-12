@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:43:28 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 11:22:01 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	move_enemy(t_data *data)
 	struct timeval current_time;
 	long	elapsed_time;
 	
-	if (data->end == true || data->player->death == true)
+	if (data->end == true || data->player->death == true || data->end == true)
 		return (0);
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - data->last_time.tv_sec) * 1000
-		+ (current_time.tv_usec - data->last_time.tv_usec) / 1000;
-	if (elapsed_time > 750)
+		+ (current_time.tv_usec - data->last_time.tv_usec) / 1000;  // modifier la division par une multiplication
+	if (elapsed_time > 500)
 	{
 		if (data->player->pos_y < data->enemy->pos_y)
 				move_enemy_top(data, data->enemy);

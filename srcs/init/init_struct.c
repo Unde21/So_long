@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:44:54 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:02:34 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void	init_struct_player(t_player *player)
 	player->dir_left = true;
 	player->death_frame = 0;
 	player->death = false;
+	player->last_move = 0;
 }
 
-void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
+int	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 		t_img *img)
 {
 	data->img = img;
@@ -50,7 +51,9 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->win_ptr = NULL;
 	data->map = NULL;
 	data->end = false;
-	gettimeofday(&data->last_time, NULL);
+	if (gettimeofday(&data->last_time, NULL) == -1)
+		return (-1);
+	return (0);
 }
 
 void	add_enemy_data(t_data *data, t_enemy	*enemy)
@@ -85,19 +88,3 @@ void	init_struct_img(t_img *img)
 	img->height = 0;
 	img->width = 0;
 }
-
-
-// int	close_window(t_data *data)
-// {
-// 	if (data->player->death == true)
-// 	{
-// 		++data->player->death_frame;
-// 		if (data->player->death_frame >= 60)
-// 		{
-// 			ft_printf("Game quit\n");
-// 			ft_destroy_mlx(data);
-// 			exit(0);
-// 		}
-// 	}
-// 	return (0);
-// }

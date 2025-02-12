@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:45:25 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:04:00 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	move_up(t_data *data, t_player *player, t_img *img)
 		--data->nb_obj;
 	handle_new_position_t(data, player, img);
 	++data->count_key;
+	player->last_move = KEY_UP;
 	display_count_move(data);
 }
 
@@ -37,6 +38,7 @@ void	move_right(t_data *data, t_player *player, t_img *img)
 	handle_new_position_r(data, player, img);
 	player->dir_left = false;
 	++data->count_key;
+	player->last_move = KEY_RIGHT;
 	display_count_move(data);
 }
 
@@ -51,6 +53,7 @@ void	move_left(t_data *data, t_player *player, t_img *img)
 	handle_new_position_l(data, player, img);
 	player->dir_left = true;
 	++data->count_key;
+	player->last_move = KEY_LEFT;
 	display_count_move(data);
 }
 
@@ -64,6 +67,7 @@ void	move_down(t_data *data, t_player *player, t_img *img)
 		--data->nb_obj;
 	handle_new_position_d(data, player, img);
 	++data->count_key;
+	player->last_move = KEY_DOWN;
 	display_count_move(data);
 }
 

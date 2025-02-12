@@ -6,13 +6,14 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:36:58 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 19:49:50 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 10:54:16 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	open_spaceship(t_data *data, t_img *img) // check retour error
+
+void	open_spaceship(t_data *data, t_img *img)
 {
 	img->spaceship_open = mlx_xpm_file_to_image(data->mlx_ptr, img->img[5],
 			&img->width, &img->height);
