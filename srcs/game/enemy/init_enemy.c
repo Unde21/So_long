@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:08:32 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:19:21 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->img_r_opexit = NULL;
 	enemy->pos_x = 0;
 	enemy->pos_y = 0;
-	enemy->start_pos = false;
+	enemy->is_start_pos = false;
 	enemy->height = 0;
 	enemy->width = 0;
 }

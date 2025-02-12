@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:02:34 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:13:30 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ void	init_struct_spaceship(t_spaceship *spaceship)
 
 void	init_struct_player(t_player *player)
 {
-	player->start_pos = false;
+	player->is_start_pos = false;
 	player->pos_x = 0;
 	player->pos_y = 0;
 	player->pl_dead_r = NULL;
 	player->pl_dead_l = NULL;
-	player->dir_left = true;
+	player->pl_dead_l_exit = NULL;
+	player->pl_dead_r_exit = NULL;
+	player->dir_left = false;
 	player->death_frame = 0;
 	player->death = false;
 	player->last_move = 0;

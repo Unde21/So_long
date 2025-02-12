@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:04:00 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:23:12 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	move_up(t_data *data, t_player *player, t_img *img)
 {
-	if (touch_enemy(data, player->pos_x, player->pos_y - 1, 1) != 0)
+	if (touch_enemy(data, player->pos_x, player->pos_y - 1) != 0)
 		return ;
 	handle_old_position(data, player, img);
 	--player->pos_y;
@@ -29,7 +29,7 @@ void	move_up(t_data *data, t_player *player, t_img *img)
 
 void	move_right(t_data *data, t_player *player, t_img *img)
 {
-	if (touch_enemy(data, player->pos_x + 1, player->pos_y, 0) != 0)
+	if (touch_enemy(data, player->pos_x + 1, player->pos_y) != 0)
 		return ;
 	handle_old_position(data, player, img);
 	++player->pos_x;
@@ -44,7 +44,7 @@ void	move_right(t_data *data, t_player *player, t_img *img)
 
 void	move_left(t_data *data, t_player *player, t_img *img)
 {
-	if (touch_enemy(data, player->pos_x - 1, player->pos_y, 1) != 0)
+	if (touch_enemy(data, player->pos_x - 1, player->pos_y) != 0)
 		return ;
 	handle_old_position(data, player, img);
 	--player->pos_x;
@@ -59,7 +59,7 @@ void	move_left(t_data *data, t_player *player, t_img *img)
 
 void	move_down(t_data *data, t_player *player, t_img *img)
 {
-	if (touch_enemy(data, player->pos_x, player->pos_y + 1, 0) != 0)
+	if (touch_enemy(data, player->pos_x, player->pos_y + 1) != 0)
 		return ;
 	handle_old_position(data, player, img);
 	++player->pos_y;

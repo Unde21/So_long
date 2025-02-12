@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:11:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:52:00 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ int	load_img_player(t_data *data, t_img *img)
 	data->player->pl_dead_l = mlx_xpm_file_to_image(data->mlx_ptr, data->player->img[1],
 			&img->width, &img->height);
 	if (!data->player->pl_dead_l)
+		return (ERR_IMG);
+	data->player->pl_dead_l_exit = mlx_xpm_file_to_image(data->mlx_ptr, data->player->img[3],
+		&img->width, &img->height);
+	if (!data->player->pl_dead_l_exit)
+		return (ERR_IMG);
+	data->player->pl_dead_r_exit = mlx_xpm_file_to_image(data->mlx_ptr, data->player->img[2],
+		&img->width, &img->height);
+	if (!data->player->pl_dead_r_exit)
 		return (ERR_IMG);
 	return (0);
 }
@@ -84,7 +92,7 @@ int	load_img_map(t_data *data, t_img *img)
 		return (-1);
 	if (load_img_player(data, img) != 0)
 		return (-1);
-	if (data->enemy->start_pos == true)
+	if (data->enemy->is_start_pos == true)
 	{
 		if (load_img_enemy(data, data->enemy) != 0)
 			return (-1);

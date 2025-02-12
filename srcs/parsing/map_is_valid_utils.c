@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:01:44 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 05:56:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:17:22 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	check_duplicate_player_exit(t_data *data, int i, int j)
 {
 	if (data->map[i][j] == 'P')
 	{
-		if (data->player->start_pos == true)
+		if (data->player->is_start_pos == true)
 			return (exit_error_parse(ERR_DUPLICATE_PLAYER));
-		data->player->start_pos = true;
+		data->player->is_start_pos = true;
 		data->player->pos_x = j;
 		data->player->pos_y = i;
 	}
@@ -53,9 +53,9 @@ int	check_duplicate_player_exit(t_data *data, int i, int j)
 	}
 	else if (data->map[i][j] == 'B')
 	{
-		if (data->enemy->start_pos == true)
+		if (data->enemy->is_start_pos == true)
 			return (exit_error_parse(ERR_DUPLICATE_PLAYER));
-		data->enemy->start_pos = true;
+		data->enemy->is_start_pos = true;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:36:18 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:06:55 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:06:29 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	handle_old_position_enemy(t_data *data, t_enemy *enemy)
 {
-	if (data->map[enemy->pos_y][enemy->pos_x] == 'S')
+	if (data->map[enemy->pos_y][enemy->pos_x] == 'Z')
 	{
 		if (data->spaceship->spaceship_close == true)
 		{
@@ -51,7 +51,7 @@ void	handle_new_position_r_enemy(t_data *data, t_enemy *enemy)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->img_r_opexit,
 			enemy->pos_x * 64, enemy->pos_y * 64);
 		}
-		data->map[enemy->pos_y][enemy->pos_x] = 'S';
+		data->map[enemy->pos_y][enemy->pos_x] = 'Z';
 	}
 	else if (data->map[enemy->pos_y][enemy->pos_x] != 'E')
 	{
@@ -75,7 +75,7 @@ void	handle_new_position_l_enemy(t_data *data, t_enemy *enemy)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->img_l_opexit,
 			enemy->pos_x * 64, enemy->pos_y * 64);
 		}
-		data->map[enemy->pos_y][enemy->pos_x] = 'S';
+		data->map[enemy->pos_y][enemy->pos_x] = 'Z';
 	}
 	else if (data->map[enemy->pos_y][enemy->pos_x] != 'E')
 	{
@@ -99,7 +99,7 @@ void	handle_new_position_d_enemy(t_data *data, t_enemy *enemy)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->img_d_opexit,
 			enemy->pos_x * 64, enemy->pos_y * 64);
 		}
-		data->map[enemy->pos_y][enemy->pos_x] = 'S';
+		data->map[enemy->pos_y][enemy->pos_x] = 'Z';
 	}
 	else if (data->map[enemy->pos_y][enemy->pos_x] != 'E')
 	{
@@ -123,7 +123,7 @@ void	handle_new_position_t_enemy(t_data *data, t_enemy *enemy)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->img_t_opexit,
 			enemy->pos_x * 64, enemy->pos_y * 64);
 		}
-		data->map[enemy->pos_y][enemy->pos_x] = 'S';
+		data->map[enemy->pos_y][enemy->pos_x] = 'Z';
 	}
 	else if (data->map[enemy->pos_y][enemy->pos_x] != 'E')
 	{

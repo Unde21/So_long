@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:08:03 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:21:50 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,18 +108,18 @@ int	game_update(t_data *data)
 	if (data->player->death == true)
 	{
 		++data->player->death_frame;
-		if (data->player->death_frame >= 100000)
+		if (data->player->death_frame >= END_FRAME)
 			close_window(data);
 		return (0);
 	}
 	if (data->end == true)
 	{
 		++data->spaceship->frame;
-		if (data->spaceship->frame >= 100000)
+		if (data->spaceship->frame >= END_FRAME)
 			close_window(data);
 		return (0);
 	}
-	else if (data->enemy->start_pos == true)
+	else if (data->enemy->is_start_pos == true)
 		return (move_enemy(data));
 	return (0);
 }

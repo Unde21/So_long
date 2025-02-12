@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 08:32:45 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:16:56 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	map_is_valid(t_data *data)
 		return (exit_error_parse(ERR_NO_EXIT));
 	else if (data->nb_obj == 0)
 		return (exit_error_parse(ERR_NO_ITEM));
-	else if (data->player->start_pos == false)
+	else if (data->player->is_start_pos == false)
 		return (exit_error_parse(ERR_NO_PLAYER));
 	if (check_access(data) != 0)
 		return (-1);

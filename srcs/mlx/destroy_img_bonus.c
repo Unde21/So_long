@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 03:51:24 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/11 18:12:36 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 12:43:30 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,15 @@ void	ft_destroy_img_death(t_data *data)
 	{
 		mlx_destroy_image(data->mlx_ptr, data->player->pl_dead_r);
 		data->player->pl_dead_r = NULL;
+	}
+	if (data->player->pl_dead_l_exit != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->player->pl_dead_l_exit);
+		data->player->pl_dead_l_exit = NULL;
+	}
+	if (data->player->pl_dead_r_exit != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->player->pl_dead_r_exit);
+		data->player->pl_dead_r_exit = NULL;
 	}
 }

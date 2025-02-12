@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/07 10:04:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:16:31 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	init_move_count(t_data *data)
 
 void	init_img_player(t_data *data)
 {
-	data->player->img[0] = "img_file/player_death_left.xpm";
-	data->player->img[1] = "img_file/player_death_right.xpm";
+	data->player->img[0] = "img_file/player_death_right.xpm";
+	data->player->img[1] = "img_file/player_death_left.xpm";
+	data->player->img[2] = "img_file/pl_dead_r_exit.xpm";
+	data->player->img[3] = "img_file/pl_dead_l_exit.xpm";
 }

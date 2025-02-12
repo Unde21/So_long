@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:02:16 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/12 13:23:24 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define KEY_RIGHT 100
 # define KEY_LEFT 97
 # define KEY_DOWN 115
+# define END_FRAME 100000
+
 
 typedef enum e_exit
 {
@@ -46,10 +48,12 @@ typedef struct s_player
 {
 	int		pos_x;
 	int		pos_y;
-	bool	start_pos;
+	bool	is_start_pos;
 	void	*pl_dead_r;
 	void	*pl_dead_l;
-	char	*img[3];
+	void	*pl_dead_l_exit;
+	void	*pl_dead_r_exit;	
+	char	*img[4];
 	bool	dir_left;
 	bool	death;
 	int		death_frame;
@@ -105,7 +109,7 @@ typedef struct s_enemy
 	void	*img_right;
 	int		pos_x;
 	int		pos_y;
-	bool	start_pos;
+	bool	is_start_pos;
 	char	*img[12];
 	int		height;
 	int		width;
@@ -217,7 +221,7 @@ void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
 void	init_img_player(t_data *data);
-int		touch_enemy(t_data *data, int next_x, int next_y, int dir);
+int		touch_enemy(t_data *data, int next_x, int next_y);
 int		handle_death(t_data *data);
 
 /* ************************************************************************** */
