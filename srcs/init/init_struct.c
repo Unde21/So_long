@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 16:38:09 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 21:07:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,9 @@ void	init_struct_img(t_img *img)
 	img->trail_fire = NULL;
 	img->landing_spaceship = NULL;
 	img->explosion = NULL;
+	img->explosion_r = NULL;
+	img->explosion_d = NULL;
+	img->explosion_t = NULL;
 	img->height = 0;
 	img->width = 0;
 }

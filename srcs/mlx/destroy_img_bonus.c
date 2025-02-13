@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 03:51:24 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 16:39:23 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 21:05:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,4 +149,74 @@ void	ft_destroy_img_attack_enemy(t_data *data, t_enemy *enemy)
 		mlx_destroy_image(data->mlx_ptr, data->img->explosion);
 		data->img->explosion = NULL;
 	}
+	if (data->img->explosion_r != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->explosion_r);
+		data->img->explosion_r = NULL;
+	}
+	if (data->img->explosion_t != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->explosion_t);
+		data->img->explosion_t = NULL;
+	}
+	if (data->img->explosion_d != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->img->explosion_d);
+		data->img->explosion_d = NULL;
+	}
+	if (enemy->use_laser_d != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->use_laser_d);
+		enemy->use_laser_d = NULL;
+	}
+	if (enemy->use_laser_t != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->use_laser_t);
+		enemy->use_laser_t = NULL;
+	}
+	if (enemy->use_laser_r != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->use_laser_r);
+		enemy->use_laser_r = NULL;
+	}
+	if (enemy->use_laser_l != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->use_laser_l);
+		enemy->use_laser_l = NULL;
+	}
+	if (enemy->laser_line != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_line);
+		enemy->laser_line = NULL;
+	}
+	if (enemy->laser_row != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_row);
+		enemy->laser_row = NULL;
+	}
+
+
+
+
+
+	if (enemy->laser_start_r != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_start_r);
+		enemy->laser_start_r = NULL;
+	}
+	if (enemy->laser_start_l != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_start_l);
+		enemy->laser_start_l = NULL;
+	}
+	// if (enemy->laser_start_d != NULL)
+	// {
+	// 	mlx_destroy_image(data->mlx_ptr, enemy->laser_start_d);
+	// 	enemy->laser_start_d = NULL;
+	// }
+	// if (enemy->laser_start_t != NULL)
+	// {
+	// 	mlx_destroy_image(data->mlx_ptr, enemy->laser_start_t);
+	// 	enemy->laser_start_t = NULL;
+	// }
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 17:16:25 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 20:39:58 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_img
 	void	*nb_seven;
 	void	*nb_eight;
 	void	*nb_nine;
-	void	*img[17];
+	void	*img[20];
 	void	*floor;
 	void	*player;
 	void	*player_l;
@@ -106,6 +106,9 @@ typedef struct s_img
 	void	*exit_fire;
 	void	*trail_fire;
 	void	*explosion;
+	void	*explosion_r;
+	void	*explosion_t;
+	void	*explosion_d;
 	void	*landing_spaceship;
 	int		height;
 	int		width;
@@ -122,7 +125,7 @@ typedef struct s_enemy
 	bool	is_start_pos;
 	bool	is_laser_enemy;
 	int		moved;
-	char	*img[21];
+	char	*img[26];
 	int		height;
 	int		width;
 	int		laser_frame;
@@ -143,9 +146,14 @@ typedef struct s_enemy
 	void	*attack_d;
 	void	*laser_start_r;
 	void	*laser_start_l;
+	void	*laser_start_d;
+	void	*laser_start_t;
 	void	*laser_line;
+	void	*laser_row;
 	void	*use_laser_l;
 	void	*use_laser_r;
+	void	*use_laser_t;
+	void	*use_laser_d;
 }	t_enemy;
 
 typedef struct s_data
