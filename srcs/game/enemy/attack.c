@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 08:47:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 17:16:05 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 19:44:30 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,10 @@ void	laser_left(t_data *data, t_enemy *enemy)
 		if (enemy->laser_x == enemy->pos_x)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				enemy->laser_start_l, (enemy->laser_x  + 1) * 64,
+				enemy->use_laser_l, (enemy->laser_x) * 64,
+				(enemy->laser_y) * 64);	
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				enemy->laser_start_l, (enemy->laser_x - 1) * 64,
 				(enemy->laser_y) * 64);
 		}
 		else if (enemy->laser_x == 2)
