@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 08:47:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 11:51:20 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 12:39:44 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	enemy_laser(t_data *data, t_enemy *enemy)
 		laser_right(data, enemy);
 	else if (data->player->s_pos_x < enemy->laser_x)
 		laser_left(data, enemy);
-	else if (data->player->s_pos_y > enemy->laser_y)
+	else if (data->player->s_pos_y > enemy->laser_y) // || enemy->laser_y + 1 < data->nb_line - 2
 		laser_down(data, enemy);
 	else
 		return (1);
-	data->enemy->laser_frame = 0;
+	// data->enemy->laser_frame = 0;
 	return (0);
 }
 

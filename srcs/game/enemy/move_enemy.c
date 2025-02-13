@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 11:51:03 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 12:46:58 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,38 @@ int	move_enemy(t_data *data)
 		// modifier la division par une multiplication
 	data->enemy->laser_frame += elapsed_time;
 	
-	if (data->enemy->is_laser_enemy == false)
-	{
-		data->player->s_pos_x = data->player->pos_x;
-		data->player->s_pos_y = data->player->pos_y;
-	}
+	// if (data->enemy->is_laser_enemy == false)
+	// {
+	// 	data->player->s_pos_x = data->player->pos_x;
+	// 	data->player->s_pos_y = data->player->pos_y;
+	// }
 	if (data->enemy->moved == true)
 	{
 		data->enemy->laser_x = data->enemy->pos_x;
 		data->enemy->laser_y = data->enemy->pos_y;
 	}
-	if (data->enemy->laser_frame >= LASER_FRAME || (elapsed_time >= MOVE_ENEMY_FRAME && data->enemy->is_laser_enemy == true))
+	if (data->enemy->laser_frame >= LASER_FRAME)
 	{
-		if (enemy_laser(data, data->enemy) == 1)
+		if (data->enemy->is_laser_enemy == false)
 		{
-			
-			data->enemy->is_laser_enemy = false;
+			data->player->s_pos_x = data->player->pos_x;
+			data->player->s_pos_y = data->player->pos_y;
+			data->enemy->laser_x = data->enemy->pos_x;
+		data->enemy->laser_y = data->enemy->pos_y;
+			data->enemy->is_laser_enemy = true;
+		}
+			ft_printf("time %d\n", (int)elapsed_time);
+		if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->is_laser_enemy == true)
+		{
+		ft_printf("player x : %d, y: %d laser x:%d y:%d\n", (int)(data->player->s_pos_x), (int)(data->player->s_pos_y), (int)(data->enemy->laser_x), (int)(data->enemy->laser_y));
+
+			if (enemy_laser(data, data->enemy) == 1)
+			{
+				// data->enemy->is_laser_enemy = false;
+			}
+		data->enemy->laser_frame = 0;
 		}
 		data->last_time = current_time;
-			data->enemy->laser_frame = 0;
 		// ft_printf("player x : %d, y: %d laser x:%d y:%d\n", data->player->pos_x, data->player->pos_y, (int)(data->enemy->laser_x), (int)(data->enemy->laser_y));
 	}
 	if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved == 0 && data->enemy->is_laser_enemy == false)
@@ -107,8 +120,8 @@ int	move_enemy(t_data *data)
 		data->last_time = current_time;
 		data->enemy->moved = false;
 	}
-	else
-		data->enemy->moved = false;
+	// else
+	// 	data->enemy->moved = false;
 		
 	return (0);
 }

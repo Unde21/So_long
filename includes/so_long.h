@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 11:48:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 12:41:18 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define DOWN 115
 # define END_FRAME 50000
 # define LANDING_FRAME 15000
-# define MOVE_ENEMY_FRAME 500
-# define LASER_FRAME 1000000
+# define MOVE_ENEMY_FRAME 300
+# define LASER_FRAME 1000
 
 typedef enum e_exit
 {
