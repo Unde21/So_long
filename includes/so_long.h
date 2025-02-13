@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 12:41:18 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 15:21:20 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define DOWN 115
 # define END_FRAME 50000
 # define LANDING_FRAME 15000
-# define MOVE_ENEMY_FRAME 300
-# define LASER_FRAME 1000
+# define MOVE_ENEMY_FRAME 200
+# define LASER_FRAME 25000000
 
 typedef enum e_exit
 {
@@ -61,8 +61,8 @@ typedef struct s_player
 	bool	death;
 	int		frames;
 	int		last_move;
-	size_t	s_pos_x;
-	size_t	s_pos_y;
+	int		s_pos_x;
+	int		s_pos_y;
 }	t_player;
 
 typedef struct s_spaceship
@@ -125,8 +125,9 @@ typedef struct s_enemy
 	int		height;
 	int		width;
 	int		laser_frame;
-	size_t		laser_x;
-	size_t		laser_y;
+	int		laser_x;
+	int		laser_y;
+	int		laser_dir;
 	void	*img_t_exit;
 	void	*img_d_exit;
 	void	*img_r_exit;
@@ -276,5 +277,6 @@ int		enemy_laser(t_data *data, t_enemy *enemy);
 void	laser_left(t_data *data, t_enemy *enemy);
 void	laser_right(t_data *data, t_enemy *enemy);
 void	laser_down(t_data *data, t_enemy *enemy);
+void	laser_top(t_data *data, t_enemy *enemy);
 
 #endif

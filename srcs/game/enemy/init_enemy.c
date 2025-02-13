@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 11:05:02 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 14:50:31 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->moved = false;
 	enemy->laser_x = 0;
 	enemy->laser_y = 0;
+	enemy->laser_dir = 0;
 	enemy->laser_frame = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 12:46:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 15:51:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,30 @@ int	move_enemy(t_data *data)
 		+ (current_time.tv_usec - data->last_time.tv_usec) / 1000;
 		// modifier la division par une multiplication
 	data->enemy->laser_frame += elapsed_time;
-	
-	// if (data->enemy->is_laser_enemy == false)
-	// {
-	// 	data->player->s_pos_x = data->player->pos_x;
-	// 	data->player->s_pos_y = data->player->pos_y;
-	// }
-	if (data->enemy->moved == true)
-	{
-		data->enemy->laser_x = data->enemy->pos_x;
-		data->enemy->laser_y = data->enemy->pos_y;
-	}
-	if (data->enemy->laser_frame >= LASER_FRAME)
+	if (data->enemy->laser_frame > LASER_FRAME)
 	{
 		if (data->enemy->is_laser_enemy == false)
 		{
 			data->player->s_pos_x = data->player->pos_x;
 			data->player->s_pos_y = data->player->pos_y;
 			data->enemy->laser_x = data->enemy->pos_x;
-		data->enemy->laser_y = data->enemy->pos_y;
+			data->enemy->laser_y = data->enemy->pos_y;
 			data->enemy->is_laser_enemy = true;
 		}
-			ft_printf("time %d\n", (int)elapsed_time);
-		if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->is_laser_enemy == true)
+	}
+	if (elapsed_time > MOVE_ENEMY_FRAME / 4 && data->enemy->is_laser_enemy == true)
+	{
+		if (enemy_laser(data, data->enemy) == 1)
 		{
-		ft_printf("player x : %d, y: %d laser x:%d y:%d\n", (int)(data->player->s_pos_x), (int)(data->player->s_pos_y), (int)(data->enemy->laser_x), (int)(data->enemy->laser_y));
+			ft_printf("coucouc\n");
 
-			if (enemy_laser(data, data->enemy) == 1)
-			{
-				// data->enemy->is_laser_enemy = false;
-			}
-		data->enemy->laser_frame = 0;
+			data->enemy->is_laser_enemy = false;
+			data->enemy->laser_dir = 0;
 		}
 		data->last_time = current_time;
-		// ft_printf("player x : %d, y: %d laser x:%d y:%d\n", data->player->pos_x, data->player->pos_y, (int)(data->enemy->laser_x), (int)(data->enemy->laser_y));
+		data->enemy->laser_frame = 0;
 	}
-	if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved == 0 && data->enemy->is_laser_enemy == false)
+	else if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved == 0 && data->enemy->is_laser_enemy == false)
 	{
 		if (data->player->pos_y < data->enemy->pos_y
 			&& data->map[data->enemy->pos_y - 1][data->enemy->pos_x] != '1'
@@ -83,7 +71,7 @@ int	move_enemy(t_data *data)
 			enemy_destroy_wall(data, data->enemy);
 		data->last_time = current_time;
 	}
-	else if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved != 0)
+	else if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved != 0 && data->enemy->is_laser_enemy == false)
 	{
 		if (data->enemy->moved == RIGHT)
 		{
@@ -122,7 +110,6 @@ int	move_enemy(t_data *data)
 	}
 	// else
 	// 	data->enemy->moved = false;
-		
 	return (0);
 }
 
