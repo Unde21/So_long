@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:54:55 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 16:26:49 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 09:17:24 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 				data->img->floor, data->player->pos_x * 64,
 				data->player->pos_y * 64);
 				data->defeat = true;
-			ft_printf("touch_enemy\n");
-
 		}
 		else
 		{
+			display_attack_enemy(data, data->enemy);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_r, data->player->pos_x * 64,
 				data->player->pos_y * 64);	
@@ -76,6 +75,7 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 		}
 		else
 		{
+			display_attack_enemy(data, data->enemy);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_l, data->player->pos_x * 64,
 				data->player->pos_y * 64);	
@@ -95,8 +95,6 @@ int	touch_player(t_data *data, int next_x, int next_y)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_r_exit, data->player->pos_x * 64,
 				data->player->pos_y * 64);
-			// data->defeat = true;
-			ft_printf("touch_player\n");
 		}
 		else
 		{
@@ -104,6 +102,7 @@ int	touch_player(t_data *data, int next_x, int next_y)
 				data->player->pl_dead_r, data->player->pos_x * 64,
 				data->player->pos_y * 64);	
 		}
+		display_attack_enemy(data, data->enemy);
 		data->player->death = true;
 		return (1);
 	}
@@ -114,7 +113,6 @@ int	touch_player(t_data *data, int next_x, int next_y)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->player->pl_dead_l_exit, data->player->pos_x * 64,
 				data->player->pos_y * 64);
-			// data->defeat = true;
 		}
 		else
 		{
@@ -122,6 +120,7 @@ int	touch_player(t_data *data, int next_x, int next_y)
 				data->player->pl_dead_l, data->player->pos_x * 64,
 				data->player->pos_y * 64);	
 		}
+		display_attack_enemy(data, data->enemy);
 		data->player->death = true;
 		return (1);
 	}

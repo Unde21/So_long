@@ -21,6 +21,7 @@ SRCS := srcs/main.c \
 	srcs/game/enemy/init_enemy.c \
 	srcs/game/enemy/move_enemy.c \
 	srcs/game/enemy/move_enemy_utils.c \
+	srcs/game/enemy/attack.c \
 
 HEADER := libft/libft.h \
 		includes/so_long.h \

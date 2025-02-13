@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 15:49:40 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 08:36:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,22 @@ void	check_end(t_data *data, t_player *player)
 		data->end = true;
 		if (player->pos_x == data->enemy->pos_x && player->pos_y == data->enemy->pos_y)
 		{
-			if (player->last_move == KEY_LEFT)
+			if (player->last_move == LEFT)
 			{
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pleft_exit,
 					player->pos_x * 64, (player->pos_y) * 64);
 			}
-			else if (player->last_move == KEY_RIGHT)
+			else if (player->last_move == RIGHT)
 			{
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->plright_exit,
 					player->pos_x * 64, (player->pos_y) * 64);
 			}
-			else if (player->last_move == KEY_UP)
+			else if (player->last_move == UP)
 			{
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->ptop_exit,
 					player->pos_x * 64, (player->pos_y) * 64);
 			}
-			else if (player->last_move == KEY_DOWN)
+			else if (player->last_move == DOWN)
 			{
 				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pdown_exit,
 					player->pos_x * 64, (player->pos_y) * 64);
@@ -101,4 +101,3 @@ int	close_window(t_data *data)
 	exit(0);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 20:09:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 11:48:43 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 #include <sys/time.h> 
 
 # define KEY_CLOSE 65307
-# define KEY_UP 119
-# define KEY_RIGHT 100
-# define KEY_LEFT 97
-# define KEY_DOWN 115
+# define UP 119
+# define RIGHT 100
+# define LEFT 97
+# define DOWN 115
 # define END_FRAME 50000
 # define LANDING_FRAME 15000
-
+# define MOVE_ENEMY_FRAME 500
+# define LASER_FRAME 1000000
 
 typedef enum e_exit
 {
@@ -56,9 +57,12 @@ typedef struct s_player
 	void	*pl_dead_r_exit;	
 	char	*img[4];
 	bool	dir_left;
+	// bool	moved;
 	bool	death;
 	int		frames;
 	int		last_move;
+	size_t	s_pos_x;
+	size_t	s_pos_y;
 }	t_player;
 
 typedef struct s_spaceship
@@ -90,7 +94,7 @@ typedef struct s_img
 	void	*player_l;
 	void	*player_d;
 	void	*player_t;
-	void	*pl_dead_l;
+	// void	*pl_dead_l;
 	void	*object;
 	void	*wall;
 	void	*spaceship_close;
@@ -115,10 +119,14 @@ typedef struct s_enemy
 	int		pos_x;
 	int		pos_y;
 	bool	is_start_pos;
+	bool	is_laser_enemy;
 	int		moved;
 	char	*img[16];
 	int		height;
 	int		width;
+	int		laser_frame;
+	size_t		laser_x;
+	size_t		laser_y;
 	void	*img_t_exit;
 	void	*img_d_exit;
 	void	*img_r_exit;
@@ -256,6 +264,7 @@ void	move_enemy_top(t_data *data, t_enemy *enemy);
 void	move_enemy_down(t_data *data, t_enemy *enemy);
 void	move_enemy_right(t_data *data, t_enemy *enemy);
 void	move_enemy_left(t_data *data, t_enemy *enemy);
+void	display_attack_enemy(t_data *data, t_enemy *enemy);
 void	enemy_destroy_wall(t_data *data, t_enemy *enemy);
 int		touch_player(t_data *data, int next_x, int next_y);
 void	handle_old_position_enemy(t_data *data, t_enemy *enemy);
@@ -263,6 +272,9 @@ void	handle_new_position_t_enemy(t_data *data, t_enemy *enemy);
 void	handle_new_position_r_enemy(t_data *data, t_enemy *enemy);
 void	handle_new_position_l_enemy(t_data *data, t_enemy *enemy);
 void	handle_new_position_d_enemy(t_data *data, t_enemy *enemy);
-
+int		enemy_laser(t_data *data, t_enemy *enemy);
+void	laser_left(t_data *data, t_enemy *enemy);
+void	laser_right(t_data *data, t_enemy *enemy);
+void	laser_down(t_data *data, t_enemy *enemy);
 
 #endif
