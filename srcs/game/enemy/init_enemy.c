@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 14:50:31 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 17:13:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->img_d_opexit = NULL;
 	enemy->img_l_opexit = NULL;
 	enemy->img_r_opexit = NULL;
+	enemy->laser_line = NULL;
+	enemy->laser_start_r = NULL;
+	enemy->laser_start_l = NULL;
+	enemy->use_laser_l = NULL;
+	enemy->use_laser_r = NULL;
 	enemy->pos_x = 0;
 	enemy->pos_y = 0;
 	enemy->is_start_pos = false;
@@ -57,4 +62,12 @@ void	init_enemy_img(t_data *data)
 	data->enemy->img[13] = "img_file/enemy_d_attack.xpm";
 	data->enemy->img[14] = "img_file/enemy_t_attack.xpm";
 	data->enemy->img[15] = "img_file/enemy_r_attack.xpm";
+
+
+
+	data->enemy->img[16] = "img_file/laser_line.xpm";
+	data->enemy->img[17] = "img_file/laser_start_r.xpm";
+	data->enemy->img[18] = "img_file/laser_start_l.xpm";
+	data->enemy->img[19] = "img_file/use_laser_l.xpm";
+	data->enemy->img[20] = "img_file/use_laser_r.xpm";
 }

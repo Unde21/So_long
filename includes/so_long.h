@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 15:21:20 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/13 17:16:25 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define RIGHT 100
 # define LEFT 97
 # define DOWN 115
-# define END_FRAME 50000
+# define END_FRAME 70000
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 200
 # define LASER_FRAME 25000000
@@ -88,7 +88,7 @@ typedef struct s_img
 	void	*nb_seven;
 	void	*nb_eight;
 	void	*nb_nine;
-	void	*img[16];
+	void	*img[17];
 	void	*floor;
 	void	*player;
 	void	*player_l;
@@ -105,6 +105,7 @@ typedef struct s_img
 	void	*ptop_exit;
 	void	*exit_fire;
 	void	*trail_fire;
+	void	*explosion;
 	void	*landing_spaceship;
 	int		height;
 	int		width;
@@ -121,7 +122,7 @@ typedef struct s_enemy
 	bool	is_start_pos;
 	bool	is_laser_enemy;
 	int		moved;
-	char	*img[16];
+	char	*img[21];
 	int		height;
 	int		width;
 	int		laser_frame;
@@ -140,6 +141,11 @@ typedef struct s_enemy
 	void	*attack_r;
 	void	*attack_l;
 	void	*attack_d;
+	void	*laser_start_r;
+	void	*laser_start_l;
+	void	*laser_line;
+	void	*use_laser_l;
+	void	*use_laser_r;
 }	t_enemy;
 
 typedef struct s_data
