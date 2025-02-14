@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 11:40:36 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 10:44:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,23 @@ int	keypress(int keysym, t_data *data)
 	{
 		close_window(data);
 	}
-	else if (keysym == UP
+	else if (keysym == UP && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y - 1][data->player->pos_x] != '1')
 		move_up(data, data->player, data->img);
-	else if (keysym == RIGHT
+	else if (keysym == RIGHT && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y][data->player->pos_x + 1] != '1')
 		move_right(data, data->player, data->img);
-	else if (keysym == LEFT
+	else if (keysym == LEFT && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y][data->player->pos_x - 1] != '1')
 		move_left(data, data->player, data->img);
-	else if (keysym == DOWN
+	else if (keysym == DOWN && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y + 1][data->player->pos_x] != '1')
 		move_down(data, data->player, data->img);
+	else if (keysym == FIRE) // TODO laser player
+		attack_player(data, data->player);
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
 		open_spaceship(data, data->img);
-	// if (keysym == UP || keysym == DOWN || keysym == RIGHT || keysym == LEFT)
-	// 	data->player->moved = true;
-	// else
-	// 	data->player->moved = false;
+	// ft_printf("%d\n", keysym);
 	check_end(data, data->player);
 	return (0);
 }

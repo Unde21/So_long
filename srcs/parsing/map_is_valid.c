@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:16:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 10:27:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 	if (init_map(data) != 0)
 		return (-1);
 	init_struct_spaceship(spaceship);
-	init_struct_player(player);
+	if (init_struct_player(player) != 0)
+		return (-1);
 	init_struct_img(img);
 	init_struct_enemy(data->enemy);
 	if (map_is_valid(data) != 0)

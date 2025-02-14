@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 17:06:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:55:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,10 @@ int	game_update(t_data *data)
 			close_window(data);
 		return (0);
 	}
-	// else if (data->enemy->laser_frame >= LASER_FRAME)
-	// {
-	// 	enemy_laser(data, data->enemy);
-	// }
 	else if (data->enemy->is_start_pos == true && data->landing == false)
 		return (move_enemy(data));
 	else
 		landing_spaceship(data);
-	// ++data->enemy->laser_frame;
 	return (0);
 }
 

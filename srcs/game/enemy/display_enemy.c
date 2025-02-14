@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:54:55 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 09:17:24 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:53:54 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	display_enemy(t_data *data)
 
 int	touch_enemy(t_data *data, int next_x, int next_y)
 {
-	if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z') && data->player->dir_left == false)
+	if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z'
+		|| data->map[next_y][next_x] == 'L') && data->player->dir_left == false)
 	{
 		if (data->map[next_y][next_x] == 'Z' && data->spaceship->pos_x == next_x && data->spaceship->pos_y == next_y)
 		{
@@ -61,7 +62,8 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 		data->player->death = true;
 		return (1);
 	}
-	else if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z') && data->player->dir_left == true)
+	else if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z'
+		|| data->map[next_y][next_x] == 'L') && data->player->dir_left == true)
 	{
 		if (data->map[next_y][next_x] == 'Z' && data->spaceship->pos_x == next_x && data->spaceship->pos_y == next_y)
 		{

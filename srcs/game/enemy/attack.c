@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 08:47:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 09:25:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:55:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,34 @@ int	enemy_laser(t_data *data, t_enemy *enemy)
 	{
 		while (enemy->laser_x != enemy->pos_x)
 		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->floor, (enemy->laser_x) * 64,
-			enemy->laser_y * 64);
+			if (data->map[enemy->laser_y][enemy->laser_x] == 'L')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->floor, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				data->map[enemy->laser_y][enemy->laser_x] = '0';
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'C')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->object, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'E')
+			{
+				if (data->spaceship->spaceship_close == true)
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_close, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+				else
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_open, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+			}
 			++enemy->laser_x;
 		}
 		return (1);
@@ -77,9 +102,35 @@ int	enemy_laser(t_data *data, t_enemy *enemy)
 	{
 		while (enemy->laser_y != enemy->pos_y)
 		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->floor, enemy->laser_x * 64,
-			enemy->laser_y * 64);
+			
+			if (data->map[enemy->laser_y][enemy->laser_x] == 'L')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->floor, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				data->map[enemy->laser_y][enemy->laser_x] = '0';
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'C')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->object, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'E')
+			{
+				if (data->spaceship->spaceship_close == true)
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_close, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+				else
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_open, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+			}
 			--enemy->laser_y;
 		}
 		return (1);
@@ -88,9 +139,35 @@ int	enemy_laser(t_data *data, t_enemy *enemy)
 	{
 		while (enemy->laser_y != enemy->pos_y)
 		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->floor, enemy->laser_x * 64,
-			enemy->laser_y * 64);
+			
+			if (data->map[enemy->laser_y][enemy->laser_x] == 'L')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->floor, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				data->map[enemy->laser_y][enemy->laser_x] = '0';
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'C')
+			{
+				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->object, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+			}
+			else if (data->map[enemy->laser_y][enemy->laser_x] == 'E')
+			{
+				if (data->spaceship->spaceship_close == true)
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_close, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+				else
+				{
+					mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+					data->img->spaceship_open, (enemy->laser_x) * 64,
+					enemy->laser_y * 64);
+				}
+			}
 			++enemy->laser_y;
 		}
 		return (1);
@@ -132,8 +209,7 @@ void	laser_left(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = LEFT;
 	if (data->map[enemy->laser_y][enemy->laser_x - 1] != 'P'
-		&& enemy->laser_x >= 2
-		&& data->map[enemy->laser_y][enemy->laser_x - 1] != 'E')
+		&& enemy->laser_x >= 2)
 	{
 		if (enemy->laser_x == enemy->pos_x)
 		{
@@ -157,8 +233,9 @@ void	laser_left(t_data *data, t_enemy *enemy)
 			enemy->laser_y * 64);	
 		}
 		--enemy->laser_x;
-		// if (data->map[enemy->laser_y][enemy->laser_x] == '0')
-		// 	data->map[enemy->laser_y][enemy->laser_x] = 'L';
+		if (data->map[enemy->laser_y][enemy->laser_x] == '1'
+			|| data->map[enemy->laser_y][enemy->laser_x] == '0')
+			data->map[enemy->laser_y][enemy->laser_x] = 'L';
 	}
 	else if (data->map[enemy->laser_y][enemy->laser_x - 1] == 'P')
 	{
@@ -174,7 +251,6 @@ void	laser_right(t_data *data, t_enemy *enemy)
 	enemy->laser_dir = RIGHT;
 	if (data->map[enemy->laser_y][enemy->laser_x + 1] != 'P'
 		&& (size_t)(enemy->laser_x) < data->nb_row - 2)
-		// && data->map[enemy->laser_y][enemy->laser_x + 1] != 'E')
 	{
 		if (enemy->laser_x == enemy->pos_x)
 		{
@@ -215,8 +291,7 @@ void	laser_down(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = DOWN;
 	if (data->map[enemy->laser_y + 1][enemy->laser_x] != 'P'
-		&& (size_t)(enemy->laser_y) < data->nb_line - 2
-		&& data->map[enemy->laser_y + 1][enemy->laser_x] != 'E')
+		&& (size_t)(enemy->laser_y) < data->nb_line - 2)
 	{
 		if (enemy->laser_y == enemy->pos_y)
 		{
@@ -240,8 +315,9 @@ void	laser_down(t_data *data, t_enemy *enemy)
 			(enemy->laser_y + 1) * 64);
 		}
 		++enemy->laser_y;
-		// if (data->map[enemy->laser_y][enemy->laser_x] == '0')
-		// 	data->map[enemy->laser_y][enemy->laser_x] = 'L';
+		if (data->map[enemy->laser_y][enemy->laser_x] == '1'
+			|| data->map[enemy->laser_y][enemy->laser_x] == '0')
+			data->map[enemy->laser_y][enemy->laser_x] = 'L';
 	}
 	else if (data->map[enemy->laser_y + 1][enemy->laser_x] == 'P')
 	{
@@ -256,8 +332,7 @@ void	laser_top(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = UP;
 	if (data->map[enemy->laser_y - 1][enemy->laser_x] != 'P'
-		&& enemy->laser_y >= 2
-		&& data->map[enemy->laser_y + 1][enemy->laser_x] != 'E')
+		&& enemy->laser_y >= 2)
 	{
 		if (enemy->laser_y == enemy->pos_y)
 		{
@@ -281,8 +356,9 @@ void	laser_top(t_data *data, t_enemy *enemy)
 			(enemy->laser_y - 1) * 64);
 		}
 		--enemy->laser_y;
-		// if (data->map[enemy->laser_y][enemy->laser_x] == '0')
-		// 	data->map[enemy->laser_y][enemy->laser_x] = 'L';
+		if (data->map[enemy->laser_y][enemy->laser_x] == '1'
+			|| data->map[enemy->laser_y][enemy->laser_x] == '0')
+			data->map[enemy->laser_y][enemy->laser_x] = 'L';
 	}
 	else if (data->map[enemy->laser_y - 1][enemy->laser_x] == 'P')
 	{

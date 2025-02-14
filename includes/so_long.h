@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 09:12:11 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 10:49:20 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@
 # define RIGHT 100
 # define LEFT 97
 # define DOWN 115
+# define FIRE 102
+# define FIRE_FRAME 2500000
+# define FIRE_MOVE_FRAME 10
 # define END_FRAME 70000
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 150
-# define LASER_FRAME 2500000
+# define LASER_FRAME 5000000
 
 typedef enum e_exit
 {
@@ -57,12 +60,17 @@ typedef struct s_player
 	void	*pl_dead_r_exit;	
 	char	*img[4];
 	bool	dir_left;
-	// bool	moved;
 	bool	death;
 	int		frames;
 	int		last_move;
 	int		s_pos_x;
 	int		s_pos_y;
+	int		fire_frame;
+	int		laser_x;
+	int		laser_y;
+	int		laser_dir;
+	bool	is_laser_player;
+	struct timeval last_time;
 }	t_player;
 
 typedef struct s_spaceship
@@ -94,7 +102,6 @@ typedef struct s_img
 	void	*player_l;
 	void	*player_d;
 	void	*player_t;
-	// void	*pl_dead_l;
 	void	*object;
 	void	*wall;
 	void	*spaceship_close;
@@ -132,6 +139,8 @@ typedef struct s_enemy
 	int		laser_x;
 	int		laser_y;
 	int		laser_dir;
+	int		s_pos_x;
+	int		s_pos_y;
 	void	*img_t_exit;
 	void	*img_d_exit;
 	void	*img_r_exit;
@@ -186,7 +195,7 @@ typedef struct s_data
 /* ************************************************************************** */
 
 void	init_struct_spaceship(t_spaceship *spaceship);
-void	init_struct_player(t_player *player);
+int		init_struct_player(t_player *player);
 void	init_struct_img(t_img *img);
 int		init_struct_data(t_data *data, t_spaceship *spaceship,
 			t_player *player, t_img *img);
@@ -260,6 +269,12 @@ void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
 void	init_img_player(t_data *data);
 int		touch_enemy(t_data *data, int next_x, int next_y);
 int		handle_death(t_data *data);
+void	attack_player(t_data *data, t_player *player);
+int		player_laser(t_data *data, t_player *player);
+void	laser_left_player(t_data *data, t_player *player);
+void	laser_right_player(t_data *data, t_player *player);
+void	laser_down_player(t_data *data, t_player *player);
+void	laser_top_player(t_data *data, t_player *player);
 
 /* ************************************************************************** */
 /*								Enemy					  			  		  */

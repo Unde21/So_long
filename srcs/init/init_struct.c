@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 21:07:39 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 10:27:51 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_struct_spaceship(t_spaceship *spaceship)
 	spaceship->final_y = 0;
 }
 
-void	init_struct_player(t_player *player)
+int	init_struct_player(t_player *player)
 {
 	player->is_start_pos = false;
 	player->pos_x = 0;
@@ -34,10 +34,17 @@ void	init_struct_player(t_player *player)
 	player->dir_left = false;
 	player->frames = 0;
 	player->death = false;
-	// player->moved = false;
+	player->fire_frame = 0;
 	player->last_move = 0;
 	player->s_pos_x = 0;
 	player->s_pos_y = 0;
+	player->laser_x = 0;
+	player->laser_y = 0;
+	player->laser_dir = 0;
+	player->is_laser_player = false;
+	if (gettimeofday(&player->last_time, NULL) == -1)
+		return (-1);
+	return (0);
 }
 
 int	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,

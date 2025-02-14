@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 09:07:04 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 10:02:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	move_enemy(t_data *data)
 {
 	struct timeval	current_time;
 	long			elapsed_time;
-	// long			elapsed_time_laser;
+
 	if (data->end == true || data->player->death == true || data->end == true
 		|| data->landing == true)
 		return (0);
@@ -41,8 +41,6 @@ int	move_enemy(t_data *data)
 	{
 		if (enemy_laser(data, data->enemy) == 1)
 		{
-			ft_printf("coucouc\n");
-
 			data->enemy->is_laser_enemy = false;
 			data->enemy->laser_dir = 0;
 		}
