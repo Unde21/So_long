@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 10:02:15 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 16:33:36 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	move_enemy(t_data *data)
 
 void	enemy_destroy_wall(t_data *data, t_enemy *enemy)
 {
-	if (enemy->pos_y == data->player->pos_y)
+	if (enemy->pos_y == data->player->pos_y && enemy->is_laser_enemy == false)
 	{
 		if (enemy->pos_x < data->player->pos_x)
 		{
@@ -141,7 +141,8 @@ void	enemy_destroy_wall(t_data *data, t_enemy *enemy)
 			data->enemy->moved = UP;
 		}
 	}
-	else {
+	else 
+	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->destroy_wall, data->enemy->pos_x * 64, (data->enemy->pos_y
 			) * 64);

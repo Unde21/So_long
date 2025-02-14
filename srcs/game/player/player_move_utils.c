@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 02:35:20 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 12:06:41 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 17:47:24 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	handle_new_position_r(t_data *data, t_player *player, t_img *img)
 			player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'S';
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S' && data->nb_obj == 0)
+	else if (data->map[player->pos_y][player->pos_x] == 'S'
+		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->plright_exit,
 			player->pos_x * 64, player->pos_y * 64);
@@ -59,7 +60,8 @@ void	handle_new_position_l(t_data *data, t_player *player, t_img *img)
 			player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'S';
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S' && data->nb_obj == 0)
+	else if (data->map[player->pos_y][player->pos_x] == 'S'
+		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->pleft_exit,
 			player->pos_x * 64, player->pos_y * 64);
@@ -82,7 +84,8 @@ void	handle_new_position_d(t_data *data, t_player *player, t_img *img)
 			player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'S';
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S' && data->nb_obj == 0)
+	else if (data->map[player->pos_y][player->pos_x] == 'S'
+		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->pdown_exit,
 			player->pos_x * 64, player->pos_y * 64);
@@ -105,7 +108,8 @@ void	handle_new_position_t(t_data *data, t_player *player, t_img *img)
 			player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'S';
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S' && data->nb_obj == 0)
+	else if (data->map[player->pos_y][player->pos_x] == 'S'
+		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->ptop_exit,
 			player->pos_x * 64, player->pos_y * 64);

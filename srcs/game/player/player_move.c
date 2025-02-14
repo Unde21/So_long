@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 13:27:16 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 17:48:08 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	move_down(t_data *data, t_player *player, t_img *img)
 
 int	keypress(int keysym, t_data *data)
 {
-	if (data->player->death == true || data->end == true || data->landing == true)
+	if (data->player->death == true || data->end == true
+		|| data->landing == true)
 		return (0);
 	if (keysym == KEY_CLOSE)
 	{
@@ -91,11 +92,10 @@ int	keypress(int keysym, t_data *data)
 	else if (keysym == DOWN && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y + 1][data->player->pos_x] != '1')
 		move_down(data, data->player, data->img);
-	else if (keysym == FIRE) // TODO laser player
+	else if (keysym == FIRE)
 		attack_player(data, data->player);
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
 		open_spaceship(data, data->img);
-	// ft_printf("%d\n", keysym);
 	check_end(data, data->player);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 10:27:51 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 19:52:00 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	init_struct_player(t_player *player)
 	player->laser_y = 0;
 	player->laser_dir = 0;
 	player->is_laser_player = false;
+	player->is_fighting_laser = false;
 	if (gettimeofday(&player->last_time, NULL) == -1)
 		return (-1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 13:42:14 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 19:57:09 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define LEFT 97
 # define DOWN 115
 # define FIRE 102
-# define FIRE_FRAME 150
-# define FIRE_MOVE_FRAME 500
+# define FIRE_FRAME 1000
+# define FIRE_MVE_FRAME 1000
 # define END_FRAME 70000
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 150
@@ -70,6 +70,7 @@ typedef struct s_player
 	int		laser_y;
 	int		laser_dir;
 	bool	is_laser_player;
+	bool	is_fighting_laser;
 	struct timeval last_time;
 }	t_player;
 
@@ -240,9 +241,16 @@ void	ft_destroy_img_score_snd(t_data *data, t_img *img);
 void	ft_destroy_img_exit(t_data *data, t_img *img);
 int		keypress(int keysym, t_data *data);
 void	put_floor_score_board(t_data *data);
-int		game_update(t_data *data);
 int		close_window(t_data *data);
+
+
+int		game_update(t_data *data);
+int		death_status (t_data *data);
 void	landing_spaceship(t_data *data);
+void	landing_spaceship_utils(t_data *data);
+int		enemy_run_with_spaceship(t_data *data);
+
+
 
 /* ************************************************************************** */
 /*								player move						  	  		  */
@@ -275,6 +283,17 @@ void	laser_left_player(t_data *data, t_player *player);
 void	laser_right_player(t_data *data, t_player *player);
 void	laser_down_player(t_data *data, t_player *player);
 void	laser_top_player(t_data *data, t_player *player);
+int		handle_player_laser(t_data *data, t_player *player);
+void	handle_laser_left(t_data *data, t_player *player);
+void	handle_laser_right(t_data *data, t_player *player);
+void	handle_laser_down(t_data *data, t_player *player);
+void	handle_laser_top(t_data *data, t_player *player);
+
+void	remove_display_laser_p(t_data *data, t_player *player);
+int		remove_player_laser_right(t_data *data, t_player *player);
+int		remove_player_laser_left(t_data *data, t_player *player);
+int		remove_player_laser_down(t_data *data, t_player *player);
+int		remove_player_laser_up(t_data *data, t_player *player);
 
 /* ************************************************************************** */
 /*								Enemy					  			  		  */

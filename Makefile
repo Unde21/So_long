@@ -9,8 +9,11 @@ SRCS := srcs/main.c \
 	srcs/mlx/destroy_img.c \
 	srcs/mlx/destroy_img_bonus.c \
 	srcs/game/display_map.c \
-	srcs/game/player_move.c \
-	srcs/game/player_move_utils.c \
+	srcs/game/player/player_move.c \
+	srcs/game/player/player_move_utils.c \
+	srcs/game/player/remove_laser.c \
+	srcs/game/player/player_laser_dir_x.c \
+	srcs/game/player/player_laser_dir_y.c \
 	srcs/game/display_move.c \
 	srcs/game/game_update.c \
 	srcs/game/open_exit.c \
@@ -22,7 +25,8 @@ SRCS := srcs/main.c \
 	srcs/game/enemy/move_enemy.c \
 	srcs/game/enemy/move_enemy_utils.c \
 	srcs/game/enemy/attack.c \
-	srcs/game/attack_player.c \
+	srcs/game/player/attack_player.c \
+	srcs/game/landing_spaceship.c \
 
 HEADER := libft/libft.h \
 		includes/so_long.h \
