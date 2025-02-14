@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 10:49:20 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 13:42:14 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define LEFT 97
 # define DOWN 115
 # define FIRE 102
-# define FIRE_FRAME 2500000
-# define FIRE_MOVE_FRAME 10
+# define FIRE_FRAME 150
+# define FIRE_MOVE_FRAME 500
 # define END_FRAME 70000
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 150

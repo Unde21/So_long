@@ -20,23 +20,25 @@ void	attack_player(t_data *data, t_player *player)
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - player->last_time.tv_sec) * 1000
 		+ (current_time.tv_usec - player->last_time.tv_usec) / 1000;
-	if (data->enemy->is_laser_enemy == false)
+	if (data->enemy->is_laser_enemy == false && elapsed_time >= FIRE_FRAME)
 		{
 			data->enemy->s_pos_x = data->enemy->pos_x;
 			data->enemy->s_pos_y = data->enemy->pos_y;
 			player->laser_x = player->pos_x;
 			player->laser_y = player->pos_y;
 			player->is_laser_player = true;
+			ft_printf("JE SUIS UN TEST\n");
 		}
-	ft_printf("ici\n");
-	if (player->is_laser_player == true)
+	++player->fire_frame;
+	if (player->is_laser_player == true && player->fire_frame >= FIRE_MOVE_FRAME)
 	{
 		if (player_laser(data, player) == 1)
 		{
+			ft_printf("MEGA\n");
 			player->is_laser_player = false;
 			player->laser_dir = 0;
 		}
-		data->last_time = current_time;
+		player->last_time = current_time;
 		player->fire_frame = 0;
 	}
 }
@@ -220,18 +222,23 @@ void	laser_left_player(t_data *data, t_player *player)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->enemy->laser_start_l, (player->laser_x - 1) * 64,
 				(player->laser_y) * 64);
+			// ft_printf("test1\n");
 		}
 		else if (player->laser_x == 2)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->explosion, (player->laser_x - 1) * 64,
 			(player->laser_y) * 64);
+			// ft_printf("test2\n");
+
 		}
 		else
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->laser_line, (player->laser_x - 1) * 64,
-			player->laser_y * 64);	
+			player->laser_y * 64);
+			// ft_printf("test3\n");
+
 		}
 		--player->laser_x;
 		if (data->map[player->laser_y][player->laser_x] == '1'
@@ -245,13 +252,13 @@ void	laser_left_player(t_data *data, t_player *player)
 	// 		(player->laser_y) * 64);
 	// 	// data->player->death = true;
 	// }
-	ft_printf("left\n");
+	// ft_printf("left\n");
 }
 
 void	laser_right_player(t_data *data, t_player *player)
 {
 	player->laser_dir = RIGHT;
-	if (data->map[player->laser_y][player->laser_x + 1] != 'P'
+	if (data->map[player->laser_y][player->laser_x + 1] != 'B'
 		&& (size_t)(player->laser_x) < data->nb_row - 2)
 	{
 		if (player->laser_x == player->pos_x)
@@ -293,7 +300,7 @@ void	laser_right_player(t_data *data, t_player *player)
 void	laser_down_player(t_data *data, t_player *player)
 {
 	player->laser_dir = DOWN;
-	if (data->map[player->laser_y + 1][player->laser_x] != 'P'
+	if (data->map[player->laser_y + 1][player->laser_x] != 'B'
 		&& (size_t)(player->laser_y) < data->nb_line - 2)
 	{
 		if (player->laser_y == player->pos_y)
@@ -334,7 +341,7 @@ void	laser_down_player(t_data *data, t_player *player)
 void	laser_top_player(t_data *data, t_player *player)
 {
 		player->laser_dir = UP;
-	if (data->map[player->laser_y - 1][player->laser_x] != 'P'
+	if (data->map[player->laser_y - 1][player->laser_x] != 'B'
 		&& (size_t)(player->laser_y) >= 2)
 	{
 		if (player->laser_y == player->pos_y)

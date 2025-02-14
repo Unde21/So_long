@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 09:55:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 13:27:55 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	game_update(t_data *data)
 {
+	if (data->player->is_laser_player == true)
+	{
+		attack_player(data, data->player);
+	}
 	if (data->player->death == true && data->end == false
 		&& data->defeat == false)
 	{
