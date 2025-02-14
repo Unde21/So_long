@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 21:03:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:06:18 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->laser_start_t = NULL;
 	enemy->use_laser_d = NULL;
 	enemy->use_laser_t = NULL;
+	enemy->destroy_wall = NULL;
 	enemy->pos_x = 0;
 	enemy->pos_y = 0;
 	enemy->is_start_pos = false;
@@ -78,8 +79,10 @@ void	init_enemy_img(t_data *data)
 
 
 	data->enemy->img[21] = "img_file/laser_row.xpm";
-	// data->enemy->img[22] = "img_file/laser_start_d.xpm";
-	// data->enemy->img[23] = "img_file/laser_start_t.xpm";
+	data->enemy->img[22] = "img_file/laser_start_d.xpm";
+	data->enemy->img[23] = "img_file/laser_start_t.xpm";
 	data->enemy->img[24] = "img_file/use_laser_d.xpm";
 	data->enemy->img[25] = "img_file/use_laser_t.xpm";
+
+	data->enemy->img[26] = "img_file/destroy_wall.xpm";
 }

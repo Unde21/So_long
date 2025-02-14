@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 03:51:24 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 21:05:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:05:21 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,14 +209,22 @@ void	ft_destroy_img_attack_enemy(t_data *data, t_enemy *enemy)
 		mlx_destroy_image(data->mlx_ptr, enemy->laser_start_l);
 		enemy->laser_start_l = NULL;
 	}
-	// if (enemy->laser_start_d != NULL)
-	// {
-	// 	mlx_destroy_image(data->mlx_ptr, enemy->laser_start_d);
-	// 	enemy->laser_start_d = NULL;
-	// }
-	// if (enemy->laser_start_t != NULL)
-	// {
-	// 	mlx_destroy_image(data->mlx_ptr, enemy->laser_start_t);
-	// 	enemy->laser_start_t = NULL;
-	// }
+	if (enemy->laser_start_d != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_start_d);
+		enemy->laser_start_d = NULL;
+	}
+	if (enemy->laser_start_t != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->laser_start_t);
+		enemy->laser_start_t = NULL;
+	}
+
+
+
+	if (enemy->destroy_wall != NULL)
+	{
+		mlx_destroy_image(data->mlx_ptr, enemy->destroy_wall);
+		enemy->destroy_wall = NULL;
+	}
 }

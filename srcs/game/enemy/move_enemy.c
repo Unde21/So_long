@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 15:51:15 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:07:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ int	move_enemy(t_data *data)
 		data->last_time = current_time;
 		data->enemy->moved = false;
 	}
-	// else
-	// 	data->enemy->moved = false;
 	return (0);
 }
 
@@ -145,6 +143,25 @@ void	enemy_destroy_wall(t_data *data, t_enemy *enemy)
 			data->enemy->moved = UP;
 		}
 	}
+	else {
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->enemy->destroy_wall, data->enemy->pos_x * 64, (data->enemy->pos_y
+			) * 64);
+		data->map[data->enemy->pos_y - 1][data->enemy->pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->floor, data->enemy->pos_x * 64, (data->enemy->pos_y
+			- 1) * 64);
+		data->map[data->enemy->pos_y + 1][data->enemy->pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->floor, data->enemy->pos_x * 64, (data->enemy->pos_y
+			+ 1) * 64);
+		data->map[data->enemy->pos_y][data->enemy->pos_x + 1] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->floor, (data->enemy->pos_x - 1)* 64, (data->enemy->pos_y) * 64);
+			data->map[data->enemy->pos_y][data->enemy->pos_x + 1] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->floor, (data->enemy->pos_x - 1)* 64, (data->enemy->pos_y) * 64);
+	}
 }
 
 void	move_enemy_top(t_data *data, t_enemy *enemy)
@@ -155,8 +172,8 @@ void	move_enemy_top(t_data *data, t_enemy *enemy)
 	if (data->defeat == false)
 		--enemy->pos_y;
 	handle_new_position_t_enemy(data, enemy);
-	data->enemy->moved = true;
-	//data->enemy->moved = UP;
+	data->enemy->moved = 1;
+	// data->enemy->moved = UP;
 }
 
 void	move_enemy_down(t_data *data, t_enemy *enemy)
@@ -167,8 +184,8 @@ void	move_enemy_down(t_data *data, t_enemy *enemy)
 	if (data->defeat == false)
 		++enemy->pos_y;
 	handle_new_position_d_enemy(data, enemy);
-	data->enemy->moved = true;
-	//data->enemy->moved = DOWN;
+	data->enemy->moved = 1;
+	// data->enemy->moved = DOWN;
 }
 
 void	move_enemy_right(t_data *data, t_enemy *enemy)
@@ -179,8 +196,8 @@ void	move_enemy_right(t_data *data, t_enemy *enemy)
 	if (data->defeat == false)
 		++enemy->pos_x;
 	handle_new_position_r_enemy(data, enemy);
-	data->enemy->moved = true;
-	//data->enemy->moved = RIGHT;
+	data->enemy->moved = 1;
+	// data->enemy->moved = RIGHT;
 }
 
 void	move_enemy_left(t_data *data, t_enemy *enemy)
@@ -191,6 +208,6 @@ void	move_enemy_left(t_data *data, t_enemy *enemy)
 	if (data->end == false)
 		--enemy->pos_x;
 	handle_new_position_l_enemy(data, enemy);
-	data->enemy->moved = true;
-	//data->enemy->moved = LEFT;
+	data->enemy->moved = 1;
+	// data->enemy->moved = LEFT;
 }

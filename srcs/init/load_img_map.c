@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 21:08:57 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:06:43 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,17 +222,24 @@ int	load_img_enemy(t_data *data, t_enemy *enemy)
 			&enemy->width, &enemy->height);
 	if (!enemy->use_laser_d)
 		return (ERR_IMG);
-	// enemy->laser_start_t = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[23],
-	// 	&enemy->width, &enemy->height);
-	// if (!enemy->laser_start_t)
-	// 	return (ERR_IMG);
-	// enemy->laser_start_d = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[22],
-	// 		&enemy->width, &enemy->height);
-	// if (!enemy->laser_start_d)
-	// 	return (ERR_IMG);
+	enemy->laser_start_t = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[23],
+		&enemy->width, &enemy->height);
+	if (!enemy->laser_start_t)
+		return (ERR_IMG);
+	enemy->laser_start_d = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[22],
+			&enemy->width, &enemy->height);
+	if (!enemy->laser_start_d)
+		return (ERR_IMG);
 	enemy->laser_row = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[21],
 			&enemy->width, &enemy->height);
 	if (!enemy->laser_row)
+		return (ERR_IMG);
+
+
+
+	enemy->destroy_wall = mlx_xpm_file_to_image(data->mlx_ptr, enemy->img[26],
+		&enemy->width, &enemy->height);
+	if (!enemy->destroy_wall)
 		return (ERR_IMG);
 	return (0);
 }

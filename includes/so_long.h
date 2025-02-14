@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 20:39:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/14 09:12:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define DOWN 115
 # define END_FRAME 70000
 # define LANDING_FRAME 15000
-# define MOVE_ENEMY_FRAME 200
-# define LASER_FRAME 25000000
+# define MOVE_ENEMY_FRAME 150
+# define LASER_FRAME 2500000
 
 typedef enum e_exit
 {
@@ -125,7 +125,7 @@ typedef struct s_enemy
 	bool	is_start_pos;
 	bool	is_laser_enemy;
 	int		moved;
-	char	*img[26];
+	char	*img[27];
 	int		height;
 	int		width;
 	int		laser_frame;
@@ -154,6 +154,7 @@ typedef struct s_enemy
 	void	*use_laser_r;
 	void	*use_laser_t;
 	void	*use_laser_d;
+	void	*destroy_wall;
 }	t_enemy;
 
 typedef struct s_data
