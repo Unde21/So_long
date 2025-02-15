@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 06:58:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 17:48:08 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 11:23:31 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ int	keypress(int keysym, t_data *data)
 		|| data->landing == true)
 		return (0);
 	if (keysym == KEY_CLOSE)
-	{
 		close_window(data);
-	}
 	else if (keysym == UP && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y - 1][data->player->pos_x] != '1')
 		move_up(data, data->player, data->img);
@@ -92,8 +90,12 @@ int	keypress(int keysym, t_data *data)
 	else if (keysym == DOWN && data->player->is_laser_player == false
 		&& data->map[data->player->pos_y + 1][data->player->pos_x] != '1')
 		move_down(data, data->player, data->img);
-	else if (keysym == FIRE)
+	else if (keysym == FIRE && data->enemy->is_alive == true)
+	{
 		attack_player(data, data->player);
+		++data->count_key;
+		display_count_move(data);
+	}
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
 		open_spaceship(data, data->img);
 	check_end(data, data->player);

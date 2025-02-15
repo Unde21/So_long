@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:21:23 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 20:07:21 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 11:16:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,26 @@ void	laser_left_player(t_data *data, t_player *player)
 		player->is_fighting_laser = true;
 		// player->is_laser_player = false;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-            data->img->floor, (player->laser_x - 1) * 64, player->laser_y * 64);
-        data->map[player->laser_y][player->laser_x - 1] = '0';
+            data->img->exit_fire, (player->laser_x - 1) * 64, player->laser_y * 64);
+        // data->map[player->laser_y][player->laser_x - 1] = 'T';
 		// player->fire_frame = FIRE_MVE_FRAME;
+		data->enemy->is_laser_enemy = false;
+		// data->enemy->is_laser_enemy = false;
+		// remove_enemy_laser_right(data, data->enemy);
+		// ft_printf("map:%s\n", data->map[player->laser_y]);
 		return ;
+	}
+	else if (data->map[player->laser_y][player->laser_x - 1] == 'B')
+	{
+		ft_printf("il est touche");
+		//TODO transformation quand on le tue (il y a 2 rayon qui parte je sais pas pourquoi, mais le 2eme faudrait qu il soit modifie si cell meurt)
+		--data->enemy->life;
+		if (data->enemy->life == 0)
+			data->enemy->is_alive = false;
+		data->map[player->laser_y][player->laser_x - 1] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+            data->img->explosion_r, (player->laser_x - 1) * 64, player->laser_y * 64);
+		remove_player_laser_left(data, player);
 	}
 	else if (data->map[player->laser_y][player->laser_x - 1] != 'B'
 		&& player->laser_x >= 2)
@@ -67,9 +83,28 @@ void	laser_right_player(t_data *data, t_player *player)
 	player->laser_dir = RIGHT;
 	if (data->map[player->laser_y][player->laser_x + 1] == 'L')
 	{
-		remove_display_laser_p(data, player);
-		player->is_laser_player = false;
+		player->is_fighting_laser = true;
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+            data->img->exit_fire, (player->laser_x + 1) * 64, player->laser_y * 64);
+		// remove_display_laser_p(data, player);
+		// player->is_laser_player = false;
+        // data->map[player->laser_y][player->laser_x - 1] = 'L';
+		data->enemy->is_laser_enemy = false;
+		// ft_printf("map:%s\n", data->map[player->laser_y]);
+		// data->enemy->is_laser_enemy = false;
 		return ;
+	}
+	else if (data->map[player->laser_y][player->laser_x + 1] == 'B')
+	{
+		ft_printf("il est touche");
+		//TODO transformation quand on le tue (il y a 2 rayon qui parte je sais pas pourquoi, mais le 2eme faudrait qu il soit modifie si cell meurt)
+		--data->enemy->life;
+		if (data->enemy->life == 0)
+			data->enemy->is_alive = false;
+		data->map[player->laser_y][player->laser_x + 1] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+            data->img->explosion_r, (player->laser_x + 1) * 64, player->laser_y * 64);
+		remove_player_laser_right(data, player);
 	}
 	else if (data->map[player->laser_y][player->laser_x + 1] != 'B'
 		&& (size_t)(player->laser_x) < data->nb_row - 2)

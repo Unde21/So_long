@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:14:16 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 20:06:55 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 10:35:17 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	remove_player_laser_right(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		--player->laser_x;
 	}
+	player->fire_frame = 0; //BUG a voir 
 	return (1);
 }
 
@@ -39,6 +40,7 @@ int	remove_player_laser_left(t_data *data, t_player *player)
 			data->map[player->laser_y][player->laser_x] = '0';
 		}
 		remove_display_laser_p(data, player);
+		ft_printf("map:%s\n", data->map[player->laser_y]);
 		++player->laser_x;
 	}
 	player->fire_frame = 0; //BUG a voir 
@@ -58,6 +60,7 @@ int	remove_player_laser_down(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		--player->laser_y;
 	}
+	player->fire_frame = 0; //BUG a voir 
 	return (1);
 }
 
@@ -74,6 +77,8 @@ int	remove_player_laser_up(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		++player->laser_y;
 	}
+	player->fire_frame = 0; //BUG a voir 
+
 	return (1);
 }
 

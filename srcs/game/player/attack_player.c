@@ -16,11 +16,16 @@ void	attack_player(t_data *data, t_player *player)
 {
 	struct timeval	current_time;
 	long			elapsed_time;
-
+	bool can_shoot;
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - player->last_time.tv_sec) * 1000
 		+ (current_time.tv_usec - player->last_time.tv_usec) / 1000;
-	if (player->is_laser_player == false && elapsed_time >= FIRE_FRAME)
+	 if (data->enemy->pos_x == player->pos_x || 
+                     data->enemy->pos_y == player->pos_y)
+			can_shoot = true;
+	else
+		can_shoot = false;
+	if (player->is_laser_player == false && elapsed_time >= FIRE_FRAME && can_shoot == true)
 	{
 		data->enemy->s_pos_x = data->enemy->pos_x;
 		data->enemy->s_pos_y = data->enemy->pos_y;
@@ -37,6 +42,43 @@ void	attack_player(t_data *data, t_player *player)
 			remove_player_laser_left(data, player);
 			player->is_laser_player = false;
 			player->is_fighting_laser = false;
+			player->laser_dir = 0;
+			remove_enemy_laser_right(data, data->enemy);
+
+
+		}
+		else if (player->is_fighting_laser == true && player->laser_dir == RIGHT)
+		{
+			//TODO TEST
+			remove_player_laser_right(data, player);
+			player->is_laser_player = false;
+			player->is_fighting_laser = false;
+			player->laser_dir = 0;
+			remove_enemy_laser_left(data, data->enemy);
+
+
+		}
+		else if (player->is_fighting_laser == true && player->laser_dir == DOWN)
+		{
+			//TODO TEST
+			remove_player_laser_down(data, player);
+			player->is_laser_player = false;
+			player->is_fighting_laser = false;
+			player->laser_dir = 0;
+			remove_enemy_laser_up(data, data->enemy);
+
+
+		}
+		else if (player->is_fighting_laser == true && player->laser_dir == UP)
+		{
+			//TODO TEST
+			remove_player_laser_up(data, player);
+			player->is_laser_player = false;
+			player->is_fighting_laser = false;
+			player->laser_dir = 0;
+			remove_enemy_laser_down(data, data->enemy);
+
+
 		}
 		else if (player_laser(data, player) == 1)
 		{

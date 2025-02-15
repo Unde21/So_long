@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 10:05:34 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 11:11:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->height = 0;
 	enemy->width = 0;
 	enemy->moved = false;
+	enemy->is_fighting_laser = false;
+	enemy->is_alive = true;
 	enemy->laser_x = 0;
 	enemy->laser_y = 0;
 	enemy->laser_dir = 0;
 	enemy->laser_frame = 0;
 	enemy->s_pos_x = 0;
 	enemy->s_pos_y = 0;
+	enemy->life = 2;
 }
 
 void	init_enemy_img(t_data *data)

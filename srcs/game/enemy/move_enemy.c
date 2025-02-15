@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 16:33:36 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 11:09:57 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	move_enemy(t_data *data)
 	long			elapsed_time;
 
 	if (data->end == true || data->player->death == true || data->end == true
-		|| data->landing == true)
+		|| data->landing == true || data->enemy->is_alive == false)
 		return (0);
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - data->last_time.tv_sec) * 1000
@@ -39,6 +39,37 @@ int	move_enemy(t_data *data)
 	}
 	if (elapsed_time > MOVE_ENEMY_FRAME / 4 && data->enemy->is_laser_enemy == true)
 	{
+		// if (data->enemy->is_fighting_laser == true && data->enemy->laser_dir == LEFT)
+		// {
+		// 	ft_printf("test\n");
+		// 	//TODO TEST
+		// 	remove_enemy_laser_left(data, data->enemy);
+		// 	data->enemy->is_laser_enemy = false;
+		// 	data->enemy->is_fighting_laser = false;
+		// }
+		// else if (data->enemy->is_fighting_laser == true && data->enemy->laser_dir == RIGHT)
+		// {
+		// 	//TODO TEST
+		// 	remove_enemy_laser_right(data, data->enemy);
+		// 	data->enemy->is_laser_enemy = false;
+		// 	data->enemy->is_fighting_laser = false;
+		// }
+		// else if (data->enemy->is_fighting_laser == true && data->enemy->laser_dir == DOWN)
+		// {
+		// 	//TODO TEST
+		// 	remove_enemy_laser_down(data, data->enemy);
+		// 	data->enemy->is_laser_enemy = false;
+		// 	data->enemy->is_fighting_laser = false;
+		// }
+		// else if (data->enemy->is_fighting_laser == true && data->enemy->laser_dir == UP)
+		// {
+		// 	//TODO TEST
+		// 	ft_printf("ALLLLLLLLLLLLLLLLLLLLLLLLLO\n");
+		// 	remove_enemy_laser_up(data, data->enemy);
+		// 	data->enemy->is_laser_enemy = false;
+		// 	data->enemy->is_fighting_laser = false;
+		// }
+		// else 
 		if (enemy_laser(data, data->enemy) == 1)
 		{
 			data->enemy->is_laser_enemy = false;

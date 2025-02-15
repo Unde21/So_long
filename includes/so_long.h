@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 19:57:09 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/15 11:11:50 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,13 @@ typedef struct s_enemy
 	int		pos_y;
 	bool	is_start_pos;
 	bool	is_laser_enemy;
+	bool	is_fighting_laser;
+	bool	is_alive;
 	int		moved;
 	char	*img[27];
 	int		height;
 	int		width;
+	int		life;
 	int		laser_frame;
 	int		laser_x;
 	int		laser_y;
@@ -327,5 +330,11 @@ void	laser_left(t_data *data, t_enemy *enemy);
 void	laser_right(t_data *data, t_enemy *enemy);
 void	laser_down(t_data *data, t_enemy *enemy);
 void	laser_top(t_data *data, t_enemy *enemy);
+
+int		remove_enemy_laser_right(t_data *data, t_enemy *enemy);
+int		remove_enemy_laser_left(t_data *data, t_enemy *enemy);
+int		remove_enemy_laser_down(t_data *data, t_enemy *enemy);
+int		remove_enemy_laser_up(t_data *data, t_enemy *enemy);
+void	remove_display_laser_enemy(t_data *data, t_enemy *enemy);
 
 #endif

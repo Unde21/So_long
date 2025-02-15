@@ -24,6 +24,7 @@ SRCS := srcs/main.c \
 	srcs/game/enemy/init_enemy.c \
 	srcs/game/enemy/move_enemy.c \
 	srcs/game/enemy/move_enemy_utils.c \
+	srcs/game/enemy/remove_laser.c \
 	srcs/game/enemy/attack.c \
 	srcs/game/player/attack_player.c \
 	srcs/game/landing_spaceship.c \
