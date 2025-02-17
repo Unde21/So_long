@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 19:52:00 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 01:32:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	init_struct_img(t_img *img)
 	img->explosion_r = NULL;
 	img->explosion_d = NULL;
 	img->explosion_t = NULL;
+	img->laser_fight_y = NULL;
+	img->laser_fight_x = NULL;
 	img->height = 0;
 	img->width = 0;
 }

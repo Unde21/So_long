@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 09:11:31 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/15 10:40:14 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 02:47:44 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,25 @@ int	remove_enemy_laser_right(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		--enemy->laser_x;
 	}
-	enemy->laser_frame = 0; //BUG a voir 
+	enemy->laser_frame = 0;
 	return (1);
 }
 
 int	remove_enemy_laser_left(t_data *data, t_enemy *enemy)
 {
-	ft_printf("remove_laser_left\n");
 	while (enemy->laser_x != enemy->pos_x)
 	{
 		if (data->map[enemy->laser_y][enemy->laser_x] == 'L')
 		{
-		ft_printf("map:%s\n", data->map[enemy->laser_y]);
-
+			ft_printf("map:%s\n", data->map[enemy->laser_y]);
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->floor, (enemy->laser_x) * 64, enemy->laser_y * 64);
 			data->map[enemy->laser_y][enemy->laser_x] = '0';
 		}
 		remove_display_laser_enemy(data, enemy);
-		ft_printf("map:%s\n", data->map[enemy->laser_y]);
 		++enemy->laser_x;
 	}
-	enemy->laser_frame = 0; //BUG a voir 
+	enemy->laser_frame = 0;
 	return (1);
 }
 
@@ -63,7 +60,7 @@ int	remove_enemy_laser_down(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		--enemy->laser_y;
 	}
-	enemy->laser_frame = 0; //BUG a voir 
+	enemy->laser_frame = 0;
 	return (1);
 }
 
@@ -71,7 +68,6 @@ int	remove_enemy_laser_up(t_data *data, t_enemy *enemy)
 {
 	while (enemy->laser_y != enemy->pos_y)
 	{
-		ft_printf("BONJOUUUUUUUUUUUr\n");
 		if (data->map[enemy->laser_y][enemy->laser_x] == 'L')
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -81,8 +77,7 @@ int	remove_enemy_laser_up(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		++enemy->laser_y;
 	}
-	enemy->laser_frame = 0; //BUG a voir 
-
+	enemy->laser_frame = 0;
 	return (1);
 }
 
@@ -104,8 +99,8 @@ void	remove_display_laser_enemy(t_data *data, t_enemy *enemy)
 		else
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->img->spaceship_open, (enemy->laser_x) * 64,
-				enemy->laser_y * 64);
+				data->img->spaceship_open, (enemy->laser_x) * 64, enemy->laser_y
+				* 64);
 		}
 	}
 }

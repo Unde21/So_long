@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 10:27:39 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 02:46:38 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 {
-
 	if (data->ac != 2)
 		return (exit_error_parse(ERR_ARGS));
 	if (init_struct_data(data, spaceship, player, img) != 0)

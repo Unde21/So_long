@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/14 09:06:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 01:39:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,20 @@ int	load_img_map(t_data *data, t_img *img)
 			&img->height);
 	if (!img->explosion_t)
 		return (ERR_IMG);
+
+
+	
+	img->laser_fight_x = mlx_xpm_file_to_image(data->mlx_ptr, img->img[20], &img->width,
+			&img->height);
+	if (!img->laser_fight_x)
+		return (ERR_IMG);
+	img->laser_fight_y = mlx_xpm_file_to_image(data->mlx_ptr, img->img[21], &img->width,
+			&img->height);
+	if (!img->laser_fight_y)
+		return (ERR_IMG);
+
+
+		
 	if (load_img_exit(data, img) != 0)
 		return (-1);
 	if (load_img_player(data, img) != 0)

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/13 20:32:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 01:34:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	init_img(t_data *data)
 	data->img->img[17] = "img_file/explosion_r.xpm";
 	data->img->img[18] = "img_file/explosion_d.xpm";
 	data->img->img[19] = "img_file/explosion_t.xpm";
+	data->img->img[20] = "img_file/laser_fight_x.xpm";
+	data->img->img[21] = "img_file/laser_fight_y.xpm";
 
 	init_img_player(data);
 }

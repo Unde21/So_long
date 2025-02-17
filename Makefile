@@ -8,26 +8,29 @@ SRCS := srcs/main.c \
 	srcs/mlx/mlx_utils.c \
 	srcs/mlx/destroy_img.c \
 	srcs/mlx/destroy_img_bonus.c \
+	srcs/init/load_img_map.c \
+	srcs/init/init_img.c \
+	srcs/init/init_struct.c \
 	srcs/game/display_map.c \
+	srcs/game/display_move.c \
+	srcs/game/game_update.c \
+	srcs/game/landing_spaceship.c \
+	srcs/game/open_exit.c \
 	srcs/game/player/player_move.c \
 	srcs/game/player/player_move_utils.c \
 	srcs/game/player/remove_laser.c \
 	srcs/game/player/player_laser_dir_x.c \
 	srcs/game/player/player_laser_dir_y.c \
-	srcs/game/display_move.c \
-	srcs/game/game_update.c \
-	srcs/game/open_exit.c \
-	srcs/init/init_struct.c \
-	srcs/init/init_img.c \
-	srcs/init/load_img_map.c \
+	srcs/game/player/get_player_input.c \
+	srcs/game/player/attack_player.c \
+	srcs/game/player/player_laser_dir_utils.c \
+	srcs/game/player/attack_player_utils.c \
 	srcs/game/enemy/display_enemy.c \
 	srcs/game/enemy/init_enemy.c \
 	srcs/game/enemy/move_enemy.c \
 	srcs/game/enemy/move_enemy_utils.c \
 	srcs/game/enemy/remove_laser.c \
 	srcs/game/enemy/attack.c \
-	srcs/game/player/attack_player.c \
-	srcs/game/landing_spaceship.c \
 
 HEADER := libft/libft.h \
 		includes/so_long.h \

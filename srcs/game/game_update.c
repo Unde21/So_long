@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/15 11:37:34 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 02:45:03 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	game_update(t_data *data)
 	}
 	else if (data->enemy->life == 0 && data->enemy->is_alive == true)
 	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-            data->img->floor, (data->enemy->pos_x) * 64, (data->enemy->pos_y) * 64);
+		// TODO sprite enemy dead
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->floor,
+			(data->enemy->pos_x) * 64, (data->enemy->pos_y) * 64);
 		data->enemy->is_alive = false;
 	}
 	else if (data->enemy->is_start_pos == true && data->landing == false)

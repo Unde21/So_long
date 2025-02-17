@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/15 11:11:50 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 02:41:29 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_img
 	void	*nb_seven;
 	void	*nb_eight;
 	void	*nb_nine;
-	void	*img[20];
+	void	*img[22];
 	void	*floor;
 	void	*player;
 	void	*player_l;
@@ -118,6 +118,8 @@ typedef struct s_img
 	void	*explosion_t;
 	void	*explosion_d;
 	void	*landing_spaceship;
+	void	*laser_fight_x;
+	void	*laser_fight_y;
 	int		height;
 	int		width;
 }	t_img;
@@ -297,6 +299,13 @@ int		remove_player_laser_right(t_data *data, t_player *player);
 int		remove_player_laser_left(t_data *data, t_player *player);
 int		remove_player_laser_down(t_data *data, t_player *player);
 int		remove_player_laser_up(t_data *data, t_player *player);
+
+void	handle_laser_status(t_data *data, t_player *player);
+int		check_dir_laser(t_data *data, t_player *player);
+void	save_last_position(t_player *player, t_enemy *enemy);
+void	input_action(int keysym, t_data *data);
+void	disp_explosion(t_data *data, int next_x, int next_y);
+void	is_laser_touch(t_data *data, int next_x, int next_y);
 
 /* ************************************************************************** */
 /*								Enemy					  			  		  */

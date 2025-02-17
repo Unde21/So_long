@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/15 11:11:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/17 01:24:40 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->use_laser_d = NULL;
 	enemy->use_laser_t = NULL;
 	enemy->destroy_wall = NULL;
+	enemy->attack_t = NULL;
+	enemy->attack_l = NULL;
+	enemy->attack_r = NULL;
+	enemy->attack_d = NULL;
 	enemy->pos_x = 0;
 	enemy->pos_y = 0;
 	enemy->is_start_pos = false;
