@@ -28,9 +28,18 @@ SRCS := srcs/main.c \
 	srcs/game/enemy/display_enemy.c \
 	srcs/game/enemy/init_enemy.c \
 	srcs/game/enemy/move_enemy.c \
+	srcs/game/enemy/move_enemy_dir.c \
 	srcs/game/enemy/move_enemy_utils.c \
+	srcs/game/enemy/move_enemy_old_pos.c \
+	srcs/game/enemy/remove_laser_fight.c \
 	srcs/game/enemy/remove_laser.c \
 	srcs/game/enemy/attack.c \
+	srcs/game/enemy/touch_player.c \
+	srcs/game/enemy/enemy_destroy_wall.c \
+	srcs/game/enemy/move_after_destroy.c \
+	srcs/game/enemy/enemy_laser_x.c \
+	srcs/game/enemy/enemy_laser_y.c \
+
 
 HEADER := libft/libft.h \
 		includes/so_long.h \
