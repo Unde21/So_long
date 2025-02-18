@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:47:27 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 05:41:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 150
 # define LASER_FRAME 5000000
-# define LASER_MVE_FRAME 50
+# define LASER_MVE_FRAME 40
+# define LASER_CHAR 'L'
+# define EXIT 'Z'
+# define DEAD_OBJECT 'K'
+# define DEAD_EXIT 'V'
 
 
 // Player Sprite
@@ -321,7 +325,7 @@ void	handle_laser_left(t_data *data, t_player *player);
 void	handle_laser_right(t_data *data, t_player *player);
 void	handle_laser_down(t_data *data, t_player *player);
 void	handle_laser_top(t_data *data, t_player *player);
-
+int		is_player_dead(t_data *data, int next_x, int next_y);
 void	remove_display_laser_p(t_data *data, t_player *player);
 int		remove_player_laser_right(t_data *data, t_player *player);
 int		remove_player_laser_left(t_data *data, t_player *player);
@@ -386,6 +390,7 @@ void	handle_laser_right_enemy(t_data *data, t_enemy *enemy);
 void	handle_laser_left_enemy(t_data *data, t_enemy *enemy);
 void	handle_laser_top_enemy(t_data *data, t_enemy *enemy);
 void	handle_laser_down_enemy(t_data *data, t_enemy *enemy);
+void	save_exit_and_object(t_data *data, int x, int y);
 void	is_spaceship_at_pos(t_data *data, t_enemy *enemy);
 int		remove_enemy_laser_right(t_data *data, t_enemy *enemy);
 int		remove_enemy_laser_left(t_data *data, t_enemy *enemy);

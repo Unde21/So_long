@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:14:16 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 02:10:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:56:21 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	remove_player_laser_right(t_data *data, t_player *player)
 {
 	while (player->laser_x != player->pos_x)
 	{
-		if (data->map[player->laser_y][player->laser_x] == 'L')
+		if (data->map[player->laser_y][player->laser_x] == LASER_CHAR)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->sprite[FLOOR],
@@ -35,7 +35,7 @@ int	remove_player_laser_left(t_data *data, t_player *player)
 {
 	while (player->laser_x != player->pos_x)
 	{
-		if (data->map[player->laser_y][player->laser_x] == 'L')
+		if (data->map[player->laser_y][player->laser_x] == LASER_CHAR)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->sprite[FLOOR],
@@ -54,7 +54,7 @@ int	remove_player_laser_down(t_data *data, t_player *player)
 {
 	while (player->laser_y != player->pos_y)
 	{
-		if (data->map[player->laser_y][player->laser_x] == 'L')
+		if (data->map[player->laser_y][player->laser_x] == LASER_CHAR)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->sprite[FLOOR],
@@ -73,7 +73,7 @@ int	remove_player_laser_up(t_data *data, t_player *player)
 {
 	while (player->laser_y != player->pos_y)
 	{
-		if (data->map[player->laser_y][player->laser_x] == 'L')
+		if (data->map[player->laser_y][player->laser_x] == LASER_CHAR)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				data->img->sprite[FLOOR],

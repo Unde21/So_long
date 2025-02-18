@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 03:07:50 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 01:55:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 05:26:34 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	touch_enemy(t_data *data, int next_x, int next_y)
 {
-	if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z'
-			|| data->map[next_y][next_x] == 'L')
+	if (is_player_dead(data, next_x, next_y) == 1
 		&& data->player->dir_left == false)
 	{
 		if (data->map[next_y][next_x] == 'Z' && data->spaceship->pos_x == next_x
@@ -43,8 +42,7 @@ int	touch_enemy(t_data *data, int next_x, int next_y)
 
 int	touch_enemy_left(t_data *data, int next_x, int next_y)
 {
-	if ((data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z'
-			|| data->map[next_y][next_x] == 'L')
+	if (is_player_dead(data, next_x, next_y) == 1
 		&& data->player->dir_left == true)
 	{
 		if (data->map[next_y][next_x] == 'Z' && data->spaceship->pos_x == next_x
@@ -115,5 +113,15 @@ int	touch_player_left(t_data *data, int next_x, int next_y)
 		data->player->death = true;
 		return (1);
 	}
+	return (0);
+}
+
+int	is_player_dead(t_data *data, int next_x, int next_y)
+{
+	if (data->map[next_y][next_x] == 'B' || data->map[next_y][next_x] == 'Z'
+			|| data->map[next_y][next_x] == LASER_CHAR
+			|| data->map[next_y][next_x] == DEAD_OBJECT
+			|| data->map[next_y][next_x] == DEAD_EXIT)
+		return (1);
 	return (0);
 }

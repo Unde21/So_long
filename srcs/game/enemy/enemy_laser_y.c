@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 04:56:07 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:44:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 05:39:43 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ void	laser_down(t_data *data, t_enemy *enemy)
 		enemy->is_fighting_laser = true;
 		return ;
 	}
-	else if (data->map[enemy->laser_y + 1][enemy->laser_x] != 'P'
-		&& (size_t)(enemy->laser_y) < data->nb_line - 2)
-		handle_laser_down_enemy(data, enemy);
-	else if (data->map[enemy->laser_y + 1][enemy->laser_x] == 'P')
+	else if (data->map[enemy->laser_y + 1][enemy->laser_x] == 'P'
+		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == 'E'
+		&& data->player->pos_x == data->spaceship->pos_x
+		&& data->player->pos_y == data->spaceship->pos_y))
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[EXPLOSION_D], enemy->laser_x * 64,
 			(enemy->laser_y + 1) * 64);
 		data->player->death = true;
 	}
+	else if (data->map[enemy->laser_y + 1][enemy->laser_x] != 'P'
+		&& (size_t)(enemy->laser_y) < data->nb_line - 2)
+		handle_laser_down_enemy(data, enemy);
 }
 
 void	handle_laser_down_enemy(t_data *data, t_enemy *enemy)
@@ -57,9 +60,7 @@ void	handle_laser_down_enemy(t_data *data, t_enemy *enemy)
 			(enemy->laser_y + 1) * 64);
 	}
 	++enemy->laser_y;
-	if (data->map[enemy->laser_y][enemy->laser_x] == '1'
-		|| data->map[enemy->laser_y][enemy->laser_x] == '0')
-		data->map[enemy->laser_y][enemy->laser_x] = 'L';
+	save_exit_and_object(data, enemy->laser_x, enemy->laser_y);
 }
 
 void	laser_top(t_data *data, t_enemy *enemy)
@@ -71,16 +72,19 @@ void	laser_top(t_data *data, t_enemy *enemy)
 		enemy->is_fighting_laser = true;
 		return ;
 	}
-	else if (data->map[enemy->laser_y - 1][enemy->laser_x] != 'P'
-		&& enemy->laser_y >= 2)
-		handle_laser_top_enemy(data, enemy);
-	else if (data->map[enemy->laser_y - 1][enemy->laser_x] == 'P')
+	else if (data->map[enemy->laser_y - 1][enemy->laser_x] == 'P'
+		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == 'E'
+		&& data->player->pos_x == data->spaceship->pos_x
+		&& data->player->pos_y == data->spaceship->pos_y))
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[EXPLOSION_T], enemy->laser_x * 64,
 			(enemy->laser_y - 1) * 64);
 		data->player->death = true;
 	}
+	else if (data->map[enemy->laser_y - 1][enemy->laser_x] != 'P'
+		&& enemy->laser_y >= 2)
+		handle_laser_top_enemy(data, enemy);
 }
 
 void	handle_laser_top_enemy(t_data *data, t_enemy *enemy)
@@ -107,7 +111,5 @@ void	handle_laser_top_enemy(t_data *data, t_enemy *enemy)
 			(enemy->laser_y - 1) * 64);
 	}
 	--enemy->laser_y;
-	if (data->map[enemy->laser_y][enemy->laser_x] == '1'
-		|| data->map[enemy->laser_y][enemy->laser_x] == '0')
-		data->map[enemy->laser_y][enemy->laser_x] = 'L';
+	save_exit_and_object(data, enemy->laser_x, enemy->laser_y);
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:21:23 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 03:10:11 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:55:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	laser_left_player(t_data *data, t_player *player)
 {
 	player->laser_dir = LEFT;
-	if (data->map[player->laser_y][player->laser_x - 1] == 'L')
+	if (data->map[player->laser_y][player->laser_x - 1] == LASER_CHAR)
 	{
 		player->is_fighting_laser = true;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -37,7 +37,7 @@ void	laser_left_player(t_data *data, t_player *player)
 		--player->laser_x;
 		if (data->map[player->laser_y][player->laser_x] == '1'
 			|| data->map[player->laser_y][player->laser_x] == '0')
-			data->map[player->laser_y][player->laser_x] = 'L';
+			data->map[player->laser_y][player->laser_x] = LASER_CHAR;
 	}
 }
 
@@ -69,7 +69,7 @@ void	handle_laser_left(t_data *data, t_player *player)
 void	laser_right_player(t_data *data, t_player *player)
 {
 	player->laser_dir = RIGHT;
-	if (data->map[player->laser_y][player->laser_x + 1] == 'L')
+	if (data->map[player->laser_y][player->laser_x + 1] == LASER_CHAR)
 	{
 		player->is_fighting_laser = true;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -91,7 +91,7 @@ void	laser_right_player(t_data *data, t_player *player)
 		++player->laser_x;
 		if (data->map[player->laser_y][player->laser_x] == '1'
 			|| data->map[player->laser_y][player->laser_x] == '0')
-			data->map[player->laser_y][player->laser_x] = 'L';
+			data->map[player->laser_y][player->laser_x] = LASER_CHAR;
 	}
 }
 
