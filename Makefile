@@ -7,10 +7,12 @@ SRCS := srcs/main.c \
 	srcs/mlx/init_win.c \
 	srcs/mlx/mlx_utils.c \
 	srcs/mlx/destroy_img.c \
-	srcs/mlx/destroy_img_bonus.c \
-	srcs/init/load_img_map.c \
+	srcs/init/load_sprite_map.c \
+	srcs/init/load_sprite_player.c \
 	srcs/init/init_img.c \
 	srcs/init/init_struct.c \
+	srcs/init/load_sprite_enemy.c \
+	srcs/init/load_sprite_enemy_laser.c \
 	srcs/game/display_map.c \
 	srcs/game/display_move.c \
 	srcs/game/game_update.c \

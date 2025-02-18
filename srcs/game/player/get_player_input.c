@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:32:36 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 02:36:08 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 02:37:21 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	keypress(int keysym, t_data *data)
 		return (0);
 	input_action(keysym, data);
 	if (data->nb_obj == 0 && data->spaceship->spaceship_close == true)
-		open_spaceship(data, data->img);
+		open_spaceship(data, data->spaceship);
 	check_end(data, data->player);
 	return (0);
 }

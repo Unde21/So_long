@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 08:47:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 05:25:41 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:42:08 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,25 @@ void	display_attack_enemy(t_data *data, t_enemy *enemy)
 {
 	if (data->enemy->moved == RIGHT || data->player->pos_x == enemy->pos_x + 1)
 	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->attack_r,
-			enemy->pos_x * 64, enemy->pos_y * 64);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			enemy->sprite[ATT_R], enemy->pos_x * 64, enemy->pos_y * 64);
 	}
-	else if (data->enemy->moved == LEFT || data->player->pos_x == enemy->pos_x
-		- 1)
+	else if (data->enemy->moved == LEFT
+		|| data->player->pos_x == enemy->pos_x - 1)
 	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->attack_l,
-			enemy->pos_x * 64, enemy->pos_y * 64);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			enemy->sprite[ATT_L], enemy->pos_x * 64, enemy->pos_y * 64);
 	}
-	else if (data->enemy->moved == UP || data->player->pos_y == enemy->pos_y
-		- 1)
+	else if (data->enemy->moved == UP
+		|| data->player->pos_y == enemy->pos_y - 1)
 	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->attack_t,
-			enemy->pos_x * 64, enemy->pos_y * 64);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			enemy->sprite[ATT_T], enemy->pos_x * 64, enemy->pos_y * 64);
 	}
-	else if (data->enemy->moved == DOWN || data->player->pos_y == enemy->pos_y
-		+ 1)
+	else if (data->enemy->moved == DOWN
+		|| data->player->pos_y == enemy->pos_y + 1)
 	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, enemy->attack_d,
-			enemy->pos_x * 64, enemy->pos_y * 64);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			enemy->sprite[ATT_D], enemy->pos_x * 64, enemy->pos_y * 64);
 	}
 }

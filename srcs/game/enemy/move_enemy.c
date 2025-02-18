@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 04:46:23 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 01:49:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	handle_enemy_move(t_data *data, t_enemy *enemy)
 		&& data->map[enemy->pos_y][enemy->pos_x + 1] != '1'
 		&& enemy->moved == 0)
 		move_enemy_right(data, enemy);
-	else if (data->player->pos_y > enemy->pos_y && data->map[enemy->pos_y
+	else if (data->player->pos_y > enemy->pos_y 
+		&& data->map[enemy->pos_y
 			+ 1][enemy->pos_x] != '1' && enemy->moved == 0)
 		move_enemy_down(data, enemy);
 	else if (data->player->pos_x < enemy->pos_x

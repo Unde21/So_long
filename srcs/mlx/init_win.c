@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 01:55:16 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:47:14 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	game_loop(t_data *data)
 		ft_destroy_mlx(data);
 		return (-1);
 	}
-
 	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, keypress, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
 	mlx_loop_hook(data->mlx_ptr, game_update, data);
@@ -63,34 +62,45 @@ void	check_end(t_data *data, t_player *player)
 	if (data->map[player->pos_y][player->pos_x] == 'E' && data->nb_obj == 0)
 	{
 		data->end = true;
-		if (player->pos_x == data->enemy->pos_x && player->pos_y == data->enemy->pos_y)
+		if (player->pos_x == data->enemy->pos_x
+			&& player->pos_y == data->enemy->pos_y)
 		{
-			if (player->last_move == LEFT)
-			{
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pleft_exit,
-					player->pos_x * 64, (player->pos_y) * 64);
-			}
-			else if (player->last_move == RIGHT)
-			{
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->plright_exit,
-					player->pos_x * 64, (player->pos_y) * 64);
-			}
-			else if (player->last_move == UP)
-			{
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->ptop_exit,
-					player->pos_x * 64, (player->pos_y) * 64);
-			}
-			else if (player->last_move == DOWN)
-			{
-				mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->pdown_exit,
-					player->pos_x * 64, (player->pos_y) * 64);
-			}	
+			display_right_sprite_end(data, player);
 		}
 		else
 		{
-			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->spaceship_close,
-				player->pos_x * 64, (player->pos_y) * 64);	
-		}	
+			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+				data->spaceship->sprite[EXIT_CLOSE], player->pos_x * 64,
+				(player->pos_y) * 64);
+		}
+	}
+}
+
+void	display_right_sprite_end(t_data *data, t_player *player)
+{
+	if (player->last_move == LEFT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PL_L_EXIT], player->pos_x * 64,
+			(player->pos_y) * 64);
+	}
+	else if (player->last_move == RIGHT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PL_R_EXIT], player->pos_x * 64,
+			(player->pos_y) * 64);
+	}
+	else if (player->last_move == UP)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PL_T_EXIT], player->pos_x * 64,
+			(player->pos_y) * 64);
+	}
+	else if (player->last_move == DOWN)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PL_D_EXIT], player->pos_x * 64,
+			(player->pos_y) * 64);
 	}
 }
 

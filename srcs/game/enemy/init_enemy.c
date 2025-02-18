@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 03:14:04 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:38:01 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,9 @@
 
 void	init_struct_enemy(t_enemy *enemy)
 {
-	enemy->img_top = NULL;
-	enemy->img_down = NULL;
-	enemy->img_left = NULL;
-	enemy->img_right = NULL;
-	enemy->img_t_exit = NULL;
-	enemy->img_d_exit = NULL;
-	enemy->img_l_exit = NULL;
-	enemy->img_r_exit = NULL;
-	enemy->img_t_opexit = NULL;
-	enemy->img_d_opexit = NULL;
-	enemy->img_l_opexit = NULL;
-	enemy->img_r_opexit = NULL;
-	enemy->laser_line = NULL;
-	enemy->laser_row = NULL;
-	enemy->laser_start_r = NULL;
-	enemy->laser_start_l = NULL;
-	enemy->use_laser_l = NULL;
-	enemy->use_laser_r = NULL;
-	enemy->laser_start_d = NULL;
-	enemy->laser_start_t = NULL;
-	enemy->use_laser_d = NULL;
-	enemy->use_laser_t = NULL;
-	enemy->destroy_wall = NULL;
-	enemy->attack_t = NULL;
-	enemy->attack_l = NULL;
-	enemy->attack_r = NULL;
-	enemy->attack_d = NULL;
+	int	i;
+
+	i = 0;
 	enemy->pos_x = 0;
 	enemy->pos_y = 0;
 	enemy->is_start_pos = false;
@@ -57,6 +33,11 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->s_pos_x = 0;
 	enemy->s_pos_y = 0;
 	enemy->life = 2;
+	while (i < 27)
+	{
+		enemy->sprite[i] = NULL;
+		++i;
+	}
 }
 
 void	init_enemy_img(t_data *data)
@@ -77,7 +58,6 @@ void	init_enemy_img(t_data *data)
 	data->enemy->img[13] = "img_file/enemy_d_attack.xpm";
 	data->enemy->img[14] = "img_file/enemy_t_attack.xpm";
 	data->enemy->img[15] = "img_file/enemy_r_attack.xpm";
-	data->enemy->img[26] = "img_file/destroy_wall.xpm";
 	init_enemy_img_laser(data);
 }
 
@@ -93,4 +73,5 @@ void	init_enemy_img_laser(t_data *data)
 	data->enemy->img[23] = "img_file/laser_start_t.xpm";
 	data->enemy->img[24] = "img_file/use_laser_d.xpm";
 	data->enemy->img[25] = "img_file/use_laser_t.xpm";
+	data->enemy->img[26] = "img_file/destroy_wall.xpm";
 }

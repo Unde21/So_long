@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 15:59:04 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 04:45:22 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,145 +14,77 @@
 
 void	ft_destroy_img(t_data *data, t_img *img)
 {
-	ft_destroy_img_background(data, img);
-	ft_destroy_img_exit(data, img);
-	ft_destroy_img_score(data, img);
-	ft_destroy_img_score_snd(data, img);
-	ft_destroy_img_enemy(data, data->enemy);
-	if (img->player != NULL)
+	int	i;
+
+	i = 0;
+	while (i < 9)
 	{
-		mlx_destroy_image(data->mlx_ptr, img->player);
-		img->player = NULL;
+		if (img->sprite[i] != NULL)
+		{
+			mlx_destroy_image(data->mlx_ptr, img->sprite[i]);
+			img->sprite[i] = NULL;
+		}
+		++i;
 	}
-	if (img->player_t != NULL)
+	i = 0;
+	while (i < 10)
 	{
-		mlx_destroy_image(data->mlx_ptr, img->player_t);
-		img->player_t = NULL;
+		if (data->img->move_spr[i] != NULL)
+		{
+			mlx_destroy_image(data->mlx_ptr, data->img->move_spr[i]);
+			data->img->move_spr[i] = NULL;
+		}
+		++i;
 	}
-	if (img->player_l != NULL)
+	destroy_enemy_sprite(data, data->enemy);
+	destroy_player_sprite(data, data->player);
+	destroy_spaceship_sprite(data, data->spaceship);
+}
+
+void	destroy_enemy_sprite(t_data *data, t_enemy *enemy)
+{
+	int	i;
+
+	i = 0;
+	while (i < 27)
 	{
-		mlx_destroy_image(data->mlx_ptr, img->player_l);
-		img->player_l = NULL;
-	}
-	if (img->player_d != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->player_d);
-		img->player_d = NULL;
+		if (enemy->sprite[i] != NULL)
+		{
+			mlx_destroy_image(data->mlx_ptr, enemy->sprite[i]);
+			enemy->sprite[i] = NULL;
+		}
+		++i;
 	}
 }
 
-void	ft_destroy_img_exit(t_data *data, t_img *img)
+void	destroy_player_sprite(t_data *data, t_player *player)
 {
-	if (img->ptop_exit != NULL)
+	int	i;
+
+	i = 0;
+	while (i < 12)
 	{
-		mlx_destroy_image(data->mlx_ptr, img->ptop_exit);
-		img->ptop_exit = NULL;
-	}
-	if (img->pleft_exit != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->pleft_exit);
-		img->pleft_exit = NULL;
-	}
-	if (img->pdown_exit != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->pdown_exit);
-		img->pdown_exit = NULL;
-	}
-	if (img->plright_exit != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->plright_exit);
-		img->plright_exit = NULL;
-	}
-	if (img->landing_spaceship != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->landing_spaceship);
-		img->landing_spaceship = NULL;
+		if (player->sprite[i] != NULL)
+		{
+			mlx_destroy_image(data->mlx_ptr, player->sprite[i]);
+			player->sprite[i] = NULL;
+		}
+		++i;
 	}
 }
 
-void	ft_destroy_img_background(t_data *data, t_img *img)
+void	destroy_spaceship_sprite(t_data *data, t_spaceship *spaceship)
 {
-	if (img->floor != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->floor);
-		img->floor = NULL;
-	}
-	if (img->wall != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->wall);
-		img->wall = NULL;
-	}
-	if (img->object != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->object);
-		img->object = NULL;
-	}
-	if (img->spaceship_close != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->spaceship_close);
-		img->spaceship_close = NULL;
-	}
-	if (img->spaceship_open != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->spaceship_open);
-		img->spaceship_open = NULL;
-	}
-}
+	int	i;
 
-void	ft_destroy_img_score(t_data *data, t_img *img)
-{
-	if (img->nb_zero != NULL)
+	i = 0;
+	while (i < 5)
 	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_zero);
-		img->nb_zero = NULL;
-	}
-	if (img->nb_one != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_one);
-		img->nb_one = NULL;
-	}
-	if (img->nb_two != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_two);
-		img->nb_two = NULL;
-	}
-	if (img->nb_three != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_three);
-		img->nb_three = NULL;
-	}
-	if (img->nb_four != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_four);
-		img->nb_four = NULL;
-	}
-}
-
-void	ft_destroy_img_score_snd(t_data *data, t_img *img)
-{
-	if (img->nb_five != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_five);
-		img->nb_five = NULL;
-	}
-	if (img->nb_six != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_six);
-		img->nb_six = NULL;
-	}
-	if (img->nb_seven != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_seven);
-		img->nb_seven = NULL;
-	}
-	if (img->nb_eight != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_eight);
-		img->nb_eight = NULL;
-	}
-	if (img->nb_nine != NULL)
-	{
-		mlx_destroy_image(data->mlx_ptr, img->nb_nine);
-		img->nb_nine = NULL;
+		if (spaceship->sprite[i] != NULL)
+		{
+			mlx_destroy_image(data->mlx_ptr, spaceship->sprite[i]);
+			spaceship->sprite[i] = NULL;
+		}
+		++i;
 	}
 }

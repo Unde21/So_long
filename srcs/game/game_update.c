@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 02:45:03 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 03:48:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	game_update(t_data *data)
 	else if (data->enemy->life == 0 && data->enemy->is_alive == true)
 	{
 		// TODO sprite enemy dead
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->floor,
-			(data->enemy->pos_x) * 64, (data->enemy->pos_y) * 64);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->sprite[FLOOR],
+			data->enemy->pos_x * 64, data->enemy->pos_y * 64);
 		data->enemy->is_alive = false;
 	}
 	else if (data->enemy->is_start_pos == true && data->landing == false)
@@ -54,11 +55,11 @@ int	death_status(t_data *data)
 	{
 		++data->spaceship->frame;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->trail_fire, data->player->pos_x * 64, data->player->pos_y
-			* 64 - data->spaceship->frame / 100);
+			data->spaceship->sprite[TRAIL_FIRE], data->player->pos_x * 64,
+			data->player->pos_y * 64 - data->spaceship->frame / 100);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->exit_fire, data->player->pos_x * 64, data->player->pos_y
-			* 64 - data->spaceship->frame / 50);
+			data->spaceship->sprite[EXIT_FIRE], data->player->pos_x * 64,
+			data->player->pos_y * 64 - data->spaceship->frame / 50);
 		if (data->spaceship->frame >= END_FRAME)
 			close_window(data);
 		return (1);
@@ -74,21 +75,21 @@ int	enemy_run_with_spaceship(t_data *data)
 		if (data->player->dir_left == false)
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->player->pl_dead_r, data->enemy->pos_x * 64,
+				data->player->sprite[P_DEATH_R], data->enemy->pos_x * 64,
 				data->enemy->pos_y * 64);
 		}
 		else
 		{
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-				data->player->pl_dead_l, data->enemy->pos_x * 64,
+				data->player->sprite[P_DEATH_L], data->enemy->pos_x * 64,
 				data->enemy->pos_y * 64);
 		}
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->trail_fire, data->enemy->pos_x * 64, data->enemy->pos_y
-			* 64 - data->spaceship->frame / 100);
+			data->spaceship->sprite[TRAIL_FIRE], data->enemy->pos_x * 64,
+			data->enemy->pos_y * 64 - data->spaceship->frame / 100);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->exit_fire, data->enemy->pos_x * 64, data->enemy->pos_y
-			* 64 - data->spaceship->frame / 50);
+			data->spaceship->sprite[EXIT_FIRE], data->enemy->pos_x * 64,
+			data->enemy->pos_y * 64 - data->spaceship->frame / 50);
 		return (1);
 	}
 	return (0);
