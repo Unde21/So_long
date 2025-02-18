@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:41:39 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 06:14:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@
 # define P_DEATH_L 1
 # define PL_DEATH_EXIT 2
 # define PR_DEATH_EXIT 3
+# define PLAYER_LASER_R 12
+# define PLAYER_LASER_L 13
 
 // Exit Sprite
 # define EXIT_CLOSE 3
@@ -112,6 +114,7 @@
 # define ENEM_EXIT_L 4
 # define ENEM_EXIT_D 5
 # define ENEM_EXIT_T 6
+# define ENEMY_DEATH 27
 
 
 typedef enum e_exit
@@ -137,8 +140,8 @@ typedef struct s_player
 	int		pos_x;
 	int		pos_y;
 	bool	is_start_pos;
-	char	*img[12];
-	void	*sprite[12];
+	char	*img[14];
+	void	*sprite[14];
 	bool	dir_left;
 	bool	death;
 	int		frames;
@@ -185,8 +188,8 @@ typedef struct s_enemy
 	bool	is_fighting_laser;
 	bool	is_alive;
 	int		moved;
-	char	*img[27];
-	void	*sprite[27];
+	char	*img[28];
+	void	*sprite[28];
 	int		height;
 	int		width;
 	int		life;
@@ -288,6 +291,7 @@ void	landing_spaceship_display(t_data *data);
 int		enemy_run_with_spaceship(t_data *data);
 void	open_spaceship(t_data *data, t_spaceship *spaceship);
 void	display_right_sprite_end(t_data *data, t_player *player);
+void	death_enemy(t_data *data, t_enemy *enemy);
 
 /* ************************************************************************** */
 /*								player move						  	  		  */

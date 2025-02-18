@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:45:22 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 06:14:51 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	destroy_enemy_sprite(t_data *data, t_enemy *enemy)
 	int	i;
 
 	i = 0;
-	while (i < 27)
+	while (i < 28)
 	{
 		if (enemy->sprite[i] != NULL)
 		{
@@ -62,7 +62,7 @@ void	destroy_player_sprite(t_data *data, t_player *player)
 	int	i;
 
 	i = 0;
-	while (i < 12)
+	while (i < 14)
 	{
 		if (player->sprite[i] != NULL)
 		{

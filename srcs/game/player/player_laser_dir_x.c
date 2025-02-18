@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:21:23 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:55:33 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 06:14:40 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	handle_laser_left(t_data *data, t_player *player)
 	if (player->laser_x == player->pos_x)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->enemy->sprite[USE_LASER_L], player->laser_x * 64,
+			player->sprite[PLAYER_LASER_L], player->laser_x * 64,
 			player->laser_y * 64);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->sprite[LASER_START_L], (player->laser_x - 1) * 64,
@@ -100,7 +100,7 @@ void	handle_laser_right(t_data *data, t_player *player)
 	if (player->laser_x == player->pos_x)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->enemy->sprite[USE_LASER_D], player->laser_x * 64,
+			player->sprite[PLAYER_LASER_R], player->laser_x * 64,
 			player->laser_y * 64);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->sprite[LASER_START_R], (player->laser_x + 1) * 64,

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 01:14:35 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:38:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 06:12:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ int	load_img_player_exit(t_data *data, t_player *player)
 	player->sprite[PL_L_EXIT] = mlx_xpm_file_to_image(data->mlx_ptr,
 			player->img[PL_L_EXIT], &data->img->width, &data->img->height);
 	if (!player->sprite[PL_L_EXIT])
+		return (ERR_IMG);
+	player->sprite[PLAYER_LASER_L] = mlx_xpm_file_to_image(data->mlx_ptr,
+			player->img[PLAYER_LASER_L], &data->img->width, &data->img->height);
+	if (!player->sprite[PLAYER_LASER_L])
+		return (ERR_IMG);
+	player->sprite[PLAYER_LASER_R] = mlx_xpm_file_to_image(data->mlx_ptr,
+			player->img[PLAYER_LASER_R], &data->img->width, &data->img->height);
+	if (!player->sprite[PLAYER_LASER_R])
 		return (ERR_IMG);
 	return (0);
 }

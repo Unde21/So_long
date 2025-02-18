@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 01:09:58 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:38:46 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 05:53:59 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,10 @@ int	load_img_attack_enemy(t_data *data, t_enemy *enemy)
 	enemy->sprite[SHIELD] = mlx_xpm_file_to_image(data->mlx_ptr,
 			enemy->img[SHIELD], &enemy->width, &enemy->height);
 	if (!enemy->sprite[SHIELD])
+		return (ERR_IMG);
+	enemy->sprite[ENEMY_DEATH] = mlx_xpm_file_to_image(data->mlx_ptr,
+			enemy->img[ENEMY_DEATH], &enemy->width, &enemy->height);
+	if (!enemy->sprite[ENEMY_DEATH])
 		return (ERR_IMG);
 	return (0);
 }

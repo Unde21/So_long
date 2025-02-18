@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 02:43:53 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/18 06:15:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	init_img_player(t_data *data)
 	data->player->img[9] = "img_file/player_top.xpm";
 	data->player->img[10] = "img_file/player_top_exit.xpm";
 	data->player->img[11] = "img_file/player.xpm";
+	data->player->img[12] = "img_file/player_laser_r.xpm";
+	data->player->img[13] = "img_file/player_laser_l.xpm";
 }
 
 void	init_img_spaceship(t_data *data)
