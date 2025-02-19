@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 02:35:20 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 03:11:02 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 00:32:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 void	handle_old_position(t_data *data, t_player *player, t_img *img)
 {
-	if (data->map[player->pos_y][player->pos_x] == 'S')
+	if (data->map[player->pos_y][player->pos_x] == PL_AND_EXIT)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->spaceship->sprite[EXIT_CLOSE], player->pos_x * 64,
 			player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'E';
 	}
-	else
+	else if (data->map[player->pos_y][player->pos_x] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			img->sprite[FLOOR], player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = '0';
 	}
+	else
+		check_destroy_old_position(data, player);
 }
 
 void	handle_new_position_r(t_data *data, t_player *player)
@@ -35,9 +37,9 @@ void	handle_new_position_r(t_data *data, t_player *player)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PL_R_EXIT], player->pos_x * 64, player->pos_y * 64);
-		data->map[player->pos_y][player->pos_x] = 'S';
+		data->map[player->pos_y][player->pos_x] = PL_AND_EXIT;
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S'
+	else if (data->map[player->pos_y][player->pos_x] == PL_AND_EXIT
 		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -45,12 +47,15 @@ void	handle_new_position_r(t_data *data, t_player *player)
 		data->map[player->pos_y][player->pos_x] = 'E';
 		data->end = true;
 	}
-	else if (data->map[player->pos_y][player->pos_x] != 'E')
+	else if (data->map[player->pos_y][player->pos_x] == '0'
+		|| data->map[player->pos_y][player->pos_x] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PLAYER_R], player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'P';
 	}
+	else
+		check_destroy_floor_r(data, player);
 }
 
 void	handle_new_position_l(t_data *data, t_player *player)
@@ -59,9 +64,9 @@ void	handle_new_position_l(t_data *data, t_player *player)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PL_L_EXIT], player->pos_x * 64, player->pos_y * 64);
-		data->map[player->pos_y][player->pos_x] = 'S';
+		data->map[player->pos_y][player->pos_x] = PL_AND_EXIT;
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S'
+	else if (data->map[player->pos_y][player->pos_x] == PL_AND_EXIT
 		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -69,12 +74,15 @@ void	handle_new_position_l(t_data *data, t_player *player)
 		data->map[player->pos_y][player->pos_x] = 'E';
 		data->end = true;
 	}
-	else if (data->map[player->pos_y][player->pos_x] != 'E')
+	else if (data->map[player->pos_y][player->pos_x] == '0'
+		|| data->map[player->pos_y][player->pos_x] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PLAYER_L], player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'P';
 	}
+	else
+		check_destroy_floor_l(data, player);
 }
 
 void	handle_new_position_d(t_data *data, t_player *player)
@@ -83,9 +91,9 @@ void	handle_new_position_d(t_data *data, t_player *player)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PL_D_EXIT], player->pos_x * 64, player->pos_y * 64);
-		data->map[player->pos_y][player->pos_x] = 'S';
+		data->map[player->pos_y][player->pos_x] = PL_AND_EXIT;
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S'
+	else if (data->map[player->pos_y][player->pos_x] == PL_AND_EXIT
 		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -93,12 +101,16 @@ void	handle_new_position_d(t_data *data, t_player *player)
 		data->map[player->pos_y][player->pos_x] = 'E';
 		data->end = true;
 	}
-	else if (data->map[player->pos_y][player->pos_x] != 'E')
+	else if (data->map[player->pos_y][player->pos_x] == '0'
+		|| data->map[player->pos_y][player->pos_x] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PLAYER_D], player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'P';
 	}
+	else
+		check_destroy_floor_d(data, player);
+
 }
 
 void	handle_new_position_t(t_data *data, t_player *player)
@@ -107,9 +119,9 @@ void	handle_new_position_t(t_data *data, t_player *player)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PL_T_EXIT], player->pos_x * 64, player->pos_y * 64);
-		data->map[player->pos_y][player->pos_x] = 'S';
+		data->map[player->pos_y][player->pos_x] = PL_AND_EXIT;
 	}
-	else if (data->map[player->pos_y][player->pos_x] == 'S'
+	else if (data->map[player->pos_y][player->pos_x] == PL_AND_EXIT
 		&& data->nb_obj == 0)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -117,10 +129,127 @@ void	handle_new_position_t(t_data *data, t_player *player)
 		data->map[player->pos_y][player->pos_x] = 'E';
 		data->end = true;
 	}
-	else if (data->map[player->pos_y][player->pos_x] != 'E')
+	else if (data->map[player->pos_y][player->pos_x] == '0'
+		|| data->map[player->pos_y][player->pos_x] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			player->sprite[PLAYER_T], player->pos_x * 64, player->pos_y * 64);
 		data->map[player->pos_y][player->pos_x] = 'P';
+	}
+	else
+		check_destroy_floor_t(data, player);
+}
+
+void	check_destroy_floor_t(t_data *data, t_player *player)
+{
+	if (data->map[player->pos_y][player->pos_x] == DEST_EXIT && data->nb_obj != 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_T], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_EXIT;
+	}
+	else if (data->map[player->pos_y][player->pos_x] == PL_DEST_EXIT
+		&& data->nb_obj == 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_T], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_EXIT;
+		data->end = true;
+	}
+	else if (data->map[player->pos_y][player->pos_x] != DEST_EXIT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PLAYER_T_DESTROY], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_FLOOR;
+	}
+}
+
+void	check_destroy_floor_d(t_data *data, t_player *player)
+{
+	if (data->map[player->pos_y][player->pos_x] == DEST_EXIT && data->nb_obj != 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_D], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_EXIT;
+	}
+	else if (data->map[player->pos_y][player->pos_x] == PL_DEST_EXIT
+		&& data->nb_obj == 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_D], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_EXIT;
+		data->end = true;
+	}
+	else if (data->map[player->pos_y][player->pos_x] != DEST_EXIT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PLAYER_D_DESTROY], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_FLOOR;
+	}
+}
+
+void	check_destroy_floor_r(t_data *data, t_player *player)
+{
+	if (data->map[player->pos_y][player->pos_x] == DEST_EXIT && data->nb_obj != 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_R], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_EXIT;
+	}
+	else if (data->map[player->pos_y][player->pos_x] == PL_DEST_EXIT
+		&& data->nb_obj == 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_R], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_EXIT;
+		data->end = true;
+	}
+	else if (data->map[player->pos_y][player->pos_x] != DEST_EXIT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PLAYER_R_DESTROY], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_FLOOR;
+	}
+}
+
+void	check_destroy_floor_l(t_data *data, t_player *player)
+{
+	if (data->map[player->pos_y][player->pos_x] == DEST_EXIT && data->nb_obj != 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_L], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_EXIT;
+	}
+	else if (data->map[player->pos_y][player->pos_x] == PL_DEST_EXIT
+		&& data->nb_obj == 0)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[EXIT_DESTROY_L], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_EXIT;
+		data->end = true;
+	}
+	else if (data->map[player->pos_y][player->pos_x] != DEST_EXIT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			player->sprite[PLAYER_L_DESTROY], player->pos_x * 64, player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = PL_DEST_FLOOR;
+	}
+}
+
+void	check_destroy_old_position(t_data *data, t_player *player)
+{
+	if (data->map[player->pos_y][player->pos_x] == PL_DEST_EXIT)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->spaceship->sprite[EXIT_DESTROY], player->pos_x * 64,
+			player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_EXIT;
+	}
+	else
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img->sprite[DESTROY_FLOOR], player->pos_x * 64,
+			player->pos_y * 64);
+		data->map[player->pos_y][player->pos_x] = DEST_FLOOR;	
 	}
 }

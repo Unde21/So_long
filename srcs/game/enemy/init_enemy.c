@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:54:37 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 00:35:25 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	init_enemy_img_laser(t_data *data)
 	data->enemy->img[25] = "img_file/use_laser_t.xpm";
 	data->enemy->img[26] = "img_file/destroy_wall.xpm";
 	data->enemy->img[27] = "img_file/enemy_dead.xpm";
+	data->enemy->img[28] = "img_file/destroy_enemy.xpm";
 }

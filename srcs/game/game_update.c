@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 19:35:44 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 21:55:38 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	game_update(t_data *data)
 		death_enemy(data, data->enemy);
 	else if (data->player->final_laser == true)
 	{
-		if (data->player->laser_x < 1 || data->player->laser_y < 1)
-		{
-			remove_final_laser(data, data->player);
-		}
+		// if (data->player->laser_x < 1 || data->player->laser_y < 1)
+		// {
+		// 	remove_final_laser(data, data->player);
+		// }
 		disp_final_laser(data, data->player);
 	}
 	else if (data->enemy->is_start_pos == true && data->landing == false)
@@ -99,7 +99,7 @@ int	enemy_run_with_spaceship(t_data *data)
 
 void	death_enemy(t_data *data, t_enemy *enemy)
 {
-	if ((data->map[enemy->pos_y][enemy->pos_x] != 'C'))
+	if (data->map[enemy->pos_y][enemy->pos_x] == 'C')
 		--data->nb_obj;
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		enemy->sprite[ENEMY_DEATH],

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 20:21:52 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 00:34:57 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@
 # define DEAD_OBJECT 'K'
 # define DEAD_EXIT 'V'
 # define PL_AND_EXIT 'S'
+# define DEST_FLOOR '2'
+# define DEST_EXIT '3'
+# define PL_DEST_EXIT '4'
+# define PL_DEST_FLOOR '5'
 
 
 // Player Sprite
@@ -73,6 +77,14 @@
 # define FINAL_STARTT_L 33
 # define FINAL_STARTD_R 30
 # define FINAL_STARTD_L 31
+# define PLAYER_R_DESTROY 34
+# define PLAYER_L_DESTROY 35
+# define PLAYER_D_DESTROY 36
+# define PLAYER_T_DESTROY 37
+# define EXIT_DESTROY_T 38
+# define EXIT_DESTROY_D 39
+# define EXIT_DESTROY_L 40
+# define EXIT_DESTROY_R 41
 
 // Exit Sprite
 # define EXIT_CLOSE 3
@@ -80,11 +92,14 @@
 # define EXIT_FIRE 0
 # define TRAIL_FIRE 1
 # define LANDING_EXIT 2
+# define EXIT_OP_DESTR 5
+# define EXIT_DESTROY 6
 
 // Map Sprite
 # define FLOOR 0
 # define WALL 1
 # define OBJECT 2
+# define DESTROY_FLOOR 9
 
 // Score Sprite
 # define NB_ZERO 0
@@ -136,6 +151,7 @@
 # define ENEM_EXIT_D 5
 # define ENEM_EXIT_T 6
 # define ENEMY_DEATH 27
+# define DESTROY_ENEMY 28
 
 
 typedef enum e_exit
@@ -161,8 +177,8 @@ typedef struct s_player
 	int		pos_x;
 	int		pos_y;
 	bool	is_start_pos;
-	char	*img[34];
-	void	*sprite[34];
+	char	*img[42];
+	void	*sprite[42];
 	bool	dir_left;
 	bool	death;
 	int		frames;
@@ -187,16 +203,16 @@ typedef struct s_spaceship
 	bool	spaceship_close;
 	bool	spaceship_is_here;
 	int		frame;
-	void	*img[5];
-	void	*sprite[5];
+	void	*img[7];
+	void	*sprite[7];
 }	t_spaceship;
 
 typedef struct s_img
 {
 	void	*move[10];
 	void	*move_spr[10];
-	void	*img[9];
-	void	*sprite[9];
+	void	*img[10];
+	void	*sprite[10];
 	int		height;
 	int		width;
 }	t_img;
@@ -210,8 +226,8 @@ typedef struct s_enemy
 	bool	is_fighting_laser;
 	bool	is_alive;
 	int		moved;
-	char	*img[28];
-	void	*sprite[28];
+	char	*img[29];
+	void	*sprite[29];
 	int		height;
 	int		width;
 	int		life;
@@ -286,10 +302,10 @@ int		display_map(t_data *data);
 int		load_img_map(t_data *data, t_img *img);
 int		load_img_player(t_data *data, t_player *player);
 int		load_img_exit(t_data *data, t_spaceship *spaceship);
-int		load_img_animation(t_data *data, t_img *img);
-int		load_img_player_exit(t_data *data, t_player *player);
-int		load_img_player_death(t_data *data, t_player *player);
-int		load_img_player_final(t_data *data, t_player *player);
+// int		load_img_animation(t_data *data, t_img *img);
+// int		load_img_player_exit(t_data *data, t_player *player);
+// int		load_img_player_death(t_data *data, t_player *player);
+// int		load_img_player_final(t_data *data, t_player *player);
 int		game_loop(t_data *data);
 void	put_image_to_win(t_data *data, size_t x, size_t y);
 int		init_mlx(t_data *data);
@@ -332,7 +348,7 @@ void	handle_new_position_d(t_data *data, t_player *player);
 void	handle_new_position_t(t_data *data, t_player *player);
 void	display_move_player(t_data *data);
 int		display_count_move(t_data *data);
-int		load_img_move(t_data *data, t_img *img);
+// int		load_img_move(t_data *data, t_img *img);
 void	disp_final_laser(t_data *data, t_player *player);
 void	remove_final_laser(t_data *data, t_player *player);
 void	remove_final_laser_row(t_data *data, t_player *player);
@@ -347,7 +363,7 @@ void	change_display_floor(t_data *data, int x, int y);
 void	final_laser_x(t_data *data, t_player *player);
 void	final_laser_y(t_data *data, t_player *player);
 void	reset_laser_pos(t_data *data, t_player *player);
-int		load_img_move_snd(t_data *data, t_img *img);
+// int		load_img_move_snd(t_data *data, t_img *img);
 void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
@@ -366,6 +382,11 @@ void	handle_laser_left(t_data *data, t_player *player);
 void	handle_laser_right(t_data *data, t_player *player);
 void	handle_laser_down(t_data *data, t_player *player);
 void	handle_laser_top(t_data *data, t_player *player);
+void	check_destroy_old_position(t_data *data, t_player *player);
+void	check_destroy_floor_t(t_data *data, t_player *player);
+void	check_destroy_floor_l(t_data *data, t_player *player);
+void	check_destroy_floor_r(t_data *data, t_player *player);
+void	check_destroy_floor_d(t_data *data, t_player *player);
 int		is_player_dead(t_data *data, int next_x, int next_y);
 void	remove_display_laser_p(t_data *data, t_player *player);
 int		remove_player_laser_right(t_data *data, t_player *player);
@@ -386,11 +407,11 @@ int		is_laser_touch(t_data *data, int next_x, int next_y);
 
 void	init_struct_enemy(t_enemy *enemy);
 int		load_img_enemy(t_data *data, t_enemy *enemy);
-int		load_img_enemy_exit(t_data *data, t_enemy *enemy);
-int	load_img_start_laser_enemy(t_data *data, t_enemy *enemy);
-int	load_img_enemy_laser(t_data *data, t_enemy *enemy);
-int	load_img_enemy_exit_open(t_data *data, t_enemy *enemy);
-int	load_img_attack_enemy(t_data *data, t_enemy *enemy);
+// int		load_img_enemy_exit(t_data *data, t_enemy *enemy);
+// int	load_img_start_laser_enemy(t_data *data, t_enemy *enemy);
+// int	load_img_enemy_laser(t_data *data, t_enemy *enemy);
+// int	load_img_enemy_exit_open(t_data *data, t_enemy *enemy);
+// int	load_img_attack_enemy(t_data *data, t_enemy *enemy);
 void	init_enemy_img(t_data *data);
 void	init_enemy_img_laser(t_data *data);
 void	display_enemy(t_data *data);

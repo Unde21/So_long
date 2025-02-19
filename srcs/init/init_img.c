@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 06:22:47 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 23:22:57 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	init_img(t_data *data)
 	data->img->img[6] = "img_file/explosion_t.xpm";
 	data->img->img[7] = "img_file/laser_fight_x.xpm";
 	data->img->img[8] = "img_file/laser_fight_y.xpm";
+	data->img->img[9] = "img_file/floor_destroyed.xpm";
 	init_img_player(data);
 	init_img_spaceship(data);
+	init_move_count(data);
 }
 
 void	init_move_count(t_data *data)
@@ -72,8 +74,8 @@ void	init_img_player(t_data *data)
 
 	data->player->img[23] = "img_file/final_start_t.xpm";
 	data->player->img[24] = "img_file/final_start_d.xpm";
-	data->player->img[25] = "img_file/final_startr_t.xpm";
-	data->player->img[26] = "img_file/final_startr_d.xpm";
+	data->player->img[25] = "img_file/final_startr_d.xpm";
+	data->player->img[26] = "img_file/final_startr_t.xpm";
 
 
 
@@ -86,6 +88,20 @@ void	init_img_player(t_data *data)
 	data->player->img[31] = "img_file/final_startd_l.xpm";
 	data->player->img[32] = "img_file/final_startt_r.xpm";
 	data->player->img[33] = "img_file/final_startt_l.xpm";
+
+
+
+
+
+	data->player->img[34] = "img_file/player_r_destroy.xpm";
+	data->player->img[35] = "img_file/player_l_destroy.xpm";
+	data->player->img[36] = "img_file/player_d_destroy.xpm";
+	data->player->img[37] = "img_file/player_t_destroy.xpm";
+	data->player->img[38] = "img_file/pl_exit_t_destroy.xpm";
+	data->player->img[39] = "img_file/pl_exit_d_destroy.xpm";
+	data->player->img[40] = "img_file/pl_exit_l_destroy.xpm";
+	data->player->img[41] = "img_file/pl_exit_r_destroy.xpm";
+
 }
 
 void	init_img_spaceship(t_data *data)
@@ -95,4 +111,6 @@ void	init_img_spaceship(t_data *data)
 	data->spaceship->img[2] = "img_file/landing_spaceship.xpm";
 	data->spaceship->img[3] = "img_file/exit_close.xpm";
 	data->spaceship->img[4] = "img_file/exit_open.xpm";
+	data->spaceship->img[5] = "img_file/exit_open_destroy.xpm";
+	data->spaceship->img[6] = "img_file/exit_close_destroy.xpm";
 }

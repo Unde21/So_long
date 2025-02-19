@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 05:59:07 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:39:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 22:51:05 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,54 +76,54 @@ void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move)
 			img->move_spr[NB_NINE], i * 64, data->nb_line * 64);
 }
 
-int	load_img_move(t_data *data, t_img *img)
-{
-	img->move_spr[NB_ZERO] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_ZERO], &img->width, &img->height);
-	if (!img->move_spr[NB_ZERO])
-		return (ERR_IMG);
-	img->move_spr[NB_ONE] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_ONE], &img->width, &img->height);
-	if (!img->move_spr[NB_ONE])
-		return (ERR_IMG);
-	img->move_spr[NB_TWO] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_TWO], &img->width, &img->height);
-	if (!img->move_spr[NB_TWO])
-		return (ERR_IMG);
-	img->move_spr[NB_THREE] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_THREE], &img->width, &img->height);
-	if (!img->move_spr[NB_THREE])
-		return (ERR_IMG);
-	img->move_spr[NB_FOUR] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_FOUR], &img->width, &img->height);
-	if (!img->move_spr[NB_FOUR])
-		return (ERR_IMG);
-	if (load_img_move_snd(data, img) != 0)
-		return (ERR_IMG);
-	return (0);
-}
+// int	load_img_move(t_data *data, t_img *img)
+// {
+// 	img->move_spr[NB_ZERO] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_ZERO], &img->width, &img->height);
+// 	if (!img->move_spr[NB_ZERO])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_ONE] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_ONE], &img->width, &img->height);
+// 	if (!img->move_spr[NB_ONE])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_TWO] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_TWO], &img->width, &img->height);
+// 	if (!img->move_spr[NB_TWO])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_THREE] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_THREE], &img->width, &img->height);
+// 	if (!img->move_spr[NB_THREE])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_FOUR] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_FOUR], &img->width, &img->height);
+// 	if (!img->move_spr[NB_FOUR])
+// 		return (ERR_IMG);
+// 	if (load_img_move_snd(data, img) != 0)
+// 		return (ERR_IMG);
+// 	return (0);
+// }
 
-int	load_img_move_snd(t_data *data, t_img *img)
-{
-	img->move_spr[NB_FIVE] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_FIVE], &img->width, &img->height);
-	if (!img->move_spr[NB_FIVE])
-		return (ERR_IMG);
-	img->move_spr[NB_SIX] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_SIX], &img->width, &img->height);
-	if (!img->move_spr[NB_SIX])
-		return (ERR_IMG);
-	img->move_spr[NB_SEVEN] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_SEVEN], &img->width, &img->height);
-	if (!img->move_spr[NB_SEVEN])
-		return (ERR_IMG);
-	img->move_spr[NB_EIGHT] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_EIGHT], &img->width, &img->height);
-	if (!img->move_spr[NB_EIGHT])
-		return (ERR_IMG);
-	img->move_spr[NB_NINE] = mlx_xpm_file_to_image(data->mlx_ptr,
-			img->move[NB_NINE], &img->width, &img->height);
-	if (!img->move_spr[NB_NINE])
-		return (ERR_IMG);
-	return (0);
-}
+// int	load_img_move_snd(t_data *data, t_img *img)
+// {
+// 	img->move_spr[NB_FIVE] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_FIVE], &img->width, &img->height);
+// 	if (!img->move_spr[NB_FIVE])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_SIX] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_SIX], &img->width, &img->height);
+// 	if (!img->move_spr[NB_SIX])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_SEVEN] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_SEVEN], &img->width, &img->height);
+// 	if (!img->move_spr[NB_SEVEN])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_EIGHT] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_EIGHT], &img->width, &img->height);
+// 	if (!img->move_spr[NB_EIGHT])
+// 		return (ERR_IMG);
+// 	img->move_spr[NB_NINE] = mlx_xpm_file_to_image(data->mlx_ptr,
+// 			img->move[NB_NINE], &img->width, &img->height);
+// 	if (!img->move_spr[NB_NINE])
+// 		return (ERR_IMG);
+// 	return (0);
+// }

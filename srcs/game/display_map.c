@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:19:50 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 02:11:09 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 23:16:35 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	display_map(t_data *data)
 		y++;
 	}
 	display_enemy(data);
-	init_move_count(data);
-	if (load_img_move(data, data->img) != 0)
-	{
-		ft_destroy_mlx(data);
-		return (-1);
-	}
+	// init_move_count(data);
+	// if (load_img_move(data, data->img) != 0)
+	// {
+	// 	ft_destroy_mlx(data);
+	// 	return (-1);
+	// }
 	put_floor_score_board(data);
 	return (0);
 }

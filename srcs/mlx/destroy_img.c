@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 06:15:09 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 00:35:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_destroy_img(t_data *data, t_img *img)
 	int	i;
 
 	i = 0;
-	while (i < 9)
+	while (i < 10)
 	{
 		if (img->sprite[i] != NULL)
 		{
@@ -46,6 +46,8 @@ void	destroy_enemy_sprite(t_data *data, t_enemy *enemy)
 	int	i;
 
 	i = 0;
+	if (data->enemy->is_start_pos == false)
+		return ;
 	while (i < 28)
 	{
 		if (enemy->sprite[i] != NULL)
@@ -62,7 +64,7 @@ void	destroy_player_sprite(t_data *data, t_player *player)
 	int	i;
 
 	i = 0;
-	while (i < 34)
+	while (i < 41)
 	{
 		if (player->sprite[i] != NULL)
 		{
@@ -78,7 +80,7 @@ void	destroy_spaceship_sprite(t_data *data, t_spaceship *spaceship)
 	int	i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 7)
 	{
 		if (spaceship->sprite[i] != NULL)
 		{
