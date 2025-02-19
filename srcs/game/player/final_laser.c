@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 03:28:22 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 06:11:07 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 20:23:42 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	final_laser_y(t_data *data, t_player *player)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 					player->sprite[FINAL_STARTT_R], (player->laser_x + 1) * 64,
 					(player->laser_y) * 64);
+		ft_printf("ALED : %d\n", player->laser_x);
+				
 		}
 		else if (player->laser_x > 1 && (size_t)(player->laser_x) < data->nb_line - 2)
 		{
@@ -99,9 +101,9 @@ void	final_laser_y(t_data *data, t_player *player)
 			mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 				player->sprite[FINAL_ROW_R], (player->laser_x + 1) * 64,
 				(player->laser_y) * 64);	
+		ft_printf("TOP : %d\n", player->laser_x);
 		}
 		--player->laser_y;
-		ft_printf("TOP : %d\n", player->laser_x);
 	}
 }
 

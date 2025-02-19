@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 06:18:58 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 20:21:52 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,6 +334,16 @@ void	display_move_player(t_data *data);
 int		display_count_move(t_data *data);
 int		load_img_move(t_data *data, t_img *img);
 void	disp_final_laser(t_data *data, t_player *player);
+void	remove_final_laser(t_data *data, t_player *player);
+void	remove_final_laser_row(t_data *data, t_player *player);
+void	remove_final_laser_line(t_data *data, t_player *player);
+void	remove_final_laser_left(t_data *data, t_player *player);
+void	remove_final_laser_right(t_data *data, t_player *player);
+void	remove_final_laser_down(t_data *data, t_player *player);
+void	remove_final_laser_up(t_data *data, t_player *player);
+void	change_display_spaceship(t_data *data, int x, int y);
+void	change_display_object(t_data *data, int x, int y);
+void	change_display_floor(t_data *data, int x, int y);
 void	final_laser_x(t_data *data, t_player *player);
 void	final_laser_y(t_data *data, t_player *player);
 void	reset_laser_pos(t_data *data, t_player *player);

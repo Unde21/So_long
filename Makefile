@@ -21,6 +21,7 @@ SRCS := srcs/main.c \
 	srcs/game/player/player_move.c \
 	srcs/game/player/player_move_utils.c \
 	srcs/game/player/remove_laser.c \
+	srcs/game/player/remove_final_laser.c \
 	srcs/game/player/player_laser_dir_x.c \
 	srcs/game/player/player_laser_dir_y.c \
 	srcs/game/player/final_laser.c \
