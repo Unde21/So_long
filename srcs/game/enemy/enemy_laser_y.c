@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 04:56:07 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:39:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 02:12:21 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	laser_down(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = DOWN;
-	if (data->map[enemy->laser_y + 1][enemy->laser_x] == 'L'
+	if (data->map[enemy->laser_y + 1][enemy->laser_x] == LASER_CHAR
 		|| data->player->is_fighting_laser == true)
 	{
 		enemy->is_fighting_laser = true;
 		return ;
 	}
 	else if (data->map[enemy->laser_y + 1][enemy->laser_x] == 'P'
-		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == 'E'
+		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == PL_AND_EXIT
 		&& data->player->pos_x == data->spaceship->pos_x
 		&& data->player->pos_y == data->spaceship->pos_y))
 	{
@@ -66,14 +66,14 @@ void	handle_laser_down_enemy(t_data *data, t_enemy *enemy)
 void	laser_top(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = UP;
-	if (data->map[enemy->laser_y - 1][enemy->laser_x] == 'L'
+	if (data->map[enemy->laser_y - 1][enemy->laser_x] == LASER_CHAR
 		|| data->enemy->is_fighting_laser == true)
 	{
 		enemy->is_fighting_laser = true;
 		return ;
 	}
 	else if (data->map[enemy->laser_y - 1][enemy->laser_x] == 'P'
-		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == 'E'
+		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == PL_AND_EXIT
 		&& data->player->pos_x == data->spaceship->pos_x
 		&& data->player->pos_y == data->spaceship->pos_y))
 	{

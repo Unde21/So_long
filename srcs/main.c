@@ -6,12 +6,13 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:33 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/12 10:58:20 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 02:30:40 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +32,7 @@ int	main(int argc, char **argv)
 		free_map(data.map, data.nb_line);
 		return (-1);
 	}
+	close(data.fd);
 	if (init_mlx(&data) != 0)
 		return (-1);
 	return (0);

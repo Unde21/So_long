@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/17 02:46:38 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 02:28:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 	if (data->fd == -1)
 		return (exit_error_parse(ERR_FD));
 	if (init_map(data) != 0)
+	{
+		close(data->fd);
 		return (-1);
+	}
 	init_struct_spaceship(spaceship);
 	if (init_struct_player(player) != 0)
 		return (-1);

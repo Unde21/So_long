@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 06:14:59 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 06:18:58 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define DOWN 115
 # define FIRE 102
 # define FIRE_FRAME 1000
-# define FIRE_MVE_FRAME 1000
+# define FIRE_MVE_FRAME 500
 # define END_FRAME 70000
 # define LANDING_FRAME 15000
 # define MOVE_ENEMY_FRAME 150
@@ -35,6 +35,7 @@
 # define EXIT 'Z'
 # define DEAD_OBJECT 'K'
 # define DEAD_EXIT 'V'
+# define PL_AND_EXIT 'S'
 
 
 // Player Sprite
@@ -52,6 +53,26 @@
 # define PR_DEATH_EXIT 3
 # define PLAYER_LASER_R 12
 # define PLAYER_LASER_L 13
+# define PLAYER_LASER_D 14
+# define PLAYER_LASER_T 15
+# define PLAYER_EVO_R 16
+# define PLAYER_EVO_L 17
+# define PLAYER_EVO_D 18
+# define PLAYER_EVO_T 19
+# define FINAL_LINE 20
+# define FINAL_LINE_D 21
+# define FINAL_LINE_T 22
+# define FINAL_START_T 23
+# define FINAL_START_D 24
+# define FINAL_STARTR_T 25
+# define FINAL_STARTR_D 26
+# define FINAL_ROW 27
+# define FINAL_ROW_R 28
+# define FINAL_ROW_L 29
+# define FINAL_STARTT_R 32
+# define FINAL_STARTT_L 33
+# define FINAL_STARTD_R 30
+# define FINAL_STARTD_L 31
 
 // Exit Sprite
 # define EXIT_CLOSE 3
@@ -140,8 +161,8 @@ typedef struct s_player
 	int		pos_x;
 	int		pos_y;
 	bool	is_start_pos;
-	char	*img[14];
-	void	*sprite[14];
+	char	*img[34];
+	void	*sprite[34];
 	bool	dir_left;
 	bool	death;
 	int		frames;
@@ -154,6 +175,7 @@ typedef struct s_player
 	int		laser_dir;
 	bool	is_laser_player;
 	bool	is_fighting_laser;
+	bool	final_laser;
 	struct timeval last_time;
 }	t_player;
 
@@ -267,6 +289,7 @@ int		load_img_exit(t_data *data, t_spaceship *spaceship);
 int		load_img_animation(t_data *data, t_img *img);
 int		load_img_player_exit(t_data *data, t_player *player);
 int		load_img_player_death(t_data *data, t_player *player);
+int		load_img_player_final(t_data *data, t_player *player);
 int		game_loop(t_data *data);
 void	put_image_to_win(t_data *data, size_t x, size_t y);
 int		init_mlx(t_data *data);
@@ -310,6 +333,10 @@ void	handle_new_position_t(t_data *data, t_player *player);
 void	display_move_player(t_data *data);
 int		display_count_move(t_data *data);
 int		load_img_move(t_data *data, t_img *img);
+void	disp_final_laser(t_data *data, t_player *player);
+void	final_laser_x(t_data *data, t_player *player);
+void	final_laser_y(t_data *data, t_player *player);
+void	reset_laser_pos(t_data *data, t_player *player);
 int		load_img_move_snd(t_data *data, t_img *img);
 void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
@@ -341,7 +368,7 @@ int		check_dir_laser(t_data *data, t_player *player);
 void	save_last_position(t_player *player, t_enemy *enemy);
 void	input_action(int keysym, t_data *data);
 void	disp_explosion(t_data *data, int next_x, int next_y);
-void	is_laser_touch(t_data *data, int next_x, int next_y);
+int		is_laser_touch(t_data *data, int next_x, int next_y);
 
 /* ************************************************************************** */
 /*								Enemy					  			  		  */

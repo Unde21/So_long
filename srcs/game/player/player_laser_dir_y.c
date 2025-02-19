@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:32:56 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:55:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 03:43:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	laser_down_player(t_data *data, t_player *player)
 	}
 	else if (data->map[player->laser_y + 1][player->laser_x] == 'B')
 	{
-		is_laser_touch(data, player->laser_x, player->laser_y + 1);
-		remove_player_laser_down(data, player);
+		if (is_laser_touch(data, player->laser_x, player->laser_y + 1) == 0)
+			remove_player_laser_down(data, player);
 		data->player->is_laser_player = false;
 	}
 	else if (data->map[player->laser_y + 1][player->laser_x] != 'B'
@@ -46,7 +46,7 @@ void	handle_laser_down(t_data *data, t_player *player)
 	if (player->laser_y == player->pos_y)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->enemy->sprite[USE_LASER_D], player->laser_x * 64,
+			player->sprite[PLAYER_LASER_D], player->laser_x * 64,
 			player->laser_y * 64);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->sprite[LASER_START_D], player->laser_x * 64,
@@ -80,8 +80,8 @@ void	laser_top_player(t_data *data, t_player *player)
 	}
 	else if (data->map[player->laser_y - 1][player->laser_x] == 'B')
 	{
-		is_laser_touch(data, player->laser_x, player->laser_y - 1);
-		remove_player_laser_up(data, player);
+		if (is_laser_touch(data, player->laser_x, player->laser_y - 1) == 0)
+			remove_player_laser_up(data, player);
 		data->player->is_laser_player = false;
 	}
 	else if (data->map[player->laser_y - 1][player->laser_x] != 'B'
@@ -100,7 +100,7 @@ void	handle_laser_top(t_data *data, t_player *player)
 	if (player->laser_y == player->pos_y)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->enemy->sprite[USE_LASER_T], player->laser_x * 64,
+			player->sprite[PLAYER_LASER_T], player->laser_x * 64,
 			player->laser_y * 64);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->enemy->sprite[LASER_START_T], player->laser_x * 64,

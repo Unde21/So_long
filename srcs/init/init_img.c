@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 06:15:39 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 06:22:47 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,35 @@ void	init_img_player(t_data *data)
 	data->player->img[11] = "img_file/player.xpm";
 	data->player->img[12] = "img_file/player_laser_r.xpm";
 	data->player->img[13] = "img_file/player_laser_l.xpm";
+	data->player->img[14] = "img_file/player_laser_d.xpm";
+	data->player->img[15] = "img_file/player_laser_t.xpm";
+	data->player->img[16] = "img_file/player_evo_r.xpm";
+	data->player->img[17] = "img_file/player_evo_l.xpm";
+	data->player->img[18] = "img_file/player_evo_d.xpm";
+	data->player->img[19] = "img_file/player_evo_t.xpm";
+
+
+	data->player->img[20] = "img_file/final_line.xpm";
+	data->player->img[21] = "img_file/final_line_d.xpm";
+	data->player->img[22] = "img_file/final_line_t.xpm";
+
+
+	data->player->img[23] = "img_file/final_start_t.xpm";
+	data->player->img[24] = "img_file/final_start_d.xpm";
+	data->player->img[25] = "img_file/final_startr_t.xpm";
+	data->player->img[26] = "img_file/final_startr_d.xpm";
+
+
+
+
+
+	data->player->img[27] = "img_file/final_row.xpm";
+	data->player->img[28] = "img_file/final_row_r.xpm";
+	data->player->img[29] = "img_file/final_row_l.xpm";
+	data->player->img[30] = "img_file/final_startd_r.xpm";
+	data->player->img[31] = "img_file/final_startd_l.xpm";
+	data->player->img[32] = "img_file/final_startt_r.xpm";
+	data->player->img[33] = "img_file/final_startt_l.xpm";
 }
 
 void	init_img_spaceship(t_data *data)

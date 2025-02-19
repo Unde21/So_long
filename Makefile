@@ -23,6 +23,7 @@ SRCS := srcs/main.c \
 	srcs/game/player/remove_laser.c \
 	srcs/game/player/player_laser_dir_x.c \
 	srcs/game/player/player_laser_dir_y.c \
+	srcs/game/player/final_laser.c \
 	srcs/game/player/get_player_input.c \
 	srcs/game/player/attack_player.c \
 	srcs/game/player/player_laser_dir_utils.c \

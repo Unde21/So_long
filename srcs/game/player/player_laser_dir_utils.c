@@ -6,13 +6,14 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 01:47:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 01:56:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 04:44:53 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <unistd.h>
 
-void	is_laser_touch(t_data *data, int next_x, int next_y)
+int	is_laser_touch(t_data *data, int next_x, int next_y)
 {
 	if (data->map[next_y][next_x] == 'B')
 	{
@@ -23,6 +24,9 @@ void	is_laser_touch(t_data *data, int next_x, int next_y)
 			data->map[next_y][next_x] = '0';
 			data->enemy->pos_x = next_x;
 			data->enemy->pos_y = next_y;
+			reset_laser_pos(data, data->player);
+			data->player->final_laser = true;
+			return (1);
 		}
 		else
 		{
@@ -30,6 +34,7 @@ void	is_laser_touch(t_data *data, int next_x, int next_y)
 				data->enemy->sprite[SHIELD], next_x * 64, next_y * 64);
 		}
 	}
+	return (0);
 }
 
 void	disp_explosion(t_data *data, int next_x, int next_y)

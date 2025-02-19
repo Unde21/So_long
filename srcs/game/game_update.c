@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:58:53 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 03:15:16 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	game_update(t_data *data)
 	}
 	else if (data->enemy->life == 0 && data->enemy->is_alive == true)
 		death_enemy(data, data->enemy);
+	else if (data->player->final_laser == true)
+	{
+		disp_final_laser(data, data->player);
+	}
 	else if (data->enemy->is_start_pos == true && data->landing == false)
 	{
 		if (data->player->is_laser_player == true)

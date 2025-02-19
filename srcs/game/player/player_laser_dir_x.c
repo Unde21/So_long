@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:21:23 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 06:14:40 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/19 03:43:06 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	laser_left_player(t_data *data, t_player *player)
 	}
 	else if (data->map[player->laser_y][player->laser_x - 1] == 'B')
 	{
-		is_laser_touch(data, player->laser_x - 1, player->laser_y);
-		remove_player_laser_left(data, player);
+		if (is_laser_touch(data, player->laser_x - 1, player->laser_y) == 0)
+			remove_player_laser_left(data, player);
 		data->player->is_laser_player = false;
 	}
 	else if (data->map[player->laser_y][player->laser_x - 1] != 'B'
@@ -80,8 +80,8 @@ void	laser_right_player(t_data *data, t_player *player)
 	}
 	else if (data->map[player->laser_y][player->laser_x + 1] == 'B')
 	{
-		is_laser_touch(data, player->laser_x + 1, player->laser_y);
-		remove_player_laser_right(data, player);
+		if (is_laser_touch(data, player->laser_x + 1, player->laser_y) == 0)
+			remove_player_laser_right(data, player);
 		data->player->is_laser_player = false;
 	}
 	else if (data->map[player->laser_y][player->laser_x + 1] != 'B'
