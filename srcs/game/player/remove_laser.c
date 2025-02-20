@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:14:16 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:56:21 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 03:00:01 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int	remove_player_laser_right(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		--player->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		player->sprite[PLAYER_R],
+		player->pos_x * 64, player->pos_y * 64);
 	player->laser_dir = 0;
 	player->fire_frame = 0;
 	return (1);
@@ -45,6 +48,9 @@ int	remove_player_laser_left(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		++player->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		player->sprite[PLAYER_L],
+		player->pos_x * 64, player->pos_y * 64);
 	player->fire_frame = 0;
 	player->laser_dir = 0;
 	return (1);
@@ -64,6 +70,9 @@ int	remove_player_laser_down(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		--player->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		player->sprite[PLAYER_D],
+		player->pos_x * 64, player->pos_y * 64);
 	player->fire_frame = 0;
 	player->laser_dir = 0;
 	return (1);
@@ -83,6 +92,9 @@ int	remove_player_laser_up(t_data *data, t_player *player)
 		remove_display_laser_p(data, player);
 		++player->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		player->sprite[PLAYER_T],
+		player->pos_x * 64, player->pos_y * 64);
 	player->laser_dir = 0;
 	player->fire_frame = 0;
 	return (1);

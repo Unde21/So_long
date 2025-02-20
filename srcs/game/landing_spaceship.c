@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 17:38:03 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 04:41:01 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 02:58:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,12 @@ void	landing_spaceship_display(t_data *data)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->player->sprite[PLAYER_R], data->player->pos_x * 64,
 			data->player->pos_y * 64);
+	}
+	else if (data->spaceship->final_y >= 1 && data->map[data->spaceship->final_y
+			- 1][data->spaceship->pos_x] == 'B')
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->enemy->sprite[ENEMY_R], data->spaceship->pos_x * 64,
+			(data->spaceship->final_y - 1) * 64);
 	}
 }

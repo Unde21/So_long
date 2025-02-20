@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 00:35:25 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 01:24:20 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	init_struct_enemy(t_enemy *enemy)
 	enemy->laser_frame = 0;
 	enemy->s_pos_x = 0;
 	enemy->s_pos_y = 0;
-	enemy->life = 2;
-	while (i < 27)
+	enemy->life = LIFE;
+	while (i < 31)
 	{
 		enemy->sprite[i] = NULL;
 		++i;
@@ -76,4 +76,6 @@ void	init_enemy_img_laser(t_data *data)
 	data->enemy->img[26] = "img_file/destroy_wall.xpm";
 	data->enemy->img[27] = "img_file/enemy_dead.xpm";
 	data->enemy->img[28] = "img_file/destroy_enemy.xpm";
+	data->enemy->img[29] = "img_file/life_green.xpm";
+	data->enemy->img[30] = "img_file/life_red.xpm";
 }

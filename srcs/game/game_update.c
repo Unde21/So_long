@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 21:55:38 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 02:38:25 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ int	game_update(t_data *data)
 	else if (data->enemy->life == 0 && data->enemy->is_alive == true)
 		death_enemy(data, data->enemy);
 	else if (data->player->final_laser == true)
-	{
-		// if (data->player->laser_x < 1 || data->player->laser_y < 1)
-		// {
-		// 	remove_final_laser(data, data->player);
-		// }
 		disp_final_laser(data, data->player);
-	}
 	else if (data->enemy->is_start_pos == true && data->landing == false)
 	{
 		if (data->player->is_laser_player == true)
@@ -105,4 +99,21 @@ void	death_enemy(t_data *data, t_enemy *enemy)
 		enemy->sprite[ENEMY_DEATH],
 		enemy->pos_x * 64, enemy->pos_y * 64);
 	enemy->is_alive = false;
+}
+
+void	display_life(t_data *data, t_enemy *enemy)
+{
+	int	i;
+
+	i = 0;
+	while (i < enemy->life)
+	{
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			enemy->sprite[LIFE_GREEN], (data->nb_row - i - 1) * 64,
+			data->nb_line * 64);
+		++i;
+	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_R], (data->nb_row - i - 1) * 64,
+		data->nb_line * 64);
 }

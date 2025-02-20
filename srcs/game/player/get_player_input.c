@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:32:36 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 02:37:21 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 01:27:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	keypress(int keysym, t_data *data)
 
 void	input_action(int keysym, t_data *data)
 {
+	if (data->player->final_laser == true)
+		return ;
 	if (keysym == KEY_CLOSE)
 		close_window(data);
 	else if (keysym == UP && data->player->is_laser_player == false

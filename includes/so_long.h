@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 00:34:57 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 02:41:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define MOVE_ENEMY_FRAME 150
 # define LASER_FRAME 5000000
 # define LASER_MVE_FRAME 40
+# define LIFE 5
+
+// Define Map value
 # define LASER_CHAR 'L'
 # define EXIT 'Z'
 # define DEAD_OBJECT 'K'
@@ -152,6 +155,8 @@
 # define ENEM_EXIT_T 6
 # define ENEMY_DEATH 27
 # define DESTROY_ENEMY 28
+# define LIFE_GREEN 29
+# define LIFE_RED 30
 
 
 typedef enum e_exit
@@ -226,8 +231,8 @@ typedef struct s_enemy
 	bool	is_fighting_laser;
 	bool	is_alive;
 	int		moved;
-	char	*img[29];
-	void	*sprite[29];
+	char	*img[31];
+	void	*sprite[31];
 	int		height;
 	int		width;
 	int		life;
@@ -298,6 +303,8 @@ void	free_map(char **map, size_t nb);
 
 void	init_img(t_data *data);
 void	init_img_spaceship(t_data *data);
+void	init_img_laser_player(t_data *data);
+void	init_img_player(t_data *data);
 int		display_map(t_data *data);
 int		load_img_map(t_data *data, t_img *img);
 int		load_img_player(t_data *data, t_player *player);
@@ -350,6 +357,8 @@ void	display_move_player(t_data *data);
 int		display_count_move(t_data *data);
 // int		load_img_move(t_data *data, t_img *img);
 void	disp_final_laser(t_data *data, t_player *player);
+void	final_laser_left(t_data *data, t_player *player);
+void	final_laser_right(t_data *data, t_player *player);
 void	remove_final_laser(t_data *data, t_player *player);
 void	remove_final_laser_row(t_data *data, t_player *player);
 void	remove_final_laser_line(t_data *data, t_player *player);
@@ -362,12 +371,13 @@ void	change_display_object(t_data *data, int x, int y);
 void	change_display_floor(t_data *data, int x, int y);
 void	final_laser_x(t_data *data, t_player *player);
 void	final_laser_y(t_data *data, t_player *player);
+void	final_laser_down(t_data *data, t_player *player);
+void	final_laser_up(t_data *data, t_player *player);
 void	reset_laser_pos(t_data *data, t_player *player);
 // int		load_img_move_snd(t_data *data, t_img *img);
 void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
-void	init_img_player(t_data *data);
 int		touch_enemy(t_data *data, int next_x, int next_y);
 int		touch_enemy_left(t_data *data, int next_x, int next_y);
 int		handle_death(t_data *data);
@@ -412,6 +422,7 @@ int		load_img_enemy(t_data *data, t_enemy *enemy);
 // int	load_img_enemy_laser(t_data *data, t_enemy *enemy);
 // int	load_img_enemy_exit_open(t_data *data, t_enemy *enemy);
 // int	load_img_attack_enemy(t_data *data, t_enemy *enemy);
+void	display_life(t_data *data, t_enemy *enemy);
 void	init_enemy_img(t_data *data);
 void	init_enemy_img_laser(t_data *data);
 void	display_enemy(t_data *data);

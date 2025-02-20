@@ -8,11 +8,8 @@ SRCS := srcs/main.c \
 	srcs/mlx/mlx_utils.c \
 	srcs/mlx/destroy_img.c \
 	srcs/init/load_sprite_map.c \
-	srcs/init/load_sprite_player.c \
 	srcs/init/init_img.c \
 	srcs/init/init_struct.c \
-	srcs/init/load_sprite_enemy.c \
-	srcs/init/load_sprite_enemy_laser.c \
 	srcs/game/display_map.c \
 	srcs/game/display_move.c \
 	srcs/game/game_update.c \
@@ -22,6 +19,10 @@ SRCS := srcs/main.c \
 	srcs/game/player/player_move_utils.c \
 	srcs/game/player/remove_laser.c \
 	srcs/game/player/remove_final_laser.c \
+	srcs/game/player/remove_final_laser_utils.c \
+	srcs/game/player/move_after_final_laser.c \
+	srcs/game/player/final_laser_x.c \
+	srcs/game/player/final_laser_y.c \
 	srcs/game/player/player_laser_dir_x.c \
 	srcs/game/player/player_laser_dir_y.c \
 	srcs/game/player/final_laser.c \

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 01:49:11 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 02:18:48 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	move_enemy(t_data *data)
 	gettimeofday(&current_time, NULL);
 	elapsed_time = (current_time.tv_sec - data->last_time.tv_sec) * 1000
 		+ (current_time.tv_usec - data->last_time.tv_usec) / 1000;
-	// modifier la division par une multiplication
 	data->enemy->laser_frame += elapsed_time;
 	check_enemy_laser_status(data, current_time, elapsed_time);
 	check_enemy_move_status(data, current_time, elapsed_time);
@@ -88,7 +87,7 @@ void	handle_enemy_move(t_data *data, t_enemy *enemy)
 		&& data->map[enemy->pos_y][enemy->pos_x + 1] != '1'
 		&& enemy->moved == 0)
 		move_enemy_right(data, enemy);
-	else if (data->player->pos_y > enemy->pos_y 
+	else if (data->player->pos_y > enemy->pos_y
 		&& data->map[enemy->pos_y
 			+ 1][enemy->pos_x] != '1' && enemy->moved == 0)
 		move_enemy_down(data, enemy);

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 05:03:54 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:31:29 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 03:00:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	remove_basic_laser_right(t_data *data, t_enemy *enemy)
 		remove_basic_display_laser_enemy(data, enemy);
 		--enemy->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_R], enemy->pos_x * 64, enemy->pos_y * 64);
 	return (1);
 }
 
@@ -43,6 +45,8 @@ int	remove_basic_laser_left(t_data *data, t_enemy *enemy)
 		remove_basic_display_laser_enemy(data, enemy);
 		++enemy->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_L], enemy->pos_x * 64, enemy->pos_y * 64);
 	return (1);
 }
 
@@ -60,6 +64,8 @@ int	remove_basic_laser_down(t_data *data, t_enemy *enemy)
 		remove_basic_display_laser_enemy(data, enemy);
 		--enemy->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_D], enemy->pos_x * 64, enemy->pos_y * 64);
 	return (1);
 }
 
@@ -77,6 +83,8 @@ int	remove_basic_laser_top(t_data *data, t_enemy *enemy)
 		remove_basic_display_laser_enemy(data, enemy);
 		++enemy->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_T], enemy->pos_x * 64, enemy->pos_y * 64);
 	return (1);
 }
 

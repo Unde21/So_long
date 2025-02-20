@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 09:11:31 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/18 05:23:33 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 02:51:27 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	remove_enemy_laser_right(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		--enemy->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_R], enemy->pos_x * 64, enemy->pos_y * 64);
 	enemy->laser_frame = 0;
 	return (1);
 }
@@ -44,6 +46,8 @@ int	remove_enemy_laser_left(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		++enemy->laser_x;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_L], enemy->pos_x * 64, enemy->pos_y * 64);
 	enemy->laser_frame = 0;
 	return (1);
 }
@@ -62,6 +66,8 @@ int	remove_enemy_laser_down(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		--enemy->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_D], enemy->pos_x * 64, enemy->pos_y * 64);
 	enemy->laser_frame = 0;
 	return (1);
 }
@@ -80,6 +86,8 @@ int	remove_enemy_laser_up(t_data *data, t_enemy *enemy)
 		remove_display_laser_enemy(data, enemy);
 		++enemy->laser_y;
 	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		enemy->sprite[ENEMY_T], enemy->pos_x * 64, enemy->pos_y * 64);
 	enemy->laser_frame = 0;
 	return (1);
 }
