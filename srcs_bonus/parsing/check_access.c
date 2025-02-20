@@ -6,11 +6,12 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 05:03:41 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/05 22:01:41 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 06:02:03 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
+
 #include <stdlib.h>
 
 char	**copy_map(t_data *data)

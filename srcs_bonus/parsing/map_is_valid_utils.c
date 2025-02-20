@@ -6,18 +6,18 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 09:01:44 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/05 05:04:01 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 06:02:08 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdlib.h>
 
 int	check_inside_map(t_data *data, size_t i, size_t j)
 {
 	if ((data->map[i][j] != 'E' && data->map[i][j] != '1'
 			&& data->map[i][j] != 'P' && data->map[i][j] != 'C'
-			&& data->map[i][j] != '0'))
+			&& data->map[i][j] != '0' && data->map[i][j] != 'B'))
 	{
 		if (data->map[i][j] != '\n')
 			return (exit_error_parse(ERR_MAP));
@@ -39,9 +39,9 @@ int	check_duplicate_player_exit(t_data *data, int i, int j)
 {
 	if (data->map[i][j] == 'P')
 	{
-		if (data->player->start_pos == true)
+		if (data->player->is_start_pos == true)
 			return (exit_error_parse(ERR_DUPLICATE_PLAYER));
-		data->player->start_pos = true;
+		data->player->is_start_pos = true;
 		data->player->pos_x = j;
 		data->player->pos_y = i;
 	}
@@ -50,6 +50,12 @@ int	check_duplicate_player_exit(t_data *data, int i, int j)
 		if (data->spaceship->spaceship_is_here == true)
 			return (exit_error_parse(ERR_DUPLICATE_EXIT));
 		data->spaceship->spaceship_is_here = true;
+	}
+	else if (data->map[i][j] == 'B')
+	{
+		if (data->enemy->is_start_pos == true)
+			return (exit_error_parse(ERR_DUPLICATE_PLAYER));
+		data->enemy->is_start_pos = true;
 	}
 	return (0);
 }
@@ -63,7 +69,7 @@ int	exit_error_parse(t_exit error_num)
 	else if (error_num == 3)
 		ft_putstr_fd("Error: Open file !\n", 2);
 	else if (error_num == 4)
-		ft_putstr_fd("Map Error: Duplicate player 'P'\n", 2);
+		ft_putstr_fd("Map Error: Duplicate player 'P' / 'B'\n", 2);
 	else if (error_num == 5)
 		ft_putstr_fd("Map Error: Player position not found 'P'\n", 2);
 	else if (error_num == 6)

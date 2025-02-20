@@ -6,28 +6,59 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 00:37:27 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 06:02:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	init_struct_spaceship(t_spaceship *spaceship)
 {
+	int	i;
+
 	spaceship->spaceship_close = true;
 	spaceship->spaceship_is_here = false;
 	spaceship->pos_y = 0;
 	spaceship->pos_x = 0;
+	spaceship->frame = 0;
+	spaceship->final_y = 0;
+	i = 0;
+	while (i < 7)
+	{
+		spaceship->sprite[i] = NULL;
+		++i;
+	}
 }
 
-void	init_struct_player(t_player *player)
+int	init_struct_player(t_player *player)
 {
-	player->start_pos = false;
+	int	i;
+
+	i = -1;
+	player->is_start_pos = false;
 	player->pos_x = 0;
 	player->pos_y = 0;
+	player->dir_left = false;
+	player->frames = 0;
+	player->death = false;
+	player->fire_frame = 0;
+	player->last_move = 0;
+	player->s_pos_x = 0;
+	player->s_pos_y = 0;
+	player->laser_x = 0;
+	player->laser_y = 0;
+	player->laser_dir = 0;
+	player->is_laser_player = false;
+	player->is_fighting_laser = false;
+	player->final_laser = false;
+	while (++i < 41)
+		player->sprite[i] = NULL;
+	if (gettimeofday(&player->last_time, NULL) == -1)
+		return (-1);
+	return (0);
 }
 
-void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
+int	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 		t_img *img)
 {
 	data->img = img;
@@ -43,33 +74,35 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship, t_player *player,
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map = NULL;
+	data->end = false;
+	data->defeat = false;
+	data->landing = true;
+	if (gettimeofday(&data->last_time, NULL) == -1)
+		return (-1);
+	return (0);
+}
+
+void	add_enemy_data(t_data *data, t_enemy *enemy)
+{
+	data->enemy = enemy;
 }
 
 void	init_struct_img(t_img *img)
 {
-	img->nb_zero = NULL;
-	img->nb_one = NULL;
-	img->nb_two = NULL;
-	img->nb_three = NULL;
-	img->nb_four = NULL;
-	img->nb_five = NULL;
-	img->nb_six = NULL;
-	img->nb_seven = NULL;
-	img->nb_eight = NULL;
-	img->nb_nine = NULL;
-	img->floor = NULL;
-	img->player = NULL;
-	img->player_l = NULL;
-	img->player_d = NULL;
-	img->player_t = NULL;
-	img->object = NULL;
-	img->wall = NULL;
-	img->spaceship_close = NULL;
-	img->spaceship_open = NULL;
-	img->plright_exit = NULL;
-	img->pleft_exit = NULL;
-	img->pdown_exit = NULL;
-	img->ptop_exit = NULL;
+	int	i;
+
+	i = 0;
+	while (i < 10)
+	{
+		img->sprite[i] = NULL;
+		++i;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		img->move_spr[i] = NULL;
+		++i;
+	}
 	img->height = 0;
 	img->width = 0;
 }

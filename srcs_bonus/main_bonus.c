@@ -6,12 +6,13 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:33 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 05:56:21 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 06:02:15 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 int	main(int argc, char **argv)
 {
@@ -19,18 +20,24 @@ int	main(int argc, char **argv)
 	t_spaceship	spaceship;
 	t_player	player;
 	t_img		img;
+	t_enemy		enemy;
 
 	data.mlx_ptr = NULL;
 	data.win_ptr = NULL;
 	data.ac = argc;
 	data.av = argv;
+	add_enemy_data(&data, &enemy);
 	if (parsing(&data, &spaceship, &player, &img) != 0)
 	{
 		free_map(data.map, data.nb_line);
 		return (-1);
 	}
+	close(data.fd);
 	if (init_mlx(&data) != 0)
+	{
+		ft_destroy_mlx(&data);
 		return (-1);
+	}
 	return (0);
 }
 

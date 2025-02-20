@@ -6,11 +6,11 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 04:36:05 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 06:02:12 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,7 +20,8 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 {
 	if (data->ac != 2)
 		return (exit_error_parse(ERR_ARGS));
-	init_struct_data(data, spaceship, player, img);
+	if (init_struct_data(data, spaceship, player, img) != 0)
+		return (-1);
 	if (calculate_size_map(data->av, data) != 0)
 		return (-1);
 	data->map = ft_calloc(sizeof(char *), (data->nb_line + 1));
@@ -30,10 +31,15 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 	if (data->fd == -1)
 		return (exit_error_parse(ERR_FD));
 	if (init_map(data) != 0)
+	{
+		close(data->fd);
 		return (-1);
+	}
 	init_struct_spaceship(spaceship);
-	init_struct_player(player);
+	if (init_struct_player(player) != 0)
+		return (-1);
 	init_struct_img(img);
+	init_struct_enemy(data->enemy);
 	if (map_is_valid(data) != 0)
 		return (-1);
 	return (0);
@@ -112,7 +118,7 @@ int	map_is_valid(t_data *data)
 		return (exit_error_parse(ERR_NO_EXIT));
 	else if (data->nb_obj == 0)
 		return (exit_error_parse(ERR_NO_ITEM));
-	else if (data->player->start_pos == false)
+	else if (data->player->is_start_pos == false)
 		return (exit_error_parse(ERR_NO_PLAYER));
 	if (check_access(data) != 0)
 		return (-1);
