@@ -6,13 +6,13 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:35:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 02:18:06 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 04:22:19 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_img(t_data *data)
+int	init_img(t_data *data)
 {
 	data->img->img[0] = "img_file/floor.xpm";
 	data->img->img[1] = "img_file/wall.xpm";
@@ -24,9 +24,14 @@ void	init_img(t_data *data)
 	data->img->img[7] = "img_file/laser_fight_x.xpm";
 	data->img->img[8] = "img_file/laser_fight_y.xpm";
 	data->img->img[9] = "img_file/floor_destroyed.xpm";
-	init_img_player(data);
-	init_img_spaceship(data);
 	init_move_count(data);
+	if (check_access_sprite_img(data->img) != 0)
+		return (-1);
+	if (init_img_player(data) != 0)
+		return (-1);
+	if (init_img_spaceship(data) != 0)
+		return (-1);
+	return (0);
 }
 
 void	init_move_count(t_data *data)
@@ -43,7 +48,7 @@ void	init_move_count(t_data *data)
 	data->img->move[9] = "img_file/nb_nine.xpm";
 }
 
-void	init_img_player(t_data *data)
+int	init_img_player(t_data *data)
 {
 	data->player->img[0] = "img_file/player_death_right.xpm";
 	data->player->img[1] = "img_file/player_death_left.xpm";
@@ -66,6 +71,9 @@ void	init_img_player(t_data *data)
 	data->player->img[18] = "img_file/player_evo_d.xpm";
 	data->player->img[19] = "img_file/player_evo_t.xpm";
 	init_img_laser_player(data);
+	if (check_access_sprite_player(data->player) != 0)
+		return (-1);
+	return (0);
 }
 
 void	init_img_laser_player(t_data *data)
@@ -94,7 +102,7 @@ void	init_img_laser_player(t_data *data)
 	data->player->img[41] = "img_file/pl_exit_r_destroy.xpm";
 }
 
-void	init_img_spaceship(t_data *data)
+int	init_img_spaceship(t_data *data)
 {
 	data->spaceship->img[0] = "img_file/exit_fire.xpm";
 	data->spaceship->img[1] = "img_file/trail_fire.xpm";
@@ -103,4 +111,7 @@ void	init_img_spaceship(t_data *data)
 	data->spaceship->img[4] = "img_file/exit_open.xpm";
 	data->spaceship->img[5] = "img_file/exit_open_destroy.xpm";
 	data->spaceship->img[6] = "img_file/exit_close_destroy.xpm";
+	if (check_access_sprite_spaceship(data->spaceship) != 0)
+		return (-1);
+	return (0);
 }

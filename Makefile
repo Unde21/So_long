@@ -9,7 +9,9 @@ SRCS := srcs/main.c \
 	srcs/mlx/destroy_img.c \
 	srcs/init/load_sprite_map.c \
 	srcs/init/init_img.c \
+	srcs/init/check_access.c \
 	srcs/init/init_struct.c \
+	srcs/init/init_enemy.c \
 	srcs/game/display_map.c \
 	srcs/game/display_move.c \
 	srcs/game/game_update.c \
@@ -31,7 +33,6 @@ SRCS := srcs/main.c \
 	srcs/game/player/player_laser_dir_utils.c \
 	srcs/game/player/attack_player_utils.c \
 	srcs/game/enemy/display_enemy.c \
-	srcs/game/enemy/init_enemy.c \
 	srcs/game/enemy/move_enemy.c \
 	srcs/game/enemy/move_enemy_dir.c \
 	srcs/game/enemy/move_enemy_utils.c \
@@ -48,6 +49,8 @@ SRCS := srcs/main.c \
 
 HEADER := libft/libft.h \
 		includes/so_long.h \
+		includes/enemy.h \
+		includes/player.h \
 
 
 CC := cc

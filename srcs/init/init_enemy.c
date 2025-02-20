@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 04:56:25 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 01:24:20 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 04:26:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_struct_enemy(t_enemy *enemy)
 	}
 }
 
-void	init_enemy_img(t_data *data)
+int	init_enemy_img(t_data *data)
 {
 	data->enemy->img[0] = "img_file/enemy_l_floor.xpm";
 	data->enemy->img[1] = "img_file/enemy_d_floor.xpm";
@@ -59,6 +59,9 @@ void	init_enemy_img(t_data *data)
 	data->enemy->img[14] = "img_file/enemy_t_attack.xpm";
 	data->enemy->img[15] = "img_file/enemy_r_attack.xpm";
 	init_enemy_img_laser(data);
+	if (check_access_sprite_enemy(data->enemy) != 0)
+		return (-1);
+	return (0);
 }
 
 void	init_enemy_img_laser(t_data *data)

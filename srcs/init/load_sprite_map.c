@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 00:38:47 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 02:15:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 04:15:14 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	load_img_player(t_data *data, t_player *player)
 	int	i;
 
 	i = 0;
-	while (i < 42)
+	while (i < 41)
 	{
 		player->sprite[i] = mlx_xpm_file_to_image(data->mlx_ptr, player->img[i],
 				&data->img->width, &data->img->height);

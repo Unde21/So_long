@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:18:02 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 01:08:36 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 05:04:54 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int	init_mlx(t_data *data)
 {
-	init_img(data);
-	init_enemy_img(data);
+	if (init_img(data) != 0 || init_enemy_img(data) != 0)
+		return (-1);
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (-1);
@@ -26,17 +26,11 @@ int	init_mlx(t_data *data)
 		&data->screen_height);
 	if ((data->screen_height) < ((int)data->nb_line + 2) * 64
 		|| (data->screen_width) < (int)data->nb_row * 64)
-	{
-		ft_destroy_mlx(data);
 		return (exit_error_parse(ERR_SIZE_MAP));
-	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, (data->nb_row) * 64,
-			(data->nb_line + 1) * 64, "./so_long");
+			(data->nb_line + 1) * 64, "SUPER KAMEHAMEHA");
 	if (!data->win_ptr)
-	{
-		ft_destroy_mlx(data);
 		return (-1);
-	}
 	if (game_loop(data) != 0)
 		return (-1);
 	return (0);
@@ -51,7 +45,7 @@ int	game_loop(t_data *data)
 	}
 	if (data->enemy->is_start_pos == true)
 		display_life(data, data->enemy);
-	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, keypress, data);
+	mlx_hook(data->win_ptr, 2, 1L << 0, keypress, data);
 	mlx_hook(data->win_ptr, 17, 0, close_window, data);
 	mlx_loop_hook(data->mlx_ptr, game_update, data);
 	if (mlx_loop(data->mlx_ptr) != 0)

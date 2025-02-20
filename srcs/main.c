@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:33 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/19 02:30:40 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 04:28:53 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	main(int argc, char **argv)
 	}
 	close(data.fd);
 	if (init_mlx(&data) != 0)
+	{
+		ft_destroy_mlx(&data);
 		return (-1);
+	}
 	return (0);
 }
 

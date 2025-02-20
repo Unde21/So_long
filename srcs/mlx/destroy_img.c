@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 23:45:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 01:03:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 04:17:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	destroy_enemy_sprite(t_data *data, t_enemy *enemy)
 	i = 0;
 	if (data->enemy->is_start_pos == false)
 		return ;
-	while (i < 30)
+	while (i < 31)
 	{
 		if (enemy->sprite[i] != NULL)
 		{
