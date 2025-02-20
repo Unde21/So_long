@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:33 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:15 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 21:32:42 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,19 @@ int	main(int argc, char **argv)
 	data.win_ptr = NULL;
 	data.ac = argc;
 	data.av = argv;
+	if (check_map_format(argv[1]) != 0)
+		return (1);
 	add_enemy_data(&data, &enemy);
 	if (parsing(&data, &spaceship, &player, &img) != 0)
 	{
 		free_map(data.map, data.nb_line);
-		return (-1);
+		return (1);
 	}
 	close(data.fd);
 	if (init_mlx(&data) != 0)
 	{
 		ft_destroy_mlx(&data);
-		return (-1);
+		return (1);
 	}
 	return (0);
 }

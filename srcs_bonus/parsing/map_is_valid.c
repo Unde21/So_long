@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:12 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 21:35:33 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,15 @@ int	map_is_valid(t_data *data)
 		return (exit_error_parse(ERR_NO_PLAYER));
 	if (check_access(data) != 0)
 		return (-1);
+	return (0);
+}
+
+int	check_map_format(char *str)
+{
+	size_t	len_s;
+
+	len_s = ft_strlen(str);
+	if (ft_strcmp(&str[len_s - 4], ".ber") != 0)
+		return (exit_error_parse(ERR_ARGS));
 	return (0);
 }

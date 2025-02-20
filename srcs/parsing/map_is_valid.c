@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/06 04:36:05 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 21:36:39 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 		return (exit_error_parse(ERR_ARGS));
 	init_struct_data(data, spaceship, player, img);
 	if (calculate_size_map(data->av, data) != 0)
+	{
+		close(data->fd);
 		return (-1);
+	}
 	data->map = ft_calloc(sizeof(char *), (data->nb_line + 1));
 	if (!data->map)
 		return (exit_error_parse(ERR_MALLOC));
@@ -30,7 +33,10 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 	if (data->fd == -1)
 		return (exit_error_parse(ERR_FD));
 	if (init_map(data) != 0)
+	{
+		close(data->fd);
 		return (-1);
+	}
 	init_struct_spaceship(spaceship);
 	init_struct_player(player);
 	init_struct_img(img);
@@ -116,5 +122,15 @@ int	map_is_valid(t_data *data)
 		return (exit_error_parse(ERR_NO_PLAYER));
 	if (check_access(data) != 0)
 		return (-1);
+	return (0);
+}
+
+int	check_map_format(char *str)
+{
+	size_t	len_s;
+
+	len_s = ft_strlen(str);
+	if (ft_strcmp(&str[len_s - 4], ".ber") != 0)
+		return (exit_error_parse(ERR_ARGS));
 	return (0);
 }

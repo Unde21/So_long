@@ -6,20 +6,20 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 04:31:42 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 05:03:13 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 21:35:55 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENEMY_H
 # define ENEMY_H
 
+# include <sys/time.h>
+# include <stdbool.h>
+
 struct					s_data;
 typedef struct s_data	t_data;
 struct					s_img;
 typedef struct s_img	t_img;
-
-# include <sys/time.h>
-# include <stdbool.h>
 
 # define MOVE_ENEMY_FRAME 150
 # define LASER_MVE_FRAME 30

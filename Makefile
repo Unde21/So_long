@@ -19,7 +19,8 @@ SRCS := srcs/main.c \
 	srcs/init/load_img_map.c \
 
 
-SRCSB := srcs_bonus/main_bonus.c \
+SRCSB := \
+	srcs_bonus/main_bonus.c \
 	srcs_bonus/parsing/map_is_valid.c \
 	srcs_bonus/parsing/map_is_valid_utils.c \
 	srcs_bonus/parsing/check_access.c \
@@ -89,6 +90,7 @@ DEPS := $(OBJS:.o=.d)
 DEPSB := $(OBJSB:.o=.d)
 INCS := -I./includes -I./libft -I./minilibx-linux
 OBJS := $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+OBJSB := $(patsubst $(SRCB_DIR)%.c,$(OBJB_DIR)%.o,$(SRCSB))
 
 MLX_DIR 	= minilibx-linux/
 LIB_MLX 	= $(MLX_DIR)libmlx_Linux.a
@@ -117,6 +119,7 @@ DONE := "🏁"
 all: $(NAME)
 
 $(NAME): libft/libft.a  minilibx-linux/libmlx.a $(OBJS) Makefile
+	@$(RM) $(NAME_BONUS)
 	$(CC) $(CFLAGS) $(OBJS) $(INCS) $(MLX_FLAGS) ./libft/libft.a  -o $@
 	@echo "$(CYAN)$(BOLD)$(FIRE)$(NAME) made successfully!$(OK)$(END)"
 

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 05:54:50 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/20 21:38:25 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_data
 /*								Parsing							  	  		  */
 /* ************************************************************************** */
 
+void	check_access_recursive(char **cpy, int start_x, int start_y);
 void	init_struct_spaceship(t_spaceship *spaceship);
 void	init_struct_player(t_player *player);
 void	init_struct_img(t_img *img);
@@ -118,15 +119,16 @@ void	init_struct_data(t_data *data, t_spaceship *spaceship,
 int		parsing(t_data *data, t_spaceship *spaceship,
 			t_player *player, t_img *img);
 int		check_inside_map(t_data *data, size_t i, size_t j);
-int		map_is_valid(t_data *data);
+int		count_no_access(char **cpy, t_data *data);
 int		check_duplicate_player_exit(t_data *data, int i, int j);
 int		calculate_size_map(char **argv, t_data *data);
-int		init_map(t_data *data);
 int		exit_error_parse(t_exit error_num);
+int		check_map_format(char *str);
+int		map_is_valid(t_data *data);
 int		check_access(t_data *data);
+int		init_map(t_data *data);
+
 char	**copy_map(t_data *data);
-void	check_access_recursive(char **cpy, int start_x, int start_y);
-int		count_no_access(char **cpy, t_data *data);
 
 /* ************************************************************************** */
 /*								Utils							  	  		  */
@@ -139,46 +141,48 @@ void	free_map(char **map, size_t nb);
 /*							init window	and destroy			  	 	 		  */
 /* ************************************************************************** */
 
-int		init_img(t_data *data);
-int		display_map(t_data *data);
-int		check_access_sprite_img(t_img *img);
-int		load_img_map(t_data *data, t_img *img);
-int		load_img_player(t_data *data, t_img *img);
-int		load_img_exit(t_data *data, t_img *img);
-int		game_loop(t_data *data);
 void	put_image_to_win(t_data *data, size_t x, size_t y);
-int		init_mlx(t_data *data);
+void	put_floor_score_board(t_data *data);
 void	ft_destroy_mlx(t_data *data);
 void	ft_destroy_img(t_data *data, t_img *img);
-void	ft_destroy_img_background(t_data *data, t_img *img);
 void	ft_destroy_img_score(t_data *data, t_img *img);
 void	ft_destroy_img_score_snd(t_data *data, t_img *img);
 void	ft_destroy_img_exit(t_data *data, t_img *img);
+void	ft_destroy_img_background(t_data *data, t_img *img);
+
+int		load_img_player(t_data *data, t_img *img);
+int		load_img_map(t_data *data, t_img *img);
+int		load_img_exit(t_data *data, t_img *img);
 int		keypress(int keysym, t_data *data);
-void	put_floor_score_board(t_data *data);
+int		init_mlx(t_data *data);
+int		init_img(t_data *data);
+int		game_loop(t_data *data);
+int		display_map(t_data *data);
 int		close_window(t_data *data);
+int		check_access_sprite_img(t_img *img);
 
 /* ************************************************************************** */
 /*								player move						  	  		  */
 /* ************************************************************************** */
 
-void	move_down(t_data *data, t_player *player, t_img *img);
-void	move_left(t_data *data, t_player *player, t_img *img);
-void	move_right(t_data *data, t_player *player, t_img *img);
-void	move_up(t_data *data, t_player *player, t_img *img);
+void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
 void	open_spaceship(t_data *data, t_img *img);
-void	check_end(t_data *data, t_player *player);
+void	move_up(t_data *data, t_player *player, t_img *img);
+void	move_right(t_data *data, t_player *player, t_img *img);
+void	move_left(t_data *data, t_player *player, t_img *img);
+void	move_down(t_data *data, t_player *player, t_img *img);
+void	init_move_count(t_data *data);
 void	handle_old_position(t_data *data, t_player *player, t_img *img);
+void	handle_new_position_t(t_data *data, t_player *player, t_img *img);
 void	handle_new_position_r(t_data *data, t_player *player, t_img *img);
 void	handle_new_position_l(t_data *data, t_player *player, t_img *img);
 void	handle_new_position_d(t_data *data, t_player *player, t_img *img);
-void	handle_new_position_t(t_data *data, t_player *player, t_img *img);
 void	display_move_player(t_data *data);
-int		display_count_move(t_data *data);
+void	check_end(t_data *data, t_player *player);
+
 int		load_img_move(t_data *data, t_img *img);
 int		load_img_move_snd(t_data *data, t_img *img);
-void	init_move_count(t_data *data);
 int		display_right_img(t_data *data, t_img *img);
-void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
+int		display_count_move(t_data *data);
 
 #endif
