@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 08:47:48 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:03:52 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 06:08:13 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,11 @@ void	display_attack_enemy(t_data *data, t_enemy *enemy)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			enemy->sprite[ATT_D], enemy->pos_x * 64, enemy->pos_y * 64);
 	}
+}
+
+void	is_collectible(t_data *data, t_img *img, int x, int y)
+{
+	data->map[y][x] = '0';
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img->sprite[FLOOR], x
+		* 64, y * 64);
 }

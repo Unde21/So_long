@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 03:21:07 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 06:16:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,18 @@ void	check_enemy_move_status(t_data *data, struct timeval current_time,
 	if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved == 0
 		&& data->enemy->is_laser_enemy == false)
 	{
-		handle_enemy_move(data, data->enemy);
+		if (data->player->is_laser_player == false)
+			handle_enemy_move(data, data->enemy);
 		data->last_time = current_time;
 	}
 	else if (elapsed_time > MOVE_ENEMY_FRAME && data->enemy->moved != 0
 		&& data->enemy->is_laser_enemy == false)
 	{
-		move_in_line_after_destroy(data, data->enemy);
-		move_in_row_after_destroy(data, data->enemy);
+		if (data->player->is_laser_player == false)
+		{
+			move_in_line_after_destroy(data, data->enemy);
+			move_in_row_after_destroy(data, data->enemy);
+		}
 		data->last_time = current_time;
 		data->enemy->moved = false;
 	}

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 19:36:07 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:03:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 06:16:51 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 
 void	remove_final_laser(t_data *data, t_player *player)
 {
-	if (player->laser_x == 0 || player->laser_y == 0)
-	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->sprite[OBJECT], (player->laser_x) * 64, player->laser_y
-			* 64);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->sprite[OBJECT], (player->laser_x) * 64, (player->laser_y
-				+ 1) * 64);
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img->sprite[OBJECT], (player->laser_x) * 64, (player->laser_y
-				- 1) * 64);
-	}
 	if (player->laser_dir == LEFT)
 		remove_final_laser_left(data, player);
 	else if (player->laser_dir == RIGHT)

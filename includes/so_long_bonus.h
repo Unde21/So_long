@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 02:09:11 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 05:20:55 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define DEST_EXIT '3'
 # define PL_DEST_EXIT '4'
 # define PL_DEST_FLOOR '5'
+# define ENEMY_OBJECT 'X'
 
 // Exit Sprite
 # define EXIT_CLOSE 3

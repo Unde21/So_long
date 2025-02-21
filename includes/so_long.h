@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 21:38:25 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 04:26:10 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_spaceship
 
 typedef struct s_img
 {
-	void	*move[11];
+	void	*move[10];
 	void	*nb_zero;
 	void	*nb_one;
 	void	*nb_two;

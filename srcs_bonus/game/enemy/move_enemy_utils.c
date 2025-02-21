@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:36:18 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:04:22 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 06:16:22 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	handle_new_position_r_enemy(t_data *data, t_enemy *enemy)
 			enemy->sprite[ENEMY_R], enemy->pos_x * 64, enemy->pos_y * 64);
 		if (data->map[enemy->pos_y][enemy->pos_x] != 'C')
 			data->map[enemy->pos_y][enemy->pos_x] = 'B';
+		else
+			data->map[enemy->pos_y][enemy->pos_x] = ENEMY_OBJECT;
 	}
 }
 
@@ -63,6 +65,8 @@ void	handle_new_position_l_enemy(t_data *data, t_enemy *enemy)
 			enemy->sprite[ENEMY_L], enemy->pos_x * 64, enemy->pos_y * 64);
 		if (data->map[enemy->pos_y][enemy->pos_x] != 'C')
 			data->map[enemy->pos_y][enemy->pos_x] = 'B';
+		else
+			data->map[enemy->pos_y][enemy->pos_x] = ENEMY_OBJECT;
 	}
 }
 
@@ -90,6 +94,8 @@ void	handle_new_position_d_enemy(t_data *data, t_enemy *enemy)
 			enemy->sprite[ENEMY_D], enemy->pos_x * 64, enemy->pos_y * 64);
 		if (data->map[enemy->pos_y][enemy->pos_x] != 'C')
 			data->map[enemy->pos_y][enemy->pos_x] = 'B';
+		else
+			data->map[enemy->pos_y][enemy->pos_x] = ENEMY_OBJECT;
 	}
 }
 
@@ -117,5 +123,7 @@ void	handle_new_position_t_enemy(t_data *data, t_enemy *enemy)
 			enemy->sprite[ENEMY_T], enemy->pos_x * 64, enemy->pos_y * 64);
 		if (data->map[enemy->pos_y][enemy->pos_x] != 'C')
 			data->map[enemy->pos_y][enemy->pos_x] = 'B';
+		else
+			data->map[enemy->pos_y][enemy->pos_x] = ENEMY_OBJECT;
 	}
 }

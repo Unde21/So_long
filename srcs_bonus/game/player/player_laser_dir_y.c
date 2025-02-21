@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:32:56 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:03:30 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 06:16:41 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 void	laser_down_player(t_data *data, t_player *player)
 {
 	player->laser_dir = DOWN;
-	if (data->map[player->laser_y + 1][player->laser_x] == LASER_CHAR)
+	if (data->map[player->laser_y + 1][player->laser_x] == LASER_CHAR
+		|| data->map[player->laser_y + 1][player->laser_x] == DEAD_OBJECT)
 	{
 		player->is_fighting_laser = true;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[LASER_FIGHT_Y], player->laser_x * 64,
 			(player->laser_y + 1) * 64);
 		data->enemy->is_laser_enemy = false;
-		return ;
 	}
-	else if (data->map[player->laser_y + 1][player->laser_x] == 'B')
+	else if (data->map[player->laser_y + 1][player->laser_x] == 'B'
+		|| data->map[player->laser_y + 1][player->laser_x] == ENEMY_OBJECT)
 	{
 		if (is_laser_touch(data, player->laser_x, player->laser_y + 1) == 0)
 			remove_player_laser_down(data, player);
@@ -34,7 +35,6 @@ void	laser_down_player(t_data *data, t_player *player)
 		&& (size_t)(player->laser_y) < data->nb_line - 2)
 	{
 		handle_laser_down(data, player);
-		++player->laser_y;
 		if (data->map[player->laser_y][player->laser_x] == '1'
 			|| data->map[player->laser_y][player->laser_x] == '0')
 			data->map[player->laser_y][player->laser_x] = LASER_CHAR;
@@ -64,21 +64,23 @@ void	handle_laser_down(t_data *data, t_player *player)
 			data->enemy->sprite[LASER_ROW], player->laser_x * 64,
 			(player->laser_y + 1) * 64);
 	}
+	++player->laser_y;
 }
 
 void	laser_top_player(t_data *data, t_player *player)
 {
 	player->laser_dir = UP;
-	if (data->map[player->laser_y - 1][player->laser_x] == LASER_CHAR)
+	if (data->map[player->laser_y - 1][player->laser_x] == LASER_CHAR
+		|| data->map[player->laser_y - 1][player->laser_x] == DEAD_OBJECT)
 	{
 		player->is_fighting_laser = true;
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[LASER_FIGHT_Y], player->laser_x * 64,
 			(player->laser_y - 1) * 64);
 		data->enemy->is_laser_enemy = false;
-		return ;
 	}
-	else if (data->map[player->laser_y - 1][player->laser_x] == 'B')
+	else if (data->map[player->laser_y - 1][player->laser_x] == 'B'
+		|| data->map[player->laser_y - 1][player->laser_x] == ENEMY_OBJECT)
 	{
 		if (is_laser_touch(data, player->laser_x, player->laser_y - 1) == 0)
 			remove_player_laser_up(data, player);
@@ -88,7 +90,6 @@ void	laser_top_player(t_data *data, t_player *player)
 		&& (size_t)(player->laser_y) >= 2)
 	{
 		handle_laser_top(data, player);
-		--player->laser_y;
 		if (data->map[player->laser_y][player->laser_x] == '1'
 			|| data->map[player->laser_y][player->laser_x] == '0')
 			data->map[player->laser_y][player->laser_x] = LASER_CHAR;
@@ -118,4 +119,5 @@ void	handle_laser_top(t_data *data, t_player *player)
 			data->enemy->sprite[LASER_ROW], player->laser_x * 64,
 			(player->laser_y - 1) * 64);
 	}
+	--player->laser_y;
 }

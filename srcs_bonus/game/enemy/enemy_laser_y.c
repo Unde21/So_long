@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 04:56:07 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:04:09 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 05:09:54 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	laser_down(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = DOWN;
 	if (data->map[enemy->laser_y + 1][enemy->laser_x] == LASER_CHAR
+		|| data->map[enemy->laser_y + 1][enemy->laser_x] == DEAD_OBJECT
 		|| data->player->is_fighting_laser == true)
 	{
 		enemy->is_fighting_laser = true;
@@ -67,6 +68,7 @@ void	laser_top(t_data *data, t_enemy *enemy)
 {
 	enemy->laser_dir = UP;
 	if (data->map[enemy->laser_y - 1][enemy->laser_x] == LASER_CHAR
+		|| data->map[enemy->laser_y - 1][enemy->laser_x] == DEAD_OBJECT
 		|| data->enemy->is_fighting_laser == true)
 	{
 		enemy->is_fighting_laser = true;

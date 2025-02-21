@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:49:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:50 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 05:57:16 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int	enemy_run_with_spaceship(t_data *data)
 
 void	death_enemy(t_data *data, t_enemy *enemy)
 {
-	if (data->map[enemy->pos_y][enemy->pos_x] == 'C')
-		--data->nb_obj;
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		enemy->sprite[ENEMY_DEATH],
 		enemy->pos_x * 64, enemy->pos_y * 64);

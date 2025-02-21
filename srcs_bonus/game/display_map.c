@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 07:19:50 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:43 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 04:42:24 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	display_map(t_data *data)
 	size_t	y;
 
 	y = 0;
-	if (load_img_map(data, data->img) != 0)
-		return (-1);
 	while (data->map[y])
 	{
 		x = 0;
