@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:59 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 21:30:18 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 02:09:11 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	init_struct_spaceship(t_spaceship *spaceship);
 void	init_struct_img(t_img *img);
 void	check_access_recursive(char **cpy, int start_x, int start_y);
 
-int		check_map_format(char *str);
+int		check_map_format(t_data *data);
 int		parsing(t_data *data, t_spaceship *spaceship,
 			t_player *player, t_img *img);
 int		map_is_valid(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 21:35:33 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 02:08:42 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 {
-	if (data->ac != 2)
-		return (exit_error_parse(ERR_ARGS));
 	if (init_struct_data(data, spaceship, player, img) != 0)
 		return (-1);
 	if (calculate_size_map(data->av, data) != 0)
@@ -125,12 +123,14 @@ int	map_is_valid(t_data *data)
 	return (0);
 }
 
-int	check_map_format(char *str)
+int	check_map_format(t_data *data)
 {
 	size_t	len_s;
 
-	len_s = ft_strlen(str);
-	if (ft_strcmp(&str[len_s - 4], ".ber") != 0)
+	if (data->ac != 2)
+		return (exit_error_parse(ERR_ARGS));
+	len_s = ft_strlen(data->av[1]);
+	if (ft_strcmp(&data->av[1][len_s - 4], ".ber") != 0)
 		return (exit_error_parse(ERR_ARGS));
 	return (0);
 }

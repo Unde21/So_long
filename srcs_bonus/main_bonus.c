@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:19:33 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 21:32:42 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 02:09:23 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	data.win_ptr = NULL;
 	data.ac = argc;
 	data.av = argv;
-	if (check_map_format(argv[1]) != 0)
+	if (check_map_format(&data) != 0)
 		return (1);
 	add_enemy_data(&data, &enemy);
 	if (parsing(&data, &spaceship, &player, &img) != 0)
