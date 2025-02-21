@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 04:48:44 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 06:15:18 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/22 00:44:04 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	laser_right(t_data *data, t_enemy *enemy)
 		return ;
 	}
 	else if (data->map[enemy->laser_y][enemy->laser_x + 1] == 'P'
-		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == PL_AND_EXIT
-		&& data->player->pos_x == data->spaceship->pos_x
-		&& data->player->pos_y == data->spaceship->pos_y))
+		|| (data->map[enemy->laser_y][enemy->laser_x + 1] == PL_AND_EXIT))
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[EXPLOSION_R], (enemy->laser_x + 1) * 64,
@@ -75,9 +73,7 @@ void	laser_left(t_data *data, t_enemy *enemy)
 		return ;
 	}
 	else if (data->map[enemy->laser_y][enemy->laser_x - 1] == 'P'
-		|| (data->map[enemy->laser_y][enemy->laser_x - 1] == PL_AND_EXIT
-		&& data->player->pos_x == data->spaceship->pos_x
-		&& data->player->pos_y == data->spaceship->pos_y))
+		|| (data->map[enemy->laser_y][enemy->laser_x - 1] == PL_AND_EXIT))
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img->sprite[EXPLOSION_L], (enemy->laser_x - 1) * 64,
