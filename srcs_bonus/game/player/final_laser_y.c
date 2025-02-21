@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 02:26:13 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:03:10 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 20:11:41 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void	final_laser_y(t_data *data, t_player *player)
 		final_laser_down(data, player);
 	if (player->laser_dir == UP && (size_t)(player->laser_y) <= data->nb_line)
 		final_laser_up(data, player);
+	else
+	{
+		if (player->pos_y < data->enemy->pos_y)
+			player->laser_dir = DOWN;
+		else
+			player->laser_dir = UP;
+	}
 }
 
 void	final_laser_down(t_data *data, t_player *player)
@@ -36,7 +43,7 @@ void	final_laser_down(t_data *data, t_player *player)
 			player->sprite[FINAL_STARTD_R], (player->laser_x + 1) * 64,
 			(player->laser_y) * 64);
 	}
-	else if (player->laser_x > 1
+	else if (player->laser_x > 1 && player->laser_y != player->pos_y
 		&& (size_t)(player->laser_x) < data->nb_row - 2)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
@@ -65,7 +72,7 @@ void	final_laser_up(t_data *data, t_player *player)
 			player->sprite[FINAL_STARTT_R], (player->laser_x + 1) * 64,
 			(player->laser_y) * 64);
 	}
-	else if (player->laser_x > 1
+	else if (player->laser_x > 1 && player->laser_y != player->pos_y
 		&& (size_t)(player->laser_x) < data->nb_row - 2)
 	{
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,

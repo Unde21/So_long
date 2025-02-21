@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:36:58 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:56 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 21:11:28 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	open_spaceship(t_data *data, t_spaceship *spaceship)
 			spaceship->sprite[EXIT_OPEN], data->spaceship->pos_x * 64,
 			data->spaceship->pos_y * 64);
 	}
-	data->spaceship->spaceship_close = false;
 }

@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 19:21:23 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 05:26:02 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 19:55:19 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	laser_left_player(t_data *data, t_player *player)
 	else if (data->map[player->laser_y][player->laser_x - 1] == 'B'
 		|| data->map[player->laser_y][player->laser_x - 1] == ENEMY_OBJECT)
 	{
-		if (is_laser_touch(data, player->laser_x - 1, player->laser_y) == 0)
+		if (is_laser_touch(data, player->laser_x - 1, player->laser_y) != 0)
 			remove_player_laser_left(data, player);
 		data->player->is_laser_player = false;
 	}
@@ -82,7 +82,7 @@ void	laser_right_player(t_data *data, t_player *player)
 	else if (data->map[player->laser_y][player->laser_x + 1] == 'B'
 		|| data->map[player->laser_y][player->laser_x + 1] == ENEMY_OBJECT)
 	{
-		if (is_laser_touch(data, player->laser_x + 1, player->laser_y) == 0)
+		if (is_laser_touch(data, player->laser_x + 1, player->laser_y) != 0)
 			remove_player_laser_right(data, player);
 		data->player->is_laser_player = false;
 	}
