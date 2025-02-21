@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 03:20:35 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:58:50 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	init_map(t_data *data)
 		}
 		++i;
 	}
+	close(data->fd);
 	return (0);
 }
 
