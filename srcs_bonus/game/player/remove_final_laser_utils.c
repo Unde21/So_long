@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 02:32:38 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 03:10:10 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:12:19 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,9 @@ void	change_display_floor(t_data *data, int x, int y)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img->sprite[DESTROY_FLOOR], x * 64, y * 64);
 	if ((size_t)x == data->nb_row - 1 || (size_t)y == data->nb_line- 1)
-	{
 		data->map[y][x] = '1';
-	}
 	else if (x == 0 || y == 0)
-	{
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-		data->img->sprite[DESTROY_FLOOR], x * 64, y * 64);
 		data->map[y][x] = '1';
-	}
 	else
 		data->map[y][x] = DEST_FLOOR;
 	

@@ -6,12 +6,11 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:17:06 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:04:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:21:07 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-#include <stdio.h>
 
 int	move_enemy(t_data *data)
 {

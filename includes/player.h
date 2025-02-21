@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 04:38:29 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 05:03:03 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:48:26 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_player
 }						t_player;
 
 void	select_right_nb(size_t i, t_data *data, t_img *img, char *str_move);
-void	save_last_position(t_player *player, t_enemy *enemy);
+void	save_last_position(t_data *data, t_player *player, t_enemy *enemy);
 void	reset_laser_pos(t_data *data, t_player *player);
 void	remove_final_laser(t_data *data, t_player *player);
 void	remove_final_laser_up(t_data *data, t_player *player);

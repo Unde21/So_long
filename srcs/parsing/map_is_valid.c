@@ -6,13 +6,12 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:29:10 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 02:04:03 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:29:01 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <fcntl.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -20,10 +19,7 @@ int	parsing(t_data *data, t_spaceship *spaceship, t_player *player, t_img *img)
 {
 	init_struct_data(data, spaceship, player, img);
 	if (calculate_size_map(data->av, data) != 0)
-	{
-		close(data->fd);
 		return (-1);
-	}
 	data->map = ft_calloc(sizeof(char *), (data->nb_line + 1));
 	if (!data->map)
 		return (exit_error_parse(ERR_MALLOC));
@@ -85,7 +81,10 @@ int	calculate_size_map(char **argv, t_data *data)
 	{
 		line = get_next_line(data->fd, &check_error);
 		if (check_error != 0)
+		{
+			close(data->fd);
 			return (-1);
+		}
 		if (!line)
 			break ;
 		++data->nb_line;

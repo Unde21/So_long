@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 04:31:42 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 03:04:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:47:47 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@ int		is_needed_remove(t_data *data, t_enemy *enemy);
 int		init_enemy_img(t_data *data);
 int		enemy_run_with_spaceship(t_data *data);
 int		enemy_laser(t_data *data, t_enemy *enemy);
+void	display_collectible(t_data *data, t_img *img, int x, int y);
+void	is_collectible(t_data *data, t_img *img, int x, int y);
 
 #endif

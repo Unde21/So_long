@@ -28,7 +28,7 @@ void	attack_player(t_data *data, t_player *player)
 		can_shoot = false;
 	if (player->is_laser_player == false && elapsed_time >= FIRE_FRAME
 		&& can_shoot == true)
-		save_last_position(player, data->enemy);
+		save_last_position(data, player, data->enemy);
 	++player->fire_frame;
 	if (player->is_laser_player == true && player->fire_frame >= FIRE_MVE_FRAME)
 	{
@@ -79,11 +79,13 @@ int	handle_player_laser(t_data *data, t_player *player)
 	return (1);
 }
 
-void	save_last_position(t_player *player, t_enemy *enemy)
+void	save_last_position(t_data *data, t_player *player, t_enemy *enemy)
 {
 	enemy->s_pos_x = enemy->pos_x;
 	enemy->s_pos_y = enemy->pos_y;
 	player->laser_x = player->pos_x;
 	player->laser_y = player->pos_y;
 	player->is_laser_player = true;
+	++data->count_key;
+	display_count_move(data);
 }

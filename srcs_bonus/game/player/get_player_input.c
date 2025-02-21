@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 02:32:36 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:03:16 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/21 03:33:27 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,5 @@ void	input_action(int keysym, t_data *data)
 	else if (keysym == FIRE && data->enemy->is_alive == true)
 	{
 		attack_player(data, data->player);
-		++data->count_key;
-		display_count_move(data);
 	}
 }
