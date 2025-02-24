@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 04:31:42 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/21 20:17:24 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/02/24 09:29:31 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_img	t_img;
 # define MOVE_ENEMY_FRAME 150
 # define LASER_MVE_FRAME 30
 # define LASER_FRAME 5000000
-# define LIFE 2
+# define LIFE 5
 
 // Enemy Sprite
 # define ENEMY_R 3
