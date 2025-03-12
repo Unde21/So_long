@@ -6,7 +6,7 @@
 /*   By: samaouch <samaouch@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 03:10:11 by samaouch          #+#    #+#             */
-/*   Updated: 2025/02/20 06:02:26 by samaouch         ###   ########lyon.fr   */
+/*   Updated: 2025/03/12 13:26:43 by samaouch         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_struct_spaceship(t_spaceship *spaceship)
 	spaceship->frame = 0;
 	spaceship->final_y = 0;
 	i = 0;
-	while (i < 7)
+	while (i < 8)
 	{
 		spaceship->sprite[i] = NULL;
 		++i;
@@ -51,7 +51,7 @@ int	init_struct_player(t_player *player)
 	player->is_laser_player = false;
 	player->is_fighting_laser = false;
 	player->final_laser = false;
-	while (++i < 41)
+	while (++i < 42)
 		player->sprite[i] = NULL;
 	if (gettimeofday(&player->last_time, NULL) == -1)
 		return (-1);
@@ -92,7 +92,7 @@ void	init_struct_img(t_img *img)
 	int	i;
 
 	i = 0;
-	while (i < 10)
+	while (i < 11)
 	{
 		img->sprite[i] = NULL;
 		++i;
